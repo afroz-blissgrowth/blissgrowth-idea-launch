@@ -1,5 +1,5 @@
 {
-  "_comment": "Defaults for the Idea Launch engine. Edit here, not in code. Personal secrets go in config.local.json (gitignored).",
+  "_comment": "Defaults for the Idea Launch engine. Edit here, not in code. Secrets come from environment variables (Claude web) or config.local.json (local, gitignored).",
   "people_caps": {
     "T1": 5,
     "T2": 3
@@ -155,7 +155,9 @@
     "batch_size": 10,
     "credits_per_mobile": 8,
     "skip_if_apollo_says_no": true,
-    "_secret_note": "webhook_path, data_table_id and workflow_id are written to config.local.json by workflows/deploy_phone_webhook.py",
+    "data_table_id": "YCCl3AOviLQDC54i",
+    "workflow_id": "kSDGLbA4yZvk5Q9d",
+    "_secret_note": "data_table_id and workflow_id are ids, not secrets. The webhook path acts as a secret: env IDEA_LAUNCH_PHONE_WEBHOOK_PATH or config.local.json phones.webhook_path only (deploy_phone_webhook.py writes it to config.local.json).",
     "phones_in_enrich": false,
     "_phones_in_enrich_todo": "TODO (awaits Afroz's decision on REVIEW-PHASE2 issue A): when true, T1 chunks would be sent in the enrich call with reveal_phone_number + webhook_url so the enrichment credit is not paid twice. NOT implemented yet, the flag is read by nothing except the iv-run notice. Leave false."
   },
@@ -335,10 +337,10 @@
       "T1"
     ],
     "senders": {
-      "_comment": "HeyReach LinkedIn account ids (python3 -I bin/launch_run.py accounts lists them read only). Put the real ids in config.local.json. null = not set, the launch plan says so and execution is refused until set.",
+      "_comment": "HeyReach LinkedIn account ids (not secrets; python3 -I bin/launch_run.py accounts lists them read only). associate null = InMail campaign creation is refused with a clear message until set. config.local.json or env IDEA_LAUNCH_SENDER_JAY / _MEELAN / _ASSOCIATE override.",
       "founders": {
-        "jay": null,
-        "meelan": null
+        "jay": 194014,
+        "meelan": 190648
       },
       "associate": null
     },
@@ -375,8 +377,8 @@
       ]
     ],
     "lead_batch": 100,
-    "mansi_email": "",
-    "_mansi_note": "Set launch.mansi_email in config.local.json (Mansi's Google account). Unknown now, so /iv-launch asks the user. Her call sheet is a SEPARATE Google Sheet with only her T1 call list, so she does not need the whole idea sheet.",
+    "mansi_email": null,
+    "_mansi_note": "Mansi's Google account email. null = unknown, so the call sheet step skips with a clear message and /iv-launch asks the user. Override in config.local.json or env IDEA_LAUNCH_MANSI_EMAIL. Her call sheet is a SEPARATE Google Sheet with only her T1 call list, so she does not need the whole idea sheet.",
     "callsheet": {
       "tab": "Calls",
       "title_template": "{idea} - Call sheet (Mansi) - {date}",

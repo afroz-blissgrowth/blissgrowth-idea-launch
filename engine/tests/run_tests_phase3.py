@@ -805,7 +805,7 @@ class TestLaunch(unittest.TestCase):
         ln.approve("ok")
         why = " ".join(ln.gates(lmod.plan(run, "2026-10-21")))
         self.assertIn("founders has no HeyReach account id", why)
-        self.assertIn("associate has no HeyReach account id", why)
+        self.assertIn("launch.senders.associate is null", why)
 
     def test_cannot_approve_without_plan_or_with_blockers(self):
         run = launch_ready("l6")
@@ -891,7 +891,7 @@ class TestLaunch(unittest.TestCase):
         run = launch_ready("l12")
         ln = lmod.Launch(run)
         rep = ln.callsheet(dry_run=True)
-        self.assertIn("mansi_email is not set", rep["note"])
+        self.assertIn("launch.mansi_email is null", rep["note"])
         config.cfg()["launch"]["mansi_email"] = "mansi@blissgrowth.com"
         rep = ln.callsheet(dry_run=True)
         self.assertEqual(rep["rows"], 1)

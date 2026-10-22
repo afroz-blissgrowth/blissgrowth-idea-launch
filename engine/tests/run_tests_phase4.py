@@ -1244,10 +1244,70 @@ class TestPilotScopeAndBackfill(unittest.TestCase):
         self.assertIn("linkedin_no_current_position", row["exclusion_reason"])
 
 
+class TestEnvConfig(unittest.TestCase):
+    NAMES = list(config.ENV_OVERRIDES)
+
+    def setUp(self):
+        self.old_cfg = config.cfg()  # other tests mutate the shared dict, so put the same object back afterwards
+        self.saved = {k: os.environ.get(k) for k in self.NAMES}
+        for k in self.NAMES:
+            os.environ.pop(k, None)
+
+    def tearDown(self):
+        for k, v in self.saved.items():
+            if v is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = v
+        config._CACHE["cfg"] = self.old_cfg
+
+    def test_env_beats_files_and_is_reported_as_source(self):
+        os.environ["IDEA_LAUNCH_BRIDGE_SECRET"] = "from-env"
+        os.environ["IDEA_LAUNCH_SENDER_ASSOCIATE"] = "777"
+        os.environ["IDEA_LAUNCH_MANSI_EMAIL"] = "m@blissgrowth.com"
+        config.cfg(True)
+        self.assertEqual(config.get("sheets_bridge.secret"), "from-env")
+        self.assertEqual(config.get("launch.senders.associate"), 777)
+        self.assertEqual(config.get("launch.mansi_email"), "m@blissgrowth.com")
+        self.assertEqual(config.source_of("IDEA_LAUNCH_BRIDGE_SECRET"), "env")
+
+    def test_committed_defaults_for_senders_and_null_associate(self):
+        config.cfg(True)
+        s = config.get("launch.senders")
+        self.assertEqual(s["founders"], {"jay": 194014, "meelan": 190648})
+        self.assertIsNone(s["associate"])
+        self.assertIsNone(config.get("launch.mansi_email"))
+        self.assertEqual(config.source_of("IDEA_LAUNCH_SENDER_JAY"), "config.json")
+        self.assertTrue(config.get("phones.data_table_id"))
+        self.assertTrue(config.get("phones.workflow_id"))
+
+    def test_bad_sender_id_is_a_clear_error(self):
+        os.environ["IDEA_LAUNCH_SENDER_JAY"] = "abc"
+        with self.assertRaises(SystemExit) as cm:
+            config.cfg(True)
+        self.assertIn("IDEA_LAUNCH_SENDER_JAY", str(cm.exception))
+
+    def test_missing_bridge_secret_names_the_env_var(self):
+        import unittest.mock as mock
+        os.environ["BLISSGROWTH_N8N_INSTANCE_URL"] = os.environ.get("BLISSGROWTH_N8N_INSTANCE_URL") or "https://n8n.example"
+        with mock.patch.dict(config.cfg(True), {"sheets_bridge": {"secret": "PASTE_X"}}):
+            with self.assertRaises(SystemExit) as cm:
+                config.bridge_settings()
+        self.assertIn("IDEA_LAUNCH_BRIDGE_SECRET", str(cm.exception))
+
+    def test_missing_phone_webhook_path_names_the_env_var(self):
+        import unittest.mock as mock
+        import phones
+        with mock.patch.dict(config.cfg(True), {"phones": {"webhook_path": "", "data_table_id": "t"}}):
+            with self.assertRaises(phones.PhoneError) as cm:
+                phones.receiver()
+        self.assertIn("IDEA_LAUNCH_PHONE_WEBHOOK_PATH", str(cm.exception))
+
+
 class TestNoEmDashesInPhase4(unittest.TestCase):
     def test_new_files_have_no_em_dashes(self):
         root = str(config.IDEA_LAUNCH_DIR)
         files = ["lib/signals.py", "lib/pilot.py", "lib/exclusions.py", "bin/signals_run.py", "bin/pilot_run.py", "config.json",
-                 "tests/run_tests_phase4.py"]
+                 "lib/config.py", "bin/doctor.py", "config.local.example.json", "tests/run_tests_phase4.py"]
         for f in files:
             self.assertNotIn("\u2014", open(os.path.join(root, f), encoding="utf-8").read(), f)

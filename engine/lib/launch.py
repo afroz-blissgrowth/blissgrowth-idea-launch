@@ -410,9 +410,11 @@ class Launch:
             need_f = any(c["sender"] == "founders" for g in p["groups"] for c in g["campaigns"])
             need_a = any(c["sender"] == "associate" for g in p["groups"] for c in g["campaigns"])
             if need_f and not [v for v in f.values() if v]:
-                out.append("launch.senders.founders has no HeyReach account id (bin/launch_run.py accounts lists them)")
+                out.append("launch.senders.founders has no HeyReach account id (set launch.senders in config.json, or env IDEA_LAUNCH_SENDER_JAY / "
+                           "IDEA_LAUNCH_SENDER_MEELAN; bin/launch_run.py accounts lists the ids)")
             if need_a and not s.get("associate"):
-                out.append("launch.senders.associate has no HeyReach account id")
+                out.append("InMail campaigns are refused: launch.senders.associate is null (no HeyReach account id for the associate). "
+                           "Set it in config.json, or env IDEA_LAUNCH_SENDER_ASSOCIATE")
         return out
 
     # ---- execute --------------------------------------------------------------------------------
@@ -516,7 +518,8 @@ class Launch:
             rep["note"] = "no T1 people with a phone in ready/calls.csv"
             return rep
         if not email:
-            rep["note"] = "launch.mansi_email is not set: ask the user for Mansi's Google account email, put it in config.local.json"
+            rep["note"] = ("launch.mansi_email is null: call sheet skipped. Ask the user for Mansi's Google account email, then set "
+                           "launch.mansi_email in config.json (or env IDEA_LAUNCH_MANSI_EMAIL)")
             return rep
         if dry_run:
             rep["note"] = "dry run: would create a sheet and share it with %s as %s" % (email, cs.get("share_role", "writer"))

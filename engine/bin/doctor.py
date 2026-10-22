@@ -29,46 +29,55 @@ def main():
     say(OK if v >= (3, 9) else FAIL, "Python %d.%d.%d (need 3.9 or newer)" % v[:3])
 
     envp = config.REPO_ROOT / ".env"
-    say(OK if envp.exists() else FAIL, ".env present at the repo root" if envp.exists() else ".env missing (copy .env.example to .env and fill it)")
+    print("(.env is optional: on Claude web every value comes from the environment)")
+    say(OK if envp.exists() else WARN, ".env present at the repo root" if envp.exists() else ".env not present (fine if the variables are set in the environment)")
 
+    print("\nRequired environment variables (names and sources only, values are never printed):")
     for k, why in (("APOLLO_API_KEY", "Apollo"), ("BLISSGROWTH_N8N_API_KEY", "n8n API"),
                    ("BLISSGROWTH_N8N_INSTANCE_URL", "n8n URL"), ("HEYREACH_API_KEY", "HeyReach"),
                    ("MILLIONVERIFIER_API_KEY", "MillionVerifier, presence only, not tested because a test costs a credit")):
-        say(OK if os.environ.get(k) else FAIL, "%s set (%s)" % (k, why) if os.environ.get(k) else "%s missing (%s)" % (k, why))
-
-    lp = config.IDEA_LAUNCH_DIR / "config.local.json"
-    local = {}
-    if lp.exists():
+        if os.environ.get(k):
+            src = ".env" if k in config._DOTENV_KEYS else "env"
+            say(OK, "%s: OK (source: %s) (%s)" % (k, src, why))
+        else:
+            say(FAIL, "%s: MISSING (%s)" % (k, why))
+    local_path = config.IDEA_LAUNCH_DIR / "config.local.json"
+    if local_path.exists():
         try:
-            local = json.loads(lp.read_text(encoding="utf-8"))
-            say(OK, "engine/config.local.json present and valid JSON")
+            json.loads(local_path.read_text(encoding="utf-8"))
         except ValueError:
             say(FAIL, "engine/config.local.json is not valid JSON")
-    else:
-        say(FAIL, "engine/config.local.json missing (copy engine/config.local.example.json and fill it)")
-
-    secret = (local.get("sheets_bridge") or {}).get("secret", "")
-    real = bool(secret) and not secret.startswith("PASTE_")
-    say(OK if real else FAIL, "sheets_bridge.secret filled in" if real else "sheets_bridge.secret not filled in")
-    ph = (local.get("phones") or {}).get("webhook_path", "")
-    say(OK if ph and not ph.startswith("PASTE_") else WARN,
-        "phones.webhook_path filled in" if ph and not ph.startswith("PASTE_") else "phones.webhook_path not filled in (needed for /iv-phones)")
-    snd = ((local.get("launch") or {}).get("senders") or {})
-    have = bool((snd.get("founders") or {}).get("jay")) and bool((snd.get("founders") or {}).get("meelan")) and bool(snd.get("associate"))
-    say(OK if have else WARN, "launch.senders filled in" if have else "launch.senders not filled in (needed for /iv-launch; ids via bin/launch_run.py accounts)")
-    me = (local.get("launch") or {}).get("mansi_email", "")
-    say(OK if me and "example.com" not in me else WARN,
-        "launch.mansi_email filled in" if me and "example.com" not in me else "launch.mansi_email not set (needed for the call sheet)")
+    for k, why, level in (("IDEA_LAUNCH_BRIDGE_SECRET", "Sheets Bridge secret", FAIL),
+                          ("IDEA_LAUNCH_PHONE_WEBHOOK_PATH", "phone receiver webhook path, needed for /iv-phones", WARN),
+                          ("IDEA_LAUNCH_PHONE_DATA_TABLE_ID", "phone results data table id, in config.json by default", WARN),
+                          ("IDEA_LAUNCH_PHONE_WORKFLOW_ID", "phone receiver workflow id, in config.json by default", WARN)):
+        src = config.source_of(k)
+        if src:
+            say(OK, "%s: OK (source: %s) (%s)" % (k, src, why))
+        else:
+            say(level, "%s: MISSING (%s)" % (k, why))
+    secret = config.get("sheets_bridge.secret", "")
+    real = bool(secret) and not config.is_placeholder(secret)
+    snd = config.get("launch.senders") or {}
+    f = snd.get("founders") or {}
+    say(OK if (f.get("jay") and f.get("meelan")) else WARN,
+        "launch.senders founders set (source: %s)" % (config.source_of("IDEA_LAUNCH_SENDER_JAY") or "config") if (f.get("jay") and f.get("meelan"))
+        else "launch.senders founders not set (needed for /iv-launch)")
+    say(OK if snd.get("associate") else WARN,
+        "launch.senders.associate set" if snd.get("associate") else "launch.senders.associate is null (InMail campaign creation is refused until set; IDEA_LAUNCH_SENDER_ASSOCIATE)")
+    me = config.get("launch.mansi_email")
+    say(OK if me else WARN, "launch.mansi_email set" if me else "launch.mansi_email is null (call sheet is skipped until set; IDEA_LAUNCH_MANSI_EMAIL)")
+    print("")
 
     base = os.environ.get("BLISSGROWTH_N8N_INSTANCE_URL", "").rstrip("/")
     if base and real:
         try:
             url = base + "/" + config.get("sheet.bridge_path", "webhook/idea-launch-sheets")
-            hdr = (local.get("sheets_bridge") or {}).get("header", "X-Idea-Launch-Secret")
+            hdr = config.get("sheets_bridge.header", "X-Idea-Launch-Secret")
             st, _, _ = net.fetch("POST", url, {hdr: secret, "Content-Type": "application/json"},
                                  json.dumps({"action": "read"}).encode(), 30)
             if st == 403:
-                say(FAIL, "n8n bridge reachable but refused the secret (403): wrong sheets_bridge.secret")
+                say(FAIL, "n8n bridge reachable but refused the secret (403): wrong IDEA_LAUNCH_BRIDGE_SECRET")
             elif st == 404:
                 say(FAIL, "n8n bridge webhook not found (404): workflow 'Idea Launch | Sheets Bridge' inactive or wrong URL")
             elif st < 500:
@@ -78,7 +87,7 @@ def main():
         except Exception as e:
             say(FAIL, "n8n bridge not reachable (%s)" % type(e).__name__)
     else:
-        say(WARN, "n8n bridge check skipped (needs BLISSGROWTH_N8N_INSTANCE_URL and the bridge secret)")
+        say(WARN, "n8n bridge check skipped (needs BLISSGROWTH_N8N_INSTANCE_URL and IDEA_LAUNCH_BRIDGE_SECRET)")
 
     if base and os.environ.get("BLISSGROWTH_N8N_API_KEY"):
         try:
@@ -115,7 +124,7 @@ def main():
 
     print("\n%d ok, %d warnings, %d failures" % (results.count(OK), results.count(WARN), results.count(FAIL)))
     if results.count(FAIL):
-        print("Fix the [FAIL] lines first. Get missing secrets from Afroz securely (never Slack).")
+        print("Fix the [FAIL] lines first. Set missing variables in the Claude web environment (or .env locally). Get secrets from Afroz securely (never Slack).")
     sys.exit(1 if results.count(FAIL) else 0)
 
 

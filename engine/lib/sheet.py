@@ -57,7 +57,7 @@ class SheetClient:
                 self.sleep(2 ** attempt * 2)
                 continue
             if st == 403:
-                raise SheetError("bridge refused the secret (403). Check config.local.json sheets_bridge.secret")
+                raise SheetError("bridge refused the secret (403). Check IDEA_LAUNCH_BRIDGE_SECRET (or config.local.json sheets_bridge.secret)")
             if st == 404:
                 raise SheetError("bridge webhook not found (404). Is the workflow 'Idea Launch | Sheets Bridge' active?")
             try:

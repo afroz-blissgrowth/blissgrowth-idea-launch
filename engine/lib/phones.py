@@ -33,11 +33,18 @@ class PhoneError(RuntimeError):
 
 
 def receiver():
-    """(webhook_url, data_table_id) from config.local.json (written by deploy_phone_webhook.py)."""
+    """(webhook_url, data_table_id). Webhook path: env IDEA_LAUNCH_PHONE_WEBHOOK_PATH or config.local.json (secret).
+    Data table id: env IDEA_LAUNCH_PHONE_DATA_TABLE_ID, config.local.json or the committed config.json."""
     ph = config.get("phones") or {}
-    if not ph.get("webhook_path") or not ph.get("data_table_id"):
-        raise PhoneError("the phone receiver is not deployed. Run python3 -I engine/workflows/"
-                         "deploy_phone_webhook.py once.")
+    missing = []
+    if not ph.get("webhook_path") or config.is_placeholder(ph.get("webhook_path")):
+        missing.append("IDEA_LAUNCH_PHONE_WEBHOOK_PATH")
+    if not ph.get("data_table_id") or config.is_placeholder(ph.get("data_table_id")):
+        missing.append("IDEA_LAUNCH_PHONE_DATA_TABLE_ID")
+    if missing:
+        raise PhoneError("missing environment variable(s): %s. Set them in the Claude web environment (locally: config.local.json "
+                         "phones.*). If the phone receiver was never deployed, run python3 -I engine/workflows/"
+                         "deploy_phone_webhook.py once." % ", ".join(missing))
     return n8n.webhook_url(ph["webhook_path"]), ph["data_table_id"]
 
 

@@ -1,19 +1,14 @@
 {
+  "_comment": "Local use only. On Claude web set the IDEA_LAUNCH_* environment variables instead (see README, section 'Claude web'). Env vars win over this file. launch.senders and launch.mansi_email normally live in the committed engine/config.json, add them here only to override.",
   "sheets_bridge": {
     "secret": "PASTE_SHEETS_BRIDGE_SECRET_FROM_AFROZ",
     "header": "X-Idea-Launch-Secret"
   },
   "phones": {
-    "webhook_path": "PASTE_PHONE_WEBHOOK_PATH_FROM_AFROZ",
-    "data_table_id": "PASTE_DATA_TABLE_ID_FROM_AFROZ",
-    "workflow_id": "PASTE_PHONE_WORKFLOW_ID_FROM_AFROZ"
+    "webhook_path": "PASTE_PHONE_WEBHOOK_PATH_FROM_AFROZ"
   },
   "launch": {
     "senders": {
-      "founders": {
-        "jay": null,
-        "meelan": null
-      },
       "associate": null
     },
     "mansi_email": "mansi@example.com"

@@ -44,7 +44,7 @@ def main():
             print("LinkedIn account ids used by campaigns in the Bliss workspace (the campaign names tell whose account it is):")
             for i, names in sorted(seen.items()):
                 print("  %s  used in %d campaigns, e.g. %s" % (i, len(names), names[0][:70]))
-            print("Put the founders' ids and the associate's id in config.local.json under launch.senders.")
+            print("Put the ids in engine/config.json under launch.senders (not secrets), or set IDEA_LAUNCH_SENDER_JAY, IDEA_LAUNCH_SENDER_MEELAN, IDEA_LAUNCH_SENDER_ASSOCIATE.")
             return
         if not a.run:
             sys.exit("a run is required")
