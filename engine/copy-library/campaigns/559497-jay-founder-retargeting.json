@@ -1,0 +1,152 @@
+{
+  "id": 559497,
+  "name": "Jay Founder Retargeting",
+  "status": "PAUSED",
+  "created": "2026-08-19",
+  "list": "Jay Founder Retargeting (38)",
+  "leads": 57,
+  "idea": "Jay Founder Retargeting",
+  "persona": [],
+  "regions": [],
+  "sender": "Jay",
+  "kind": [],
+  "structure": "CHECK(connected: MSG x2 | new: INVITE(blank)(accepted: MSG x2 | not: end))",
+  "stats": {
+    "connectionsSent": 35,
+    "connectionsAccepted": 3,
+    "connectionAcceptanceRate": 0.08571429,
+    "messagesSent": 3,
+    "totalMessageStarted": 4,
+    "totalMessageReplies": 2,
+    "messageReplyRate": 0.5,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 1,
+    "uniqueLeadsContacted": 36
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "MESSAGE",
+      "branch": "already_connected",
+      "delay": "0 HOUR",
+      "what": "opener, credibility, opinion question, asks for a call, progress update",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {firstNameClean}, great to connect.\n\nWanted to introduce myself: I'm a 2x exited founder and now run Blissgrowth - a Venture Studio building AI B2B companies with exceptional Second-time founders.\n\nWe've built 10 companies so far, including Yieldify (acquired by Publicis), Reachdesk ($225m val @ Series B), and StackOne, backed by top investors like Google Ventures, SoftBank, and a16z.\n\nYour founding experience really stood out to me and my team, and I'd love to chat. We have a validated idea (funded as well), and we thought you would be the perfect founder for it. Would you be interested to chat?\n\nBest,\nJay",
+          "words": 102,
+          "errors": [
+            "funding_amount",
+            "placeholder"
+          ]
+        }
+      ],
+      "fallback": "Hi there, great to connect.\n\nWanted to introduce myself: I'm a 2x exited founder and now run Blissgrowth - a Venture Studio building AI B2B companies with exceptional Second-time founders.\n\nWe've built 10 companies so far, including Yieldify (acquired by Publicis), Reachdesk ($225m val @ Series B), and StackOne, backed by top investors like Google Ventures, SoftBank, and a16z.\n\nYour founding experience really stood out to me and my team, and I'd love to chat. We have a validated idea (funded as well), and we thought you would be the perfect founder for it. Would you be interested to chat?\n\nBest,\nJay",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "5 DAY",
+      "what": "credibility, opinion question, asks for a call",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hey {firstNameClean},\n\nMy team and I speak to over 500 founders a year and have built a proprietary model based on 50+ bespoke filters to find truly exceptional builders. Your name was amongst the top few founders on that list, so I'm quite keen to speak.\n\nWould you be open to an intro call?\n\nBest,\nJay",
+          "words": 56,
+          "errors": [
+            "placeholder"
+          ]
+        }
+      ],
+      "fallback": "Hey there,\n\nMy team and I speak to over 500 founders a year and have built a proprietary model built on 50+ bespoke filters to find truly exceptional builders. Your name was amongst the top few founders on that list, so I'm quite keen to speak.\n\nWould you be open to an intro call?\n\nBest,\nJay",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 4,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "Blank invite: no note, the profile does the work",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "",
+          "words": 0,
+          "errors": []
+        }
+      ],
+      "fallback": "",
+      "blank": true,
+      "withdraw_after_days": 25
+    },
+    {
+      "n": 5,
+      "type": "MESSAGE",
+      "branch": "accepted",
+      "delay": "3 HOUR",
+      "what": "credibility, opinion question, asks for a call, progress update",
+      "channel": "li_followup",
+      "step": 3,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {firstNameClean}, great to connect.\n\nWanted to introduce myself: I'm a 2x exited founder and now run Blissgrowth - a Venture Studio building AI B2B companies with exceptional Second-time founders.\n\nWe've built 10 companies so far, including Yieldify (acquired by Publicis), Reachdesk ($225m val @ Series B), and StackOne, backed by top investors like Google Ventures, SoftBank, and a16z.\n\nYour founding experience really stood out to me and my team, and I'd love to chat. We have a validated idea (funded as well), and we thought you would be the perfect founder for it. Would you be interested to chat?\n\nBest,\nJay",
+          "words": 102,
+          "errors": [
+            "funding_amount",
+            "placeholder"
+          ]
+        }
+      ],
+      "fallback": "Hi there, great to connect.\n\nWanted to introduce myself: I'm a 2x exited founder and now run Blissgrowth - a Venture Studio building AI B2B companies with exceptional Second-time founders.\n\nWe've built 10 companies so far, including Yieldify (acquired by Publicis), Reachdesk ($225m val @ Series B), and StackOne, backed by top investors like Google Ventures, SoftBank, and a16z.\n\nYour founding experience really stood out to me and my team, and I'd love to chat. We have a validated idea (funded as well), and we thought you would be the perfect founder for it. Would you be interested to chat?\n\nBest,\nJay",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 6,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "5 DAY",
+      "what": "credibility, opinion question, asks for a call",
+      "channel": "li_followup",
+      "step": 4,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hey {firstNameClean},\n\nMy team and I speak to over 500 founders a year and have built a proprietary model based on 50+ bespoke filters to find truly exceptional builders. Your name was amongst the top few founders on that list, so I'm quite keen to speak.\n\nWould you be open to an intro call?\n\nBest,\nJay",
+          "words": 56,
+          "errors": [
+            "placeholder"
+          ]
+        }
+      ],
+      "fallback": "Hey there,\n\nMy team and I speak to over 500 founders a year and have built a proprietary model built on 50+ bespoke filters to find truly exceptional builders. Your name was amongst the top few founders on that list, so I'm quite keen to speak.\n\nWould you be open to an intro call?\n\nBest,\nJay",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "funding_amount": 4,
+    "placeholder": 4
+  }
+}

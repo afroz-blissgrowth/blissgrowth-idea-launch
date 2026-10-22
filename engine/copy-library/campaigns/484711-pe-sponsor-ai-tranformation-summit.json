@@ -1,0 +1,79 @@
+{
+  "id": 484711,
+  "name": "PE Sponsor - AI Tranformation Summit",
+  "status": "FINISHED",
+  "created": "2026-06-25",
+  "list": "PE Sponsor Leads - AI Summit Sep 23",
+  "leads": 12,
+  "idea": "PE Sponsor",
+  "persona": [],
+  "regions": [],
+  "sender": "",
+  "kind": [],
+  "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x1 | not: end))",
+  "stats": {
+    "connectionsSent": 12,
+    "connectionsAccepted": 5,
+    "connectionAcceptanceRate": 0.41666666,
+    "messagesSent": 4,
+    "totalMessageStarted": 5,
+    "totalMessageReplies": 1,
+    "messageReplyRate": 0.2,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 1,
+    "uniqueLeadsContacted": 12
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "Connection note",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, given {COMPANY}'s focus on PE-backed Scaleups, thought our September AI Transformation Summit may be relevant. We're bringing together Europe's top AI decision-makers: 100+ scale-up CEOs/CFOs/COOs and PE value-creation leads influencing portfolio-wide deployment. Open to chat?",
+          "words": 37,
+          "errors": []
+        }
+      ],
+      "fallback": "Hi, given your company's focus on PE-backed Scaleups, thought our September AI Transformation Summit may be relevant. We're bringing together Europe's top AI decision-makers: 100+ scale-up CEOs/CFOs/COOs and PE value-creation leads influencing portfolio-wide deployment. Open to chat?",
+      "blank": false,
+      "withdraw_after_days": 25
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "accepted",
+      "delay": "1 DAY",
+      "what": "opener, asks for a call",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Great to connect {FIRST_NAME}!\n\nNoticed, {COMPANY}'s recent event strategy prioritised building relationships with Senior Private Equity operators and Value Creation leads, and so, I wanted to put our AI Transformation Summit on your radar.\n\nIt's a highly concentrated room of Europe's leading growth-stage operators and investors, anchored by a keynote from a leading European PE fund on real portfolio use cases where AI spend has driven strong ROI and where the next high-value AI bets should be made.\n\nWould be great to speak this week or next if interested in hearing more? I'll also loop in our MD, Jay Radia.",
+          "words": 100,
+          "errors": []
+        }
+      ],
+      "fallback": "Great to connect!\n\nI wanted to put our AI Transformation Summit on your radar. It's a highly concentrated room of Europe's leading growth-stage operators and investors, anchored by a keynote from a leading European PE fund on real portfolio use cases where AI spend has driven strong ROI and where the next high-value AI bets should be made.\n\nWould be great to speak this week or next if interested in hearing more? I'll also loop in our MD, Jay Radia.",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {}
+}

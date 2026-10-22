@@ -1,0 +1,152 @@
+{
+  "id": 668910,
+  "name": "BlissSLM V3 - Advisory [CPO] [USA, EU, UK] - Inmails (Punith) ",
+  "status": "PAUSED",
+  "created": "2026-10-20",
+  "list": "BlissSLM V3 [Product Leaders] - Inmails",
+  "leads": 36,
+  "idea": "BlissSLM",
+  "persona": [
+    "CPO"
+  ],
+  "regions": [
+    "USA",
+    "UK",
+    "EU"
+  ],
+  "sender": "Punith",
+  "kind": [
+    "inmail"
+  ],
+  "structure": "CHECK_IS_OPEN_PROFILE > INVITE(blank)(accepted: MSG x2 | not: end)",
+  "stats": {
+    "connectionsSent": 9,
+    "connectionsAccepted": 1,
+    "connectionAcceptanceRate": 0.11111111,
+    "messagesSent": 0,
+    "totalMessageStarted": 0,
+    "totalMessageReplies": 0,
+    "messageReplyRate": 0.0,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 0,
+    "uniqueLeadsContacted": 9
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_OPEN_PROFILE",
+      "branch": "start",
+      "delay": "10 DAY",
+      "what": "Check open profile",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "INMAIL",
+      "branch": "yes",
+      "delay": "0 HOUR",
+      "what": "InMail: opener, advisor ask, credibility, asks for a call",
+      "channel": "inmail",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "(Open to advising?) Building {IDEA_PLAIN}",
+          "body": "Hi {FIRST_NAME}, I'm building {IDEA_PLAIN}. I’d love for you to potentially be an advisor.\n\nI believe it'll be bigger than my other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?\n\nThanks! {MY_FIRST_NAME}",
+          "words": 58,
+          "errors": [
+            "filler",
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi there! I'm building {IDEA_PLAIN}. I’d love for you to potentially be an advisor.\n\nI believe it'll be bigger than my other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?\n\nThanks!",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 3,
+      "type": "VIEW_PROFILE",
+      "branch": "next",
+      "delay": "1 DAY",
+      "what": "View profile (warm-up)",
+      "variants": []
+    },
+    {
+      "n": 4,
+      "type": "LIKE_POST",
+      "branch": "next",
+      "delay": "3 HOUR",
+      "what": "Like a recent post (warm-up)",
+      "variants": []
+    },
+    {
+      "n": 5,
+      "type": "CONNECTION_REQUEST",
+      "branch": "next",
+      "delay": "0 HOUR",
+      "what": "Blank invite: no note, the profile does the work",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "",
+          "words": 0,
+          "errors": []
+        }
+      ],
+      "fallback": "",
+      "blank": true,
+      "withdraw_after_days": 21
+    },
+    {
+      "n": 6,
+      "type": "MESSAGE",
+      "branch": "accepted",
+      "delay": "3 HOUR",
+      "what": "opener, advisor ask, credibility, asks for a call",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, I'm building {IDEA_PLAIN}. I’d love for you to potentially be an advisor.\n\nI believe it'll be bigger than my other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?\n\nThanks! {MY_FIRST_NAME}",
+          "words": 58,
+          "errors": [
+            "filler",
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi there! I'm building {IDEA_PLAIN}. I’d love for you to potentially be an advisor.\n\nI believe it'll be bigger than my other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?\n\nThanks!",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 7,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "1 DAY",
+      "what": "credibility, opinion question",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "I know everyone is under more pressure than ever on AI costs, with AI agents now running around the clock. Having built two tech businesses, I feel that pressure every single day.\n\nI believe choosing AI models should be more than guesswork: proven on your own work, always up to date, and cheaper without losing quality.\n\nDo you agree, {FIRST_NAME}?",
+          "words": 60,
+          "errors": []
+        }
+      ],
+      "fallback": "I know everyone is under more pressure than ever on AI costs, with AI agents now running around the clock. Having built two tech businesses, I feel that pressure every single day.\n\nI believe choosing AI models should be more than guesswork: proven on your own work, always up to date, and cheaper without losing quality.\n\nDo you agree?",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "filler": 4,
+    "time_commitment": 4
+  }
+}

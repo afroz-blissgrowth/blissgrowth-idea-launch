@@ -1,0 +1,21 @@
+{
+  "sheets_bridge": {
+    "secret": "PASTE_SHEETS_BRIDGE_SECRET_FROM_AFROZ",
+    "header": "X-Idea-Launch-Secret"
+  },
+  "phones": {
+    "webhook_path": "PASTE_PHONE_WEBHOOK_PATH_FROM_AFROZ",
+    "data_table_id": "PASTE_DATA_TABLE_ID_FROM_AFROZ",
+    "workflow_id": "PASTE_PHONE_WORKFLOW_ID_FROM_AFROZ"
+  },
+  "launch": {
+    "senders": {
+      "founders": {
+        "jay": null,
+        "meelan": null
+      },
+      "associate": null
+    },
+    "mansi_email": "mansi@example.com"
+  }
+}

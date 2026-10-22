@@ -1,0 +1,61 @@
+{
+  "id": 478741,
+  "name": "Followup - Jay PE contacts [ContextPath]",
+  "status": "FINISHED",
+  "created": "2026-06-22",
+  "list": "Jay PE Contacts Followup",
+  "leads": 32,
+  "idea": "Followup",
+  "persona": [
+    "ContextPath"
+  ],
+  "regions": [],
+  "sender": "Jay",
+  "kind": [],
+  "structure": "CHECK(connected: MSG x1 | new: end)",
+  "stats": {
+    "connectionsSent": 0,
+    "connectionsAccepted": 0,
+    "connectionAcceptanceRate": 0.0,
+    "messagesSent": 0,
+    "totalMessageStarted": 31,
+    "totalMessageReplies": 10,
+    "messageReplyRate": 0.32258064,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 9,
+    "uniqueLeadsContacted": 31
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "MESSAGE",
+      "branch": "already_connected",
+      "delay": "0 HOUR",
+      "what": "opener, credibility, asks for a call, progress update",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME},\n\nJust checking you saw the note above - would still love your take.\n\nQuick update since I messaged: we've built a product that runs automated due diligence for PE. It maps how much of a target or portco can be AI-automated, flags where unnecessary software spend is happening, and surfaces where team structure can be optimised to drive more output - all in a detailed report within 2-4 weeks.\n\nWe're already on $500k with contracts that can expand toward $2m a year (I'm just a couple of months of trading). \n\nWould you be free for a call next week or the week after?\n\nBest,\nJay",
+          "words": 107,
+          "errors": []
+        }
+      ],
+      "fallback": "Hi,\n\nJust checking you saw the note above - would still love your take.\n\nQuick update since I messaged: we've built a product that runs automated due diligence for PE. It maps how much of a target or portco can be AI-automated, flags where unnecessary software spend is happening, and surfaces where team structure can be optimised to drive more output - all in a detailed report within 2-4 weeks.\n\nWe're already on $500k with contracts that can expand toward $2m a year (I'm just a couple of months of trading). \n\nWould you be free for a call next week or the week after?\n\nBest,\nJay",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {}
+}

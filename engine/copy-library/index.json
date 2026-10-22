@@ -1,0 +1,2677 @@
+{
+  "built_at": "2026-10-21T11:49:43Z",
+  "campaigns": [
+    {
+      "id": 604349,
+      "name": "AITF - Akhil PE-verified (265)",
+      "status": "PAUSED",
+      "created": "2026-09-16",
+      "idea": "AITF",
+      "persona": [],
+      "regions": [],
+      "sender": "Akhil",
+      "kind": [],
+      "leads": 265,
+      "structure": "CHECK(connected: MSG x2 | new: INVITE(note x1)(accepted: MSG x1 | not: end))",
+      "stats": {
+        "connectionsSent": 263,
+        "connectionsAccepted": 17,
+        "connectionAcceptanceRate": 0.064638786,
+        "messagesSent": 5,
+        "totalMessageStarted": 17,
+        "totalMessageReplies": 6,
+        "messageReplyRate": 0.3529412,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 5,
+        "uniqueLeadsContacted": 263
+      },
+      "rule_flags": {
+        "link": 4,
+        "spam_promo": 4,
+        "placeholder": 4,
+        "filler": 12
+      },
+      "file": "campaigns/604349-aitf-akhil-pe-verified-265.md"
+    },
+    {
+      "id": 547548,
+      "name": "AITF Invite - Yieldify/Reachdesk (Jay)",
+      "status": "FINISHED",
+      "created": "2026-08-12",
+      "idea": "AITF Invite",
+      "persona": [],
+      "regions": [],
+      "sender": "Jay",
+      "kind": [],
+      "leads": 32,
+      "structure": "CHECK(connected: MSG x1 | new: INVITE(blank)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 2,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 0,
+        "totalMessageStarted": 28,
+        "totalMessageReplies": 8,
+        "messageReplyRate": 0.2857143,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 6,
+        "uniqueLeadsContacted": 30
+      },
+      "rule_flags": {
+        "link": 2,
+        "filler": 6,
+        "placeholder": 3
+      },
+      "file": "campaigns/547548-aitf-invite-yieldify-reachdesk-jay.md"
+    },
+    {
+      "id": 550616,
+      "name": "AITF Invite - Jay CXOs London (79)",
+      "status": "FINISHED",
+      "created": "2026-08-13",
+      "idea": "AITF Invite",
+      "persona": [],
+      "regions": [],
+      "sender": "Jay",
+      "kind": [],
+      "leads": 79,
+      "structure": "CHECK(connected: MSG x2 | new: end)",
+      "stats": {
+        "connectionsSent": 0,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 68,
+        "totalMessageStarted": 79,
+        "totalMessageReplies": 18,
+        "messageReplyRate": 0.2278481,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 15,
+        "uniqueLeadsContacted": 79
+      },
+      "rule_flags": {
+        "link": 2,
+        "placeholder": 2,
+        "filler": 6
+      },
+      "file": "campaigns/550616-aitf-invite-jay-cxos-london-79.md"
+    },
+    {
+      "id": 561011,
+      "name": "AITF Invite - Jay Connections London (50)",
+      "status": "FINISHED",
+      "created": "2026-08-20",
+      "idea": "AITF Invite",
+      "persona": [],
+      "regions": [],
+      "sender": "Jay",
+      "kind": [],
+      "leads": 50,
+      "structure": "CHECK(connected: MSG x2 | new: end)",
+      "stats": {
+        "connectionsSent": 0,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 43,
+        "totalMessageStarted": 45,
+        "totalMessageReplies": 9,
+        "messageReplyRate": 0.2,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 5,
+        "uniqueLeadsContacted": 45
+      },
+      "rule_flags": {
+        "link": 2,
+        "placeholder": 2,
+        "filler": 6
+      },
+      "file": "campaigns/561011-aitf-invite-jay-connections-london-50.md"
+    },
+    {
+      "id": 585287,
+      "name": "AITF Invite - Meelan CXOs/VPs London (85)",
+      "status": "FINISHED",
+      "created": "2026-09-04",
+      "idea": "AITF Invite",
+      "persona": [],
+      "regions": [],
+      "sender": "Meelan",
+      "kind": [],
+      "leads": 85,
+      "structure": "CHECK(connected: MSG x2 | new: end)",
+      "stats": {
+        "connectionsSent": 0,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 58,
+        "totalMessageStarted": 62,
+        "totalMessageReplies": 9,
+        "messageReplyRate": 0.14516129,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 5,
+        "uniqueLeadsContacted": 62
+      },
+      "rule_flags": {
+        "link": 2,
+        "placeholder": 2,
+        "filler": 6
+      },
+      "file": "campaigns/585287-aitf-invite-meelan-cxos-vps-london-85.md"
+    },
+    {
+      "id": 497427,
+      "name": "BlissAICompliance",
+      "status": "FINISHED",
+      "created": "2026-07-07",
+      "idea": "BlissAICompliance",
+      "persona": [],
+      "regions": [],
+      "sender": "",
+      "kind": [],
+      "leads": 426,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 422,
+        "connectionsAccepted": 28,
+        "connectionAcceptanceRate": 0.06635071,
+        "messagesSent": 20,
+        "totalMessageStarted": 21,
+        "totalMessageReplies": 3,
+        "messageReplyRate": 0.14285715,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 1,
+        "uniqueLeadsContacted": 422
+      },
+      "rule_flags": {
+        "filler": 2,
+        "time_commitment": 4
+      },
+      "file": "campaigns/497427-blissaicompliance.md"
+    },
+    {
+      "id": 475215,
+      "name": "BlissAISecurity",
+      "status": "PAUSED",
+      "created": "2026-06-18",
+      "idea": "BlissAISecurity",
+      "persona": [],
+      "regions": [],
+      "sender": "",
+      "kind": [],
+      "leads": 325,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 321,
+        "connectionsAccepted": 45,
+        "connectionAcceptanceRate": 0.14018692,
+        "messagesSent": 35,
+        "totalMessageStarted": 45,
+        "totalMessageReplies": 28,
+        "messageReplyRate": 0.62222224,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 28,
+        "uniqueLeadsContacted": 321
+      },
+      "rule_flags": {
+        "filler": 2,
+        "time_commitment": 2,
+        "placeholder": 1,
+        "em_dash": 2
+      },
+      "file": "campaigns/475215-blissaisecurity.md"
+    },
+    {
+      "id": 461875,
+      "name": "BlissBPO",
+      "status": "PAUSED",
+      "created": "2026-06-09",
+      "idea": "BlissBPO",
+      "persona": [],
+      "regions": [],
+      "sender": "",
+      "kind": [],
+      "leads": 318,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 313,
+        "connectionsAccepted": 26,
+        "connectionAcceptanceRate": 0.08306709,
+        "messagesSent": 38,
+        "totalMessageStarted": 26,
+        "totalMessageReplies": 9,
+        "messageReplyRate": 0.34615386,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 8,
+        "uniqueLeadsContacted": 313
+      },
+      "rule_flags": {
+        "filler": 2,
+        "time_commitment": 2,
+        "em_dash": 2
+      },
+      "file": "campaigns/461875-blissbpo.md"
+    },
+    {
+      "id": 543720,
+      "name": "BlissCarrier - Advisor Outreach (Aug 2026)",
+      "status": "FINISHED",
+      "created": "2026-08-10",
+      "idea": "BlissCarrier",
+      "persona": [],
+      "regions": [],
+      "sender": "",
+      "kind": [],
+      "leads": 389,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 387,
+        "connectionsAccepted": 59,
+        "connectionAcceptanceRate": 0.15245478,
+        "messagesSent": 50,
+        "totalMessageStarted": 53,
+        "totalMessageReplies": 10,
+        "messageReplyRate": 0.18867925,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 8,
+        "uniqueLeadsContacted": 387
+      },
+      "rule_flags": {
+        "filler": 6,
+        "time_commitment": 4,
+        "placeholder": 2
+      },
+      "file": "campaigns/543720-blisscarrier-advisor-outreach-aug-2026.md"
+    },
+    {
+      "id": 588301,
+      "name": "BlissCarrier - Advisor Outreach (Sep 2026) Prajwal",
+      "status": "FINISHED",
+      "created": "2026-09-07",
+      "idea": "BlissCarrier",
+      "persona": [],
+      "regions": [],
+      "sender": "Prajwal",
+      "kind": [],
+      "leads": 328,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 0,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 0,
+        "totalMessageStarted": 0,
+        "totalMessageReplies": 0,
+        "messageReplyRate": 0.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 0
+      },
+      "rule_flags": {
+        "filler": 7,
+        "time_commitment": 5,
+        "placeholder": 3
+      },
+      "file": "campaigns/588301-blisscarrier-advisor-outreach-sep-2026-prajwal.md"
+    },
+    {
+      "id": 595141,
+      "name": "BlissCarrier Retargeting",
+      "status": "PAUSED",
+      "created": "2026-09-10",
+      "idea": "BlissCarrier",
+      "persona": [],
+      "regions": [],
+      "sender": "",
+      "kind": [],
+      "leads": 328,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 326,
+        "connectionsAccepted": 18,
+        "connectionAcceptanceRate": 0.055214725,
+        "messagesSent": 22,
+        "totalMessageStarted": 18,
+        "totalMessageReplies": 6,
+        "messageReplyRate": 0.33333334,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 5,
+        "uniqueLeadsContacted": 326
+      },
+      "rule_flags": {
+        "filler": 7,
+        "time_commitment": 5,
+        "placeholder": 3
+      },
+      "file": "campaigns/595141-blisscarrier-retargeting.md"
+    },
+    {
+      "id": 420160,
+      "name": "BlissManager",
+      "status": "FINISHED",
+      "created": "2026-05-06",
+      "idea": "BlissManager",
+      "persona": [],
+      "regions": [],
+      "sender": "",
+      "kind": [],
+      "leads": 302,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: VIEW > INMAIL))",
+      "stats": {
+        "connectionsSent": 277,
+        "connectionsAccepted": 53,
+        "connectionAcceptanceRate": 0.19133574,
+        "messagesSent": 66,
+        "totalMessageStarted": 53,
+        "totalMessageReplies": 12,
+        "messageReplyRate": 0.2264151,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 3,
+        "inMailReplyRate": 0.013392857,
+        "autoTaggedInterested": 11,
+        "uniqueLeadsContacted": 277
+      },
+      "rule_flags": {
+        "funding_amount": 4,
+        "em_dash": 2
+      },
+      "file": "campaigns/420160-blissmanager.md"
+    },
+    {
+      "id": 439198,
+      "name": "BlissManager Advisor v2 - US/UK",
+      "status": "PAUSED",
+      "created": "2026-05-21",
+      "idea": "BlissManager",
+      "persona": [],
+      "regions": [
+        "USA",
+        "UK"
+      ],
+      "sender": "",
+      "kind": [],
+      "leads": 712,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 680,
+        "connectionsAccepted": 93,
+        "connectionAcceptanceRate": 0.1367647,
+        "messagesSent": 94,
+        "totalMessageStarted": 93,
+        "totalMessageReplies": 39,
+        "messageReplyRate": 0.41935483,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 35,
+        "uniqueLeadsContacted": 680
+      },
+      "rule_flags": {
+        "filler": 2,
+        "time_commitment": 2,
+        "em_dash": 2
+      },
+      "file": "campaigns/439198-blissmanager-advisor-v2-us-uk.md"
+    },
+    {
+      "id": 624513,
+      "name": "BlissPentesting - Advisor - Jay's network (USA, UK) [Punith]",
+      "status": "PAUSED",
+      "created": "2026-09-28",
+      "idea": "BlissPentesting",
+      "persona": [],
+      "regions": [
+        "USA",
+        "UK"
+      ],
+      "sender": "Jay",
+      "kind": [],
+      "leads": 132,
+      "structure": "CHECK(connected: VIEW > MSG x4 | new: end)",
+      "stats": {
+        "connectionsSent": 0,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 16,
+        "totalMessageStarted": 61,
+        "totalMessageReplies": 20,
+        "messageReplyRate": 0.32786885,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 19,
+        "uniqueLeadsContacted": 61
+      },
+      "rule_flags": {
+        "placeholder": 1,
+        "time_commitment": 2
+      },
+      "file": "campaigns/624513-blisspentesting-advisor-jay-s-network-usa-uk-punith.md"
+    },
+    {
+      "id": 627234,
+      "name": "BlissPentesting - GULF - (CISO/Founders/Security) [Punith]",
+      "status": "PAUSED",
+      "created": "2026-09-29",
+      "idea": "BlissPentesting",
+      "persona": [],
+      "regions": [
+        "Gulf"
+      ],
+      "sender": "Punith",
+      "kind": [],
+      "leads": 24,
+      "structure": "CHECK(connected: VIEW > MSG x4 | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 24,
+        "connectionsAccepted": 11,
+        "connectionAcceptanceRate": 0.45833334,
+        "messagesSent": 6,
+        "totalMessageStarted": 11,
+        "totalMessageReplies": 2,
+        "messageReplyRate": 0.18181819,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 1,
+        "uniqueLeadsContacted": 24
+      },
+      "rule_flags": {
+        "placeholder": 4,
+        "time_commitment": 4
+      },
+      "file": "campaigns/627234-blisspentesting-gulf-ciso-founders-security-punith.md"
+    },
+    {
+      "id": 627064,
+      "name": "BlissPentesting - Advisory (USA) - (CEO/CTO/CISO/Engg/MSSP) [Punith]",
+      "status": "PAUSED",
+      "created": "2026-09-29",
+      "idea": "BlissPentesting",
+      "persona": [],
+      "regions": [
+        "USA"
+      ],
+      "sender": "Punith",
+      "kind": [],
+      "leads": 212,
+      "structure": "CHECK(connected: VIEW > MSG x4 | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 205,
+        "connectionsAccepted": 26,
+        "connectionAcceptanceRate": 0.12682927,
+        "messagesSent": 0,
+        "totalMessageStarted": 6,
+        "totalMessageReplies": 1,
+        "messageReplyRate": 0.16666667,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 1,
+        "uniqueLeadsContacted": 205
+      },
+      "rule_flags": {
+        "placeholder": 4,
+        "time_commitment": 4
+      },
+      "file": "campaigns/627064-blisspentesting-advisory-usa-ceo-cto-ciso-engg-mssp-punith.md"
+    },
+    {
+      "id": 626701,
+      "name": "BlissPentesting - Advisory (UK) - (CEO/CTO/Engg/CISO/MSSPs) [Punith]",
+      "status": "PAUSED",
+      "created": "2026-09-29",
+      "idea": "BlissPentesting",
+      "persona": [],
+      "regions": [
+        "UK"
+      ],
+      "sender": "Punith",
+      "kind": [],
+      "leads": 250,
+      "structure": "CHECK(connected: VIEW > MSG x4 | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 167,
+        "connectionsAccepted": 23,
+        "connectionAcceptanceRate": 0.13772455,
+        "messagesSent": 1,
+        "totalMessageStarted": 10,
+        "totalMessageReplies": 7,
+        "messageReplyRate": 0.7,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 7,
+        "uniqueLeadsContacted": 168
+      },
+      "rule_flags": {
+        "placeholder": 4,
+        "time_commitment": 4
+      },
+      "file": "campaigns/626701-blisspentesting-advisory-uk-ceo-cto-engg-ciso-mssps-punith.md"
+    },
+    {
+      "id": 626687,
+      "name": "BlissPentesting - Advisory - Meelan's Network (USA, UK) [Punith]",
+      "status": "PAUSED",
+      "created": "2026-09-29",
+      "idea": "BlissPentesting",
+      "persona": [],
+      "regions": [
+        "USA",
+        "UK"
+      ],
+      "sender": "Meelan",
+      "kind": [],
+      "leads": 63,
+      "structure": "CHECK(connected: VIEW > MSG x4 | new: end)",
+      "stats": {
+        "connectionsSent": 0,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 9,
+        "totalMessageStarted": 54,
+        "totalMessageReplies": 16,
+        "messageReplyRate": 0.2962963,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 13,
+        "uniqueLeadsContacted": 54
+      },
+      "rule_flags": {
+        "placeholder": 1,
+        "time_commitment": 2
+      },
+      "file": "campaigns/626687-blisspentesting-advisory-meelan-s-network-usa-uk-punith.md"
+    },
+    {
+      "id": 643799,
+      "name": "BlissProductCompliance - [USA] [Distributors] Jay (Advisory) [Punith]",
+      "status": "FINISHED",
+      "created": "2026-10-07",
+      "idea": "BlissProductCompliance",
+      "persona": [
+        "Distributors"
+      ],
+      "regions": [
+        "USA"
+      ],
+      "sender": "Jay",
+      "kind": [],
+      "leads": 28,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 28,
+        "connectionsAccepted": 1,
+        "connectionAcceptanceRate": 0.035714287,
+        "messagesSent": 3,
+        "totalMessageStarted": 1,
+        "totalMessageReplies": 0,
+        "messageReplyRate": 0.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 28
+      },
+      "rule_flags": {
+        "filler": 6,
+        "time_commitment": 8
+      },
+      "file": "campaigns/643799-blissproductcompliance-usa-distributors-jay-advisory-punith.md"
+    },
+    {
+      "id": 643772,
+      "name": "BlissProductCompliance - [USA] [Distributors] Meelan (advisory) [Punith]",
+      "status": "FINISHED",
+      "created": "2026-10-07",
+      "idea": "BlissProductCompliance",
+      "persona": [
+        "Distributors"
+      ],
+      "regions": [
+        "USA"
+      ],
+      "sender": "Meelan",
+      "kind": [],
+      "leads": 20,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 20,
+        "connectionsAccepted": 4,
+        "connectionAcceptanceRate": 0.2,
+        "messagesSent": 3,
+        "totalMessageStarted": 1,
+        "totalMessageReplies": 0,
+        "messageReplyRate": 0.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 1,
+        "inMailReplyRate": 0.055555556,
+        "autoTaggedInterested": 1,
+        "uniqueLeadsContacted": 20
+      },
+      "rule_flags": {
+        "filler": 6,
+        "time_commitment": 8
+      },
+      "file": "campaigns/643772-blissproductcompliance-usa-distributors-meelan-advisory-puni.md"
+    },
+    {
+      "id": 643035,
+      "name": "BlissProductCompliance - Advisory Jay's Connections [Punith]",
+      "status": "IN_PROGRESS",
+      "created": "2026-10-07",
+      "idea": "BlissProductCompliance",
+      "persona": [],
+      "regions": [],
+      "sender": "Jay",
+      "kind": [],
+      "leads": 21,
+      "structure": "CHECK(connected: VIEW > MSG x4 | new: end)",
+      "stats": {
+        "connectionsSent": 0,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 34,
+        "totalMessageStarted": 17,
+        "totalMessageReplies": 7,
+        "messageReplyRate": 0.4117647,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 5,
+        "uniqueLeadsContacted": 17
+      },
+      "rule_flags": {
+        "filler": 4,
+        "time_commitment": 6
+      },
+      "file": "campaigns/643035-blissproductcompliance-advisory-jay-s-connections-punith.md"
+    },
+    {
+      "id": 644680,
+      "name": "BlissProductCompliance - [UK,EU] [Distributors] Meelan (advisory) [Punith]",
+      "status": "FINISHED",
+      "created": "2026-10-08",
+      "idea": "BlissProductCompliance",
+      "persona": [
+        "Distributors"
+      ],
+      "regions": [
+        "UK",
+        "EU"
+      ],
+      "sender": "Meelan",
+      "kind": [],
+      "leads": 38,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 32,
+        "connectionsAccepted": 2,
+        "connectionAcceptanceRate": 0.0625,
+        "messagesSent": 0,
+        "totalMessageStarted": 1,
+        "totalMessageReplies": 1,
+        "messageReplyRate": 1.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 4,
+        "inMailReplyRate": 0.13333334,
+        "autoTaggedInterested": 4,
+        "uniqueLeadsContacted": 32
+      },
+      "rule_flags": {
+        "filler": 6,
+        "time_commitment": 8
+      },
+      "file": "campaigns/644680-blissproductcompliance-uk-eu-distributors-meelan-advisory-pu.md"
+    },
+    {
+      "id": 644667,
+      "name": "BlissProductCompliance - [UK,EU] [Distributors] Jay (advisory) [Punith]",
+      "status": "FINISHED",
+      "created": "2026-10-08",
+      "idea": "BlissProductCompliance",
+      "persona": [
+        "Distributors"
+      ],
+      "regions": [
+        "UK",
+        "EU"
+      ],
+      "sender": "Jay",
+      "kind": [],
+      "leads": 38,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 6,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 0,
+        "totalMessageStarted": 0,
+        "totalMessageReplies": 0,
+        "messageReplyRate": 0.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 6
+      },
+      "rule_flags": {
+        "filler": 6,
+        "time_commitment": 8
+      },
+      "file": "campaigns/644667-blissproductcompliance-uk-eu-distributors-jay-advisory-punit.md"
+    },
+    {
+      "id": 651614,
+      "name": "BlissProductCompliance - Advisory - Akhil's Network [Punith]",
+      "status": "IN_PROGRESS",
+      "created": "2026-10-12",
+      "idea": "BlissProductCompliance",
+      "persona": [],
+      "regions": [],
+      "sender": "Akhil",
+      "kind": [],
+      "leads": 3,
+      "structure": "CHECK(connected: VIEW > MSG x4 | new: end)",
+      "stats": {
+        "connectionsSent": 0,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 6,
+        "totalMessageStarted": 3,
+        "totalMessageReplies": 1,
+        "messageReplyRate": 0.33333334,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 3
+      },
+      "rule_flags": {
+        "filler": 4,
+        "time_commitment": 6
+      },
+      "file": "campaigns/651614-blissproductcompliance-advisory-akhil-s-network-punith.md"
+    },
+    {
+      "id": 651581,
+      "name": "BlissProductCompliance - Advisory Meelan's Network [Punith]",
+      "status": "FINISHED",
+      "created": "2026-10-12",
+      "idea": "BlissProductCompliance",
+      "persona": [],
+      "regions": [],
+      "sender": "Meelan",
+      "kind": [],
+      "leads": 7,
+      "structure": "CHECK(connected: VIEW > MSG x4 | new: end)",
+      "stats": {
+        "connectionsSent": 0,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 1,
+        "totalMessageStarted": 2,
+        "totalMessageReplies": 2,
+        "messageReplyRate": 1.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 2,
+        "uniqueLeadsContacted": 2
+      },
+      "rule_flags": {
+        "filler": 4,
+        "time_commitment": 6
+      },
+      "file": "campaigns/651581-blissproductcompliance-advisory-meelan-s-network-punith.md"
+    },
+    {
+      "id": 653059,
+      "name": "BlissProductCompliance - Advisory [Marketplace] [Punith]",
+      "status": "IN_PROGRESS",
+      "created": "2026-10-13",
+      "idea": "BlissProductCompliance",
+      "persona": [
+        "Marketplace"
+      ],
+      "regions": [],
+      "sender": "Punith",
+      "kind": [],
+      "leads": 22,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 22,
+        "connectionsAccepted": 6,
+        "connectionAcceptanceRate": 0.27272728,
+        "messagesSent": 10,
+        "totalMessageStarted": 6,
+        "totalMessageReplies": 2,
+        "messageReplyRate": 0.33333334,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 2,
+        "uniqueLeadsContacted": 22
+      },
+      "rule_flags": {
+        "filler": 6,
+        "time_commitment": 8
+      },
+      "file": "campaigns/653059-blissproductcompliance-advisory-marketplace-punith.md"
+    },
+    {
+      "id": 653047,
+      "name": "BlissProductCompliance - Advisory [Marketplace] [Punith]",
+      "status": "IN_PROGRESS",
+      "created": "2026-10-13",
+      "idea": "BlissProductCompliance",
+      "persona": [
+        "Marketplace"
+      ],
+      "regions": [],
+      "sender": "Punith",
+      "kind": [],
+      "leads": 28,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 27,
+        "connectionsAccepted": 3,
+        "connectionAcceptanceRate": 0.11111111,
+        "messagesSent": 7,
+        "totalMessageStarted": 3,
+        "totalMessageReplies": 1,
+        "messageReplyRate": 0.33333334,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 1,
+        "inMailReplyRate": 0.05,
+        "autoTaggedInterested": 1,
+        "uniqueLeadsContacted": 27
+      },
+      "rule_flags": {
+        "filler": 6,
+        "time_commitment": 8
+      },
+      "file": "campaigns/653047-blissproductcompliance-advisory-marketplace-punith.md"
+    },
+    {
+      "id": 653038,
+      "name": "BlissProductCompliance - Advisory [Marketplace] [Punith]",
+      "status": "IN_PROGRESS",
+      "created": "2026-10-13",
+      "idea": "BlissProductCompliance",
+      "persona": [
+        "Marketplace"
+      ],
+      "regions": [],
+      "sender": "Punith",
+      "kind": [],
+      "leads": 32,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 32,
+        "connectionsAccepted": 7,
+        "connectionAcceptanceRate": 0.21875,
+        "messagesSent": 13,
+        "totalMessageStarted": 6,
+        "totalMessageReplies": 1,
+        "messageReplyRate": 0.16666667,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 32
+      },
+      "rule_flags": {
+        "filler": 6,
+        "time_commitment": 8
+      },
+      "file": "campaigns/653038-blissproductcompliance-advisory-marketplace-punith.md"
+    },
+    {
+      "id": 652826,
+      "name": "BlissProductCompliance - Advisory - [USA, UK, EU] Akhil [Punith]",
+      "status": "IN_PROGRESS",
+      "created": "2026-10-13",
+      "idea": "BlissProductCompliance",
+      "persona": [
+        "USA, UK, EU"
+      ],
+      "regions": [
+        "USA",
+        "UK",
+        "EU"
+      ],
+      "sender": "Akhil",
+      "kind": [],
+      "leads": 37,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 13,
+        "connectionsAccepted": 2,
+        "connectionAcceptanceRate": 0.15384616,
+        "messagesSent": 4,
+        "totalMessageStarted": 2,
+        "totalMessageReplies": 0,
+        "messageReplyRate": 0.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 13
+      },
+      "rule_flags": {
+        "filler": 6,
+        "time_commitment": 8
+      },
+      "file": "campaigns/652826-blissproductcompliance-advisory-usa-uk-eu-akhil-punith.md"
+    },
+    {
+      "id": 401200,
+      "name": "BlissRisk",
+      "status": "FINISHED",
+      "created": "2026-04-20",
+      "idea": "BlissRisk",
+      "persona": [],
+      "regions": [],
+      "sender": "",
+      "kind": [],
+      "leads": 150,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: VIEW > INMAIL))",
+      "stats": {
+        "connectionsSent": 143,
+        "connectionsAccepted": 13,
+        "connectionAcceptanceRate": 0.09090909,
+        "messagesSent": 2,
+        "totalMessageStarted": 13,
+        "totalMessageReplies": 3,
+        "messageReplyRate": 0.23076923,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 10,
+        "inMailReplyRate": 0.075187966,
+        "autoTaggedInterested": 9,
+        "uniqueLeadsContacted": 143
+      },
+      "rule_flags": {
+        "placeholder": 2,
+        "em_dash": 2
+      },
+      "file": "campaigns/401200-blissrisk.md"
+    },
+    {
+      "id": 641291,
+      "name": "BlissSLM - Advisory - Akhil's network [Punith]",
+      "status": "FINISHED",
+      "created": "2026-10-06",
+      "idea": "BlissSLM",
+      "persona": [],
+      "regions": [],
+      "sender": "Akhil",
+      "kind": [],
+      "leads": 34,
+      "structure": "CHECK(connected: VIEW > MSG x4 | new: end)",
+      "stats": {
+        "connectionsSent": 0,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 73,
+        "totalMessageStarted": 28,
+        "totalMessageReplies": 3,
+        "messageReplyRate": 0.10714286,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 2,
+        "uniqueLeadsContacted": 28
+      },
+      "rule_flags": {
+        "time_commitment": 2
+      },
+      "file": "campaigns/641291-blissslm-advisory-akhil-s-network-punith.md"
+    },
+    {
+      "id": 640126,
+      "name": "BlissSLM - Advisory [USA] [Founder/CTO/AI] - [Punith]",
+      "status": "IN_PROGRESS",
+      "created": "2026-10-06",
+      "idea": "BlissSLM",
+      "persona": [
+        "Founder/CTO/AI"
+      ],
+      "regions": [
+        "USA"
+      ],
+      "sender": "Punith",
+      "kind": [],
+      "leads": 173,
+      "structure": "CHECK(connected: VIEW > MSG x4 | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 159,
+        "connectionsAccepted": 33,
+        "connectionAcceptanceRate": 0.20754717,
+        "messagesSent": 75,
+        "totalMessageStarted": 30,
+        "totalMessageReplies": 10,
+        "messageReplyRate": 0.33333334,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 5,
+        "inMailReplyRate": 0.046296295,
+        "autoTaggedInterested": 12,
+        "uniqueLeadsContacted": 161
+      },
+      "rule_flags": {
+        "placeholder": 3,
+        "time_commitment": 4
+      },
+      "file": "campaigns/640126-blissslm-advisory-usa-founder-cto-ai-punith.md"
+    },
+    {
+      "id": 640073,
+      "name": "BlissSLM - Advisory - [CFO/Finance] Cold - [Punith]",
+      "status": "FINISHED",
+      "created": "2026-10-06",
+      "idea": "BlissSLM",
+      "persona": [
+        "CFO/Finance"
+      ],
+      "regions": [],
+      "sender": "Punith",
+      "kind": [],
+      "leads": 39,
+      "structure": "CHECK(connected: VIEW > MSG x4 | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 36,
+        "connectionsAccepted": 6,
+        "connectionAcceptanceRate": 0.16666667,
+        "messagesSent": 9,
+        "totalMessageStarted": 5,
+        "totalMessageReplies": 2,
+        "messageReplyRate": 0.4,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 2,
+        "inMailReplyRate": 0.06896552,
+        "autoTaggedInterested": 4,
+        "uniqueLeadsContacted": 36
+      },
+      "rule_flags": {
+        "time_commitment": 4
+      },
+      "file": "campaigns/640073-blissslm-advisory-cfo-finance-cold-punith.md"
+    },
+    {
+      "id": 640045,
+      "name": "BlissSLM - advisory [UK] - (Founder/CTO/AI) - [Punith]",
+      "status": "PAUSED",
+      "created": "2026-10-06",
+      "idea": "BlissSLM",
+      "persona": [],
+      "regions": [
+        "UK"
+      ],
+      "sender": "Punith",
+      "kind": [],
+      "leads": 115,
+      "structure": "CHECK(connected: VIEW > MSG x4 | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 110,
+        "connectionsAccepted": 23,
+        "connectionAcceptanceRate": 0.2090909,
+        "messagesSent": 30,
+        "totalMessageStarted": 20,
+        "totalMessageReplies": 3,
+        "messageReplyRate": 0.15,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 2,
+        "inMailReplyRate": 0.11764706,
+        "autoTaggedInterested": 4,
+        "uniqueLeadsContacted": 111
+      },
+      "rule_flags": {
+        "placeholder": 3,
+        "time_commitment": 4
+      },
+      "file": "campaigns/640045-blissslm-advisory-uk-founder-cto-ai-punith.md"
+    },
+    {
+      "id": 639410,
+      "name": "BlissSLM - Advisory - Meelan's Network [Punith]",
+      "status": "FINISHED",
+      "created": "2026-10-06",
+      "idea": "BlissSLM",
+      "persona": [],
+      "regions": [],
+      "sender": "Meelan",
+      "kind": [],
+      "leads": 13,
+      "structure": "CHECK(connected: VIEW > MSG x4 | new: end)",
+      "stats": {
+        "connectionsSent": 0,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 15,
+        "totalMessageStarted": 7,
+        "totalMessageReplies": 2,
+        "messageReplyRate": 0.2857143,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 2,
+        "uniqueLeadsContacted": 7
+      },
+      "rule_flags": {
+        "placeholder": 1,
+        "time_commitment": 2
+      },
+      "file": "campaigns/639410-blissslm-advisory-meelan-s-network-punith.md"
+    },
+    {
+      "id": 639395,
+      "name": "BlissSLM - Advisory - Jay's Network [Punith]",
+      "status": "FINISHED",
+      "created": "2026-10-06",
+      "idea": "BlissSLM",
+      "persona": [],
+      "regions": [],
+      "sender": "Jay",
+      "kind": [],
+      "leads": 53,
+      "structure": "CHECK(connected: VIEW > MSG x4 | new: end)",
+      "stats": {
+        "connectionsSent": 0,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 95,
+        "totalMessageStarted": 40,
+        "totalMessageReplies": 10,
+        "messageReplyRate": 0.25,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 9,
+        "uniqueLeadsContacted": 40
+      },
+      "rule_flags": {
+        "placeholder": 1,
+        "time_commitment": 2
+      },
+      "file": "campaigns/639395-blissslm-advisory-jay-s-network-punith.md"
+    },
+    {
+      "id": 650447,
+      "name": "BlissSLM (v2) Advisory (USA) enterprise CFOs USA Akhil [Punith]",
+      "status": "PAUSED",
+      "created": "2026-10-12",
+      "idea": "BlissSLM",
+      "persona": [],
+      "regions": [
+        "USA"
+      ],
+      "sender": "Akhil",
+      "kind": [],
+      "leads": 36,
+      "structure": "CHECK(connected: VIEW > MSG x4 | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 36,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 0,
+        "totalMessageStarted": 0,
+        "totalMessageReplies": 0,
+        "messageReplyRate": 0.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 36
+      },
+      "rule_flags": {
+        "filler": 6,
+        "time_commitment": 10
+      },
+      "file": "campaigns/650447-blissslm-v2-advisory-usa-enterprise-cfos-usa-akhil-punith.md"
+    },
+    {
+      "id": 650444,
+      "name": "BlissSLM v2 Advisory (USA) enterprise_CFOs [Punith]",
+      "status": "PAUSED",
+      "created": "2026-10-12",
+      "idea": "BlissSLM",
+      "persona": [],
+      "regions": [
+        "USA"
+      ],
+      "sender": "Punith",
+      "kind": [],
+      "leads": 79,
+      "structure": "CHECK(connected: VIEW > MSG x4 | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 46,
+        "connectionsAccepted": 2,
+        "connectionAcceptanceRate": 0.04347826,
+        "messagesSent": 0,
+        "totalMessageStarted": 0,
+        "totalMessageReplies": 0,
+        "messageReplyRate": 0.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 46
+      },
+      "rule_flags": {
+        "filler": 6,
+        "time_commitment": 10
+      },
+      "file": "campaigns/650444-blissslm-v2-advisory-usa-enterprise-cfos-punith.md"
+    },
+    {
+      "id": 650437,
+      "name": "BlissSLM (v2) Advisory (UK) enterprise CFOs (UK) [Punith]",
+      "status": "PAUSED",
+      "created": "2026-10-12",
+      "idea": "BlissSLM",
+      "persona": [],
+      "regions": [
+        "UK"
+      ],
+      "sender": "Punith",
+      "kind": [],
+      "leads": 84,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 1,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 0,
+        "totalMessageStarted": 0,
+        "totalMessageReplies": 0,
+        "messageReplyRate": 0.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 1
+      },
+      "rule_flags": {
+        "filler": 4,
+        "time_commitment": 6
+      },
+      "file": "campaigns/650437-blissslm-v2-advisory-uk-enterprise-cfos-uk-punith.md"
+    },
+    {
+      "id": 668910,
+      "name": "BlissSLM V3 - Advisory [CPO] [USA, EU, UK] - Inmails (Punith) ",
+      "status": "PAUSED",
+      "created": "2026-10-20",
+      "idea": "BlissSLM",
+      "persona": [
+        "CPO"
+      ],
+      "regions": [
+        "USA",
+        "UK",
+        "EU"
+      ],
+      "sender": "Punith",
+      "kind": [
+        "inmail"
+      ],
+      "leads": 36,
+      "structure": "CHECK_IS_OPEN_PROFILE > INVITE(blank)(accepted: MSG x2 | not: end)",
+      "stats": {
+        "connectionsSent": 9,
+        "connectionsAccepted": 1,
+        "connectionAcceptanceRate": 0.11111111,
+        "messagesSent": 0,
+        "totalMessageStarted": 0,
+        "totalMessageReplies": 0,
+        "messageReplyRate": 0.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 9
+      },
+      "rule_flags": {
+        "filler": 4,
+        "time_commitment": 4
+      },
+      "file": "campaigns/668910-blissslm-v3-advisory-cpo-usa-eu-uk-inmails-punith.md"
+    },
+    {
+      "id": 521786,
+      "name": "BlissTwin Advisor Outreach",
+      "status": "FINISHED",
+      "created": "2026-07-24",
+      "idea": "BlissTwin",
+      "persona": [],
+      "regions": [],
+      "sender": "",
+      "kind": [],
+      "leads": 325,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 321,
+        "connectionsAccepted": 74,
+        "connectionAcceptanceRate": 0.23052959,
+        "messagesSent": 59,
+        "totalMessageStarted": 71,
+        "totalMessageReplies": 19,
+        "messageReplyRate": 0.26760563,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 16,
+        "uniqueLeadsContacted": 321
+      },
+      "rule_flags": {
+        "filler": 6,
+        "time_commitment": 4
+      },
+      "file": "campaigns/521786-blisstwin-advisor-outreach.md"
+    },
+    {
+      "id": 527527,
+      "name": "Founder Campaign - BlissTwin 26",
+      "status": "FINISHED",
+      "created": "2026-07-29",
+      "idea": "BlissTwin",
+      "persona": [],
+      "regions": [],
+      "sender": "",
+      "kind": [],
+      "leads": 26,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 11,
+        "connectionsAccepted": 6,
+        "connectionAcceptanceRate": 0.54545456,
+        "messagesSent": 3,
+        "totalMessageStarted": 6,
+        "totalMessageReplies": 6,
+        "messageReplyRate": 1.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 5,
+        "uniqueLeadsContacted": 11
+      },
+      "rule_flags": {
+        "placeholder": 3,
+        "filler": 2
+      },
+      "file": "campaigns/527527-founder-campaign-blisstwin-26.md"
+    },
+    {
+      "id": 668842,
+      "name": "BlissWholesaler - Advisory [T1] [CIO] [USA] (Punith)",
+      "status": "IN_PROGRESS",
+      "created": "2026-10-20",
+      "idea": "BlissWholesaler",
+      "persona": [
+        "T1",
+        "CIO"
+      ],
+      "regions": [
+        "USA"
+      ],
+      "sender": "Punith",
+      "kind": [],
+      "leads": 90,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: end))",
+      "stats": {
+        "connectionsSent": 62,
+        "connectionsAccepted": 3,
+        "connectionAcceptanceRate": 0.048387095,
+        "messagesSent": 0,
+        "totalMessageStarted": 2,
+        "totalMessageReplies": 0,
+        "messageReplyRate": 0.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 62
+      },
+      "rule_flags": {
+        "filler": 2,
+        "time_commitment": 4
+      },
+      "file": "campaigns/668842-blisswholesaler-advisory-t1-cio-usa-punith.md"
+    },
+    {
+      "id": 668831,
+      "name": "BlissWholesaler - Advisory [T1] [CIO] [UK,EU] [Punith]",
+      "status": "IN_PROGRESS",
+      "created": "2026-10-20",
+      "idea": "BlissWholesaler",
+      "persona": [
+        "T1",
+        "CIO"
+      ],
+      "regions": [
+        "UK",
+        "EU"
+      ],
+      "sender": "Punith",
+      "kind": [],
+      "leads": 39,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: end))",
+      "stats": {
+        "connectionsSent": 50,
+        "connectionsAccepted": 7,
+        "connectionAcceptanceRate": 0.14,
+        "messagesSent": 0,
+        "totalMessageStarted": 6,
+        "totalMessageReplies": 1,
+        "messageReplyRate": 0.16666667,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 1,
+        "uniqueLeadsContacted": 37
+      },
+      "rule_flags": {
+        "filler": 2,
+        "time_commitment": 4
+      },
+      "file": "campaigns/668831-blisswholesaler-advisory-t1-cio-uk-eu-punith.md"
+    },
+    {
+      "id": 668823,
+      "name": "BlissWholesaler - Advisory [T1] [COO] [USA] - Jay & Meelan (Punith)",
+      "status": "IN_PROGRESS",
+      "created": "2026-10-20",
+      "idea": "BlissWholesaler",
+      "persona": [
+        "T1",
+        "COO"
+      ],
+      "regions": [
+        "USA"
+      ],
+      "sender": "Jay & Meelan",
+      "kind": [],
+      "leads": 35,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 9,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 0,
+        "totalMessageStarted": 0,
+        "totalMessageReplies": 0,
+        "messageReplyRate": 0.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 9
+      },
+      "rule_flags": {
+        "filler": 4,
+        "time_commitment": 6
+      },
+      "file": "campaigns/668823-blisswholesaler-advisory-t1-coo-usa-jay-meelan-punith.md"
+    },
+    {
+      "id": 668795,
+      "name": "BlissWholesaler - Advisory [T1] [COO] [UK, EU] - Jay & Meelan (Punith)",
+      "status": "IN_PROGRESS",
+      "created": "2026-10-20",
+      "idea": "BlissWholesaler",
+      "persona": [
+        "T1",
+        "COO"
+      ],
+      "regions": [
+        "UK",
+        "EU"
+      ],
+      "sender": "Jay & Meelan",
+      "kind": [],
+      "leads": 43,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+      "stats": {
+        "connectionsSent": 38,
+        "connectionsAccepted": 4,
+        "connectionAcceptanceRate": 0.10526316,
+        "messagesSent": 0,
+        "totalMessageStarted": 2,
+        "totalMessageReplies": 0,
+        "messageReplyRate": 0.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 38
+      },
+      "rule_flags": {
+        "filler": 4,
+        "time_commitment": 6
+      },
+      "file": "campaigns/668795-blisswholesaler-advisory-t1-coo-uk-eu-jay-meelan-punith.md"
+    },
+    {
+      "id": 583288,
+      "name": "BlissWorldModel - Advisor Outreach (Sep 2026)",
+      "status": "FINISHED",
+      "created": "2026-09-03",
+      "idea": "BlissWorldModel",
+      "persona": [],
+      "regions": [],
+      "sender": "",
+      "kind": [],
+      "leads": 672,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 667,
+        "connectionsAccepted": 44,
+        "connectionAcceptanceRate": 0.065967016,
+        "messagesSent": 35,
+        "totalMessageStarted": 41,
+        "totalMessageReplies": 11,
+        "messageReplyRate": 0.2682927,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 7,
+        "uniqueLeadsContacted": 667
+      },
+      "rule_flags": {
+        "filler": 2,
+        "time_commitment": 4,
+        "placeholder": 2
+      },
+      "file": "campaigns/583288-blissworldmodel-advisor-outreach-sep-2026.md"
+    },
+    {
+      "id": 634192,
+      "name": "BlissWorldModel - Advisory (UK) - (1A) - BC + M",
+      "status": "PAUSED",
+      "created": "2026-10-02",
+      "idea": "BlissWorldModel",
+      "persona": [],
+      "regions": [
+        "UK"
+      ],
+      "sender": "",
+      "kind": [],
+      "leads": 140,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: MSG x4 | not: end))",
+      "stats": {
+        "connectionsSent": 140,
+        "connectionsAccepted": 25,
+        "connectionAcceptanceRate": 0.17857143,
+        "messagesSent": 41,
+        "totalMessageStarted": 22,
+        "totalMessageReplies": 1,
+        "messageReplyRate": 0.045454547,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 1,
+        "uniqueLeadsContacted": 140
+      },
+      "rule_flags": {},
+      "file": "campaigns/634192-blissworldmodel-advisory-uk-1a-bc-m.md"
+    },
+    {
+      "id": 634140,
+      "name": "BlissWorldModel - Advisory (UK) - (1B/1C) - IN",
+      "status": "FINISHED",
+      "created": "2026-10-02",
+      "idea": "BlissWorldModel",
+      "persona": [],
+      "regions": [
+        "UK"
+      ],
+      "sender": "",
+      "kind": [],
+      "leads": 23,
+      "structure": "CHECK(connected: end | new: VIEW > INMAIL)",
+      "stats": {
+        "connectionsSent": 0,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 0,
+        "totalMessageStarted": 0,
+        "totalMessageReplies": 0,
+        "messageReplyRate": 0.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 22
+      },
+      "rule_flags": {
+        "placeholder": 1
+      },
+      "file": "campaigns/634140-blissworldmodel-advisory-uk-1b-1c-in.md"
+    },
+    {
+      "id": 634139,
+      "name": "BlissWorldModel - Advisory (UK) - (1A) - IN",
+      "status": "FINISHED",
+      "created": "2026-10-02",
+      "idea": "BlissWorldModel",
+      "persona": [],
+      "regions": [
+        "UK"
+      ],
+      "sender": "",
+      "kind": [],
+      "leads": 58,
+      "structure": "CHECK(connected: end | new: VIEW > INMAIL)",
+      "stats": {
+        "connectionsSent": 0,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 0,
+        "totalMessageStarted": 0,
+        "totalMessageReplies": 0,
+        "messageReplyRate": 0.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 2,
+        "inMailReplyRate": 0.03448276,
+        "autoTaggedInterested": 1,
+        "uniqueLeadsContacted": 58
+      },
+      "rule_flags": {
+        "placeholder": 1
+      },
+      "file": "campaigns/634139-blissworldmodel-advisory-uk-1a-in.md"
+    },
+    {
+      "id": 634138,
+      "name": "BlissWorldModel - Advisory (UK) - (1B/1C) - CC + M",
+      "status": "FINISHED",
+      "created": "2026-10-02",
+      "idea": "BlissWorldModel",
+      "persona": [],
+      "regions": [
+        "UK"
+      ],
+      "sender": "",
+      "kind": [],
+      "leads": 61,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x3 | not: end))",
+      "stats": {
+        "connectionsSent": 23,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 0,
+        "totalMessageStarted": 0,
+        "totalMessageReplies": 0,
+        "messageReplyRate": 0.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 23
+      },
+      "rule_flags": {
+        "time_commitment": 2
+      },
+      "file": "campaigns/634138-blissworldmodel-advisory-uk-1b-1c-cc-m.md"
+    },
+    {
+      "id": 634137,
+      "name": "BlissWorldModel - Advisory (UK) - (1A) - CC + M",
+      "status": "PAUSED",
+      "created": "2026-10-02",
+      "idea": "BlissWorldModel",
+      "persona": [],
+      "regions": [
+        "UK"
+      ],
+      "sender": "",
+      "kind": [],
+      "leads": 91,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: MSG x4 | not: end))",
+      "stats": {
+        "connectionsSent": 43,
+        "connectionsAccepted": 7,
+        "connectionAcceptanceRate": 0.1627907,
+        "messagesSent": 9,
+        "totalMessageStarted": 5,
+        "totalMessageReplies": 1,
+        "messageReplyRate": 0.2,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 43
+      },
+      "rule_flags": {},
+      "file": "campaigns/634137-blissworldmodel-advisory-uk-1a-cc-m.md"
+    },
+    {
+      "id": 640561,
+      "name": "BlissWorldModel - Advisory (UK) - BC + M - Prajwal",
+      "status": "PAUSED",
+      "created": "2026-10-06",
+      "idea": "BlissWorldModel",
+      "persona": [],
+      "regions": [
+        "UK"
+      ],
+      "sender": "Prajwal",
+      "kind": [],
+      "leads": 190,
+      "structure": "INVITE(blank)(accepted: MSG x4 | not: end)",
+      "stats": {
+        "connectionsSent": 144,
+        "connectionsAccepted": 11,
+        "connectionAcceptanceRate": 0.07638889,
+        "messagesSent": 6,
+        "totalMessageStarted": 7,
+        "totalMessageReplies": 1,
+        "messageReplyRate": 0.14285715,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 144
+      },
+      "rule_flags": {},
+      "file": "campaigns/640561-blissworldmodel-advisory-uk-bc-m-prajwal.md"
+    },
+    {
+      "id": 506867,
+      "name": "Building Again Sep - Exited operators",
+      "status": "FINISHED",
+      "created": "2026-07-14",
+      "idea": "Building Again Sep",
+      "persona": [],
+      "regions": [],
+      "sender": "",
+      "kind": [],
+      "leads": 11,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 11,
+        "connectionsAccepted": 8,
+        "connectionAcceptanceRate": 0.72727275,
+        "messagesSent": 13,
+        "totalMessageStarted": 8,
+        "totalMessageReplies": 2,
+        "messageReplyRate": 0.25,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 2,
+        "uniqueLeadsContacted": 11
+      },
+      "rule_flags": {
+        "link": 4,
+        "placeholder": 3,
+        "filler": 2
+      },
+      "file": "campaigns/506867-building-again-sep-exited-operators.md"
+    },
+    {
+      "id": 506865,
+      "name": "Building Again Sep - 2nd-time founders",
+      "status": "PAUSED",
+      "created": "2026-07-14",
+      "idea": "Building Again Sep",
+      "persona": [],
+      "regions": [],
+      "sender": "",
+      "kind": [],
+      "leads": 204,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 176,
+        "connectionsAccepted": 42,
+        "connectionAcceptanceRate": 0.23863636,
+        "messagesSent": 57,
+        "totalMessageStarted": 42,
+        "totalMessageReplies": 14,
+        "messageReplyRate": 0.33333334,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 12,
+        "uniqueLeadsContacted": 176
+      },
+      "rule_flags": {
+        "link": 4,
+        "placeholder": 3,
+        "filler": 2
+      },
+      "file": "campaigns/506865-building-again-sep-2nd-time-founders.md"
+    },
+    {
+      "id": 562096,
+      "name": "Building Again Sep - 2nd-time founders - Mansi",
+      "status": "PAUSED",
+      "created": "2026-08-20",
+      "idea": "Building Again Sep",
+      "persona": [],
+      "regions": [],
+      "sender": "Mansi",
+      "kind": [],
+      "leads": 24,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 24,
+        "connectionsAccepted": 7,
+        "connectionAcceptanceRate": 0.29166666,
+        "messagesSent": 5,
+        "totalMessageStarted": 7,
+        "totalMessageReplies": 1,
+        "messageReplyRate": 0.14285715,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 24
+      },
+      "rule_flags": {
+        "link": 4,
+        "placeholder": 3,
+        "filler": 2
+      },
+      "file": "campaigns/562096-building-again-sep-2nd-time-founders-mansi.md"
+    },
+    {
+      "id": 562095,
+      "name": "Building Again Sep - 2nd-time founders - Vinamr",
+      "status": "FINISHED",
+      "created": "2026-08-20",
+      "idea": "Building Again Sep",
+      "persona": [],
+      "regions": [],
+      "sender": "Vinamr",
+      "kind": [],
+      "leads": 24,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 24,
+        "connectionsAccepted": 4,
+        "connectionAcceptanceRate": 0.16666667,
+        "messagesSent": 4,
+        "totalMessageStarted": 4,
+        "totalMessageReplies": 0,
+        "messageReplyRate": 0.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 24
+      },
+      "rule_flags": {
+        "link": 4,
+        "placeholder": 3,
+        "filler": 2
+      },
+      "file": "campaigns/562095-building-again-sep-2nd-time-founders-vinamr.md"
+    },
+    {
+      "id": 562094,
+      "name": "Building Again Sep - 2nd-time founders - Prajwal",
+      "status": "PAUSED",
+      "created": "2026-08-20",
+      "idea": "Building Again Sep",
+      "persona": [],
+      "regions": [],
+      "sender": "Prajwal",
+      "kind": [],
+      "leads": 25,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 24,
+        "connectionsAccepted": 4,
+        "connectionAcceptanceRate": 0.16666667,
+        "messagesSent": 6,
+        "totalMessageStarted": 4,
+        "totalMessageReplies": 1,
+        "messageReplyRate": 0.25,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 1,
+        "uniqueLeadsContacted": 24
+      },
+      "rule_flags": {
+        "link": 4,
+        "placeholder": 3,
+        "filler": 2
+      },
+      "file": "campaigns/562094-building-again-sep-2nd-time-founders-prajwal.md"
+    },
+    {
+      "id": 571858,
+      "name": "Building Again Sep - Akhil non-acceptors",
+      "status": "PAUSED",
+      "created": "2026-08-27",
+      "idea": "Building Again Sep",
+      "persona": [],
+      "regions": [],
+      "sender": "Akhil",
+      "kind": [],
+      "leads": 380,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 350,
+        "connectionsAccepted": 75,
+        "connectionAcceptanceRate": 0.21428572,
+        "messagesSent": 29,
+        "totalMessageStarted": 75,
+        "totalMessageReplies": 22,
+        "messageReplyRate": 0.29333332,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 17,
+        "uniqueLeadsContacted": 350
+      },
+      "rule_flags": {
+        "link": 4,
+        "placeholder": 3,
+        "filler": 2
+      },
+      "file": "campaigns/571858-building-again-sep-akhil-non-acceptors.md"
+    },
+    {
+      "id": 571745,
+      "name": "Building Again Sep - Mils connections",
+      "status": "FINISHED",
+      "created": "2026-08-27",
+      "idea": "Building Again Sep",
+      "persona": [],
+      "regions": [],
+      "sender": "",
+      "kind": [],
+      "leads": 9,
+      "structure": "CHECK(connected: MSG x2 | new: end)",
+      "stats": {
+        "connectionsSent": 0,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 8,
+        "totalMessageStarted": 8,
+        "totalMessageReplies": 1,
+        "messageReplyRate": 0.125,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 8
+      },
+      "rule_flags": {
+        "link": 2,
+        "pay_number": 2,
+        "funding_amount": 2,
+        "filler": 6
+      },
+      "file": "campaigns/571745-building-again-sep-mils-connections.md"
+    },
+    {
+      "id": 571744,
+      "name": "Building Again Sep - Jay connections",
+      "status": "FINISHED",
+      "created": "2026-08-27",
+      "idea": "Building Again Sep",
+      "persona": [],
+      "regions": [],
+      "sender": "Jay",
+      "kind": [],
+      "leads": 68,
+      "structure": "CHECK(connected: MSG x2 | new: end)",
+      "stats": {
+        "connectionsSent": 0,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 62,
+        "totalMessageStarted": 68,
+        "totalMessageReplies": 16,
+        "messageReplyRate": 0.23529412,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 8,
+        "uniqueLeadsContacted": 68
+      },
+      "rule_flags": {
+        "link": 2,
+        "pay_number": 2,
+        "funding_amount": 2,
+        "filler": 6
+      },
+      "file": "campaigns/571744-building-again-sep-jay-connections.md"
+    },
+    {
+      "id": 415532,
+      "name": "Engineering Founders [Building Again - 14th May 26]",
+      "status": "PAUSED",
+      "created": "2026-05-01",
+      "idea": "Engineering Founders [Building Again",
+      "persona": [
+        "Building Again - 14th May 26"
+      ],
+      "regions": [],
+      "sender": "",
+      "kind": [],
+      "leads": 363,
+      "structure": "CHECK(connected: MSG x1 | new: VIEW > INVITE(note x1)(accepted: MSG x1 | not: LIKE > INMAIL))",
+      "stats": {
+        "connectionsSent": 301,
+        "connectionsAccepted": 105,
+        "connectionAcceptanceRate": 0.3488372,
+        "messagesSent": 37,
+        "totalMessageStarted": 112,
+        "totalMessageReplies": 45,
+        "messageReplyRate": 0.4017857,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 6,
+        "inMailReplyRate": 0.039473683,
+        "autoTaggedInterested": 28,
+        "uniqueLeadsContacted": 309
+      },
+      "rule_flags": {
+        "link": 6
+      },
+      "file": "campaigns/415532-engineering-founders-building-again-14th-may-26.md"
+    },
+    {
+      "id": 478741,
+      "name": "Followup - Jay PE contacts [ContextPath]",
+      "status": "FINISHED",
+      "created": "2026-06-22",
+      "idea": "Followup",
+      "persona": [
+        "ContextPath"
+      ],
+      "regions": [],
+      "sender": "Jay",
+      "kind": [],
+      "leads": 32,
+      "structure": "CHECK(connected: MSG x1 | new: end)",
+      "stats": {
+        "connectionsSent": 0,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 0,
+        "totalMessageStarted": 31,
+        "totalMessageReplies": 10,
+        "messageReplyRate": 0.32258064,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 9,
+        "uniqueLeadsContacted": 31
+      },
+      "rule_flags": {},
+      "file": "campaigns/478741-followup-jay-pe-contacts-contextpath.md"
+    },
+    {
+      "id": 460726,
+      "name": "Founder Campaign",
+      "status": "FINISHED",
+      "created": "2026-06-08",
+      "idea": "Founder Campaign",
+      "persona": [],
+      "regions": [],
+      "sender": "",
+      "kind": [],
+      "leads": 299,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 224,
+        "connectionsAccepted": 83,
+        "connectionAcceptanceRate": 0.3705357,
+        "messagesSent": 77,
+        "totalMessageStarted": 83,
+        "totalMessageReplies": 57,
+        "messageReplyRate": 0.686747,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 48,
+        "uniqueLeadsContacted": 224
+      },
+      "rule_flags": {
+        "filler": 2
+      },
+      "file": "campaigns/460726-founder-campaign.md"
+    },
+    {
+      "id": 543012,
+      "name": "Founder Retarget Campaign - Meelan",
+      "status": "FINISHED",
+      "created": "2026-08-09",
+      "idea": "Founder Retarget Campaign",
+      "persona": [],
+      "regions": [],
+      "sender": "Meelan",
+      "kind": [],
+      "leads": 64,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: MSG x3 | not: end))",
+      "stats": {
+        "connectionsSent": 60,
+        "connectionsAccepted": 12,
+        "connectionAcceptanceRate": 0.2,
+        "messagesSent": 15,
+        "totalMessageStarted": 11,
+        "totalMessageReplies": 4,
+        "messageReplyRate": 0.36363637,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 1,
+        "uniqueLeadsContacted": 60
+      },
+      "rule_flags": {
+        "placeholder": 3,
+        "time_commitment": 4,
+        "filler": 2
+      },
+      "file": "campaigns/543012-founder-retarget-campaign-meelan.md"
+    },
+    {
+      "id": 559497,
+      "name": "Jay Founder Retargeting",
+      "status": "PAUSED",
+      "created": "2026-08-19",
+      "idea": "Jay Founder Retargeting",
+      "persona": [],
+      "regions": [],
+      "sender": "Jay",
+      "kind": [],
+      "leads": 57,
+      "structure": "CHECK(connected: MSG x2 | new: INVITE(blank)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 35,
+        "connectionsAccepted": 3,
+        "connectionAcceptanceRate": 0.08571429,
+        "messagesSent": 3,
+        "totalMessageStarted": 4,
+        "totalMessageReplies": 2,
+        "messageReplyRate": 0.5,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 1,
+        "uniqueLeadsContacted": 36
+      },
+      "rule_flags": {
+        "funding_amount": 4,
+        "placeholder": 4
+      },
+      "file": "campaigns/559497-jay-founder-retargeting.md"
+    },
+    {
+      "id": 459879,
+      "name": "Jay Private Equity Contact - ContextPath",
+      "status": "FINISHED",
+      "created": "2026-06-08",
+      "idea": "Jay Private Equity Contact",
+      "persona": [],
+      "regions": [],
+      "sender": "Jay",
+      "kind": [],
+      "leads": 36,
+      "structure": "CHECK(connected: MSG x1 | new: end)",
+      "stats": {
+        "connectionsSent": 0,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 0,
+        "totalMessageStarted": 35,
+        "totalMessageReplies": 12,
+        "messageReplyRate": 0.34285715,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 10,
+        "uniqueLeadsContacted": 35
+      },
+      "rule_flags": {
+        "filler": 2,
+        "time_commitment": 2,
+        "funding_amount": 2
+      },
+      "file": "campaigns/459879-jay-private-equity-contact-contextpath.md"
+    },
+    {
+      "id": 507150,
+      "name": "Meelan Just Connects",
+      "status": "FINISHED",
+      "created": "2026-07-14",
+      "idea": "Meelan Just Connects",
+      "persona": [],
+      "regions": [],
+      "sender": "Meelan",
+      "kind": [],
+      "leads": 364,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: end | not: end))",
+      "stats": {
+        "connectionsSent": 286,
+        "connectionsAccepted": 177,
+        "connectionAcceptanceRate": 0.6188811,
+        "messagesSent": 0,
+        "totalMessageStarted": 0,
+        "totalMessageReplies": 5,
+        "messageReplyRate": 0.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 5,
+        "uniqueLeadsContacted": 286
+      },
+      "rule_flags": {},
+      "file": "campaigns/507150-meelan-just-connects.md"
+    },
+    {
+      "id": 484652,
+      "name": "PE Speaker - AI Tranformation Summit",
+      "status": "FINISHED",
+      "created": "2026-06-25",
+      "idea": "PE Speaker",
+      "persona": [],
+      "regions": [],
+      "sender": "",
+      "kind": [],
+      "leads": 20,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x1 | not: end))",
+      "stats": {
+        "connectionsSent": 19,
+        "connectionsAccepted": 0,
+        "connectionAcceptanceRate": 0.0,
+        "messagesSent": 0,
+        "totalMessageStarted": 0,
+        "totalMessageReplies": 0,
+        "messageReplyRate": 0.0,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 0,
+        "uniqueLeadsContacted": 19
+      },
+      "rule_flags": {
+        "em_dash": 2,
+        "spam_phrase": 2
+      },
+      "file": "campaigns/484652-pe-speaker-ai-tranformation-summit.md"
+    },
+    {
+      "id": 484711,
+      "name": "PE Sponsor - AI Tranformation Summit",
+      "status": "FINISHED",
+      "created": "2026-06-25",
+      "idea": "PE Sponsor",
+      "persona": [],
+      "regions": [],
+      "sender": "",
+      "kind": [],
+      "leads": 12,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x1 | not: end))",
+      "stats": {
+        "connectionsSent": 12,
+        "connectionsAccepted": 5,
+        "connectionAcceptanceRate": 0.41666666,
+        "messagesSent": 4,
+        "totalMessageStarted": 5,
+        "totalMessageReplies": 1,
+        "messageReplyRate": 0.2,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 1,
+        "uniqueLeadsContacted": 12
+      },
+      "rule_flags": {},
+      "file": "campaigns/484711-pe-sponsor-ai-tranformation-summit.md"
+    },
+    {
+      "id": 452653,
+      "name": "UK Global Visa Founders",
+      "status": "FINISHED",
+      "created": "2026-06-02",
+      "idea": "UK Global Visa Founders",
+      "persona": [],
+      "regions": [
+        "UK"
+      ],
+      "sender": "",
+      "kind": [],
+      "leads": 35,
+      "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 32,
+        "connectionsAccepted": 16,
+        "connectionAcceptanceRate": 0.5,
+        "messagesSent": 9,
+        "totalMessageStarted": 16,
+        "totalMessageReplies": 12,
+        "messageReplyRate": 0.75,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 11,
+        "uniqueLeadsContacted": 32
+      },
+      "rule_flags": {
+        "filler": 2
+      },
+      "file": "campaigns/452653-uk-global-visa-founders.md"
+    },
+    {
+      "id": 503605,
+      "name": "UK PE Event - Prajwal",
+      "status": "FINISHED",
+      "created": "2026-07-11",
+      "idea": "UK PE Event",
+      "persona": [],
+      "regions": [
+        "UK"
+      ],
+      "sender": "Prajwal",
+      "kind": [],
+      "leads": 173,
+      "structure": "CHECK(connected: MSG x1 | new: INVITE(note x1)(accepted: MSG x1 | not: end))",
+      "stats": {
+        "connectionsSent": 173,
+        "connectionsAccepted": 15,
+        "connectionAcceptanceRate": 0.0867052,
+        "messagesSent": 14,
+        "totalMessageStarted": 15,
+        "totalMessageReplies": 1,
+        "messageReplyRate": 0.06666667,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 1,
+        "uniqueLeadsContacted": 173
+      },
+      "rule_flags": {
+        "link": 4,
+        "filler": 8,
+        "placeholder": 3
+      },
+      "file": "campaigns/503605-uk-pe-event-prajwal.md"
+    },
+    {
+      "id": 503604,
+      "name": "UK PE Event - Vinamr",
+      "status": "FINISHED",
+      "created": "2026-07-11",
+      "idea": "UK PE Event",
+      "persona": [],
+      "regions": [
+        "UK"
+      ],
+      "sender": "Vinamr",
+      "kind": [],
+      "leads": 168,
+      "structure": "CHECK(connected: MSG x1 | new: INVITE(note x1)(accepted: MSG x1 | not: end))",
+      "stats": {
+        "connectionsSent": 167,
+        "connectionsAccepted": 21,
+        "connectionAcceptanceRate": 0.1257485,
+        "messagesSent": 0,
+        "totalMessageStarted": 15,
+        "totalMessageReplies": 3,
+        "messageReplyRate": 0.2,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 2,
+        "uniqueLeadsContacted": 167
+      },
+      "rule_flags": {
+        "link": 4,
+        "filler": 8,
+        "placeholder": 3
+      },
+      "file": "campaigns/503604-uk-pe-event-vinamr.md"
+    },
+    {
+      "id": 503603,
+      "name": "UK PE Event - Mansi",
+      "status": "FINISHED",
+      "created": "2026-07-11",
+      "idea": "UK PE Event",
+      "persona": [],
+      "regions": [
+        "UK"
+      ],
+      "sender": "Mansi",
+      "kind": [],
+      "leads": 163,
+      "structure": "CHECK(connected: MSG x1 | new: INVITE(note x1)(accepted: MSG x1 | not: end))",
+      "stats": {
+        "connectionsSent": 158,
+        "connectionsAccepted": 28,
+        "connectionAcceptanceRate": 0.17721519,
+        "messagesSent": 0,
+        "totalMessageStarted": 24,
+        "totalMessageReplies": 5,
+        "messageReplyRate": 0.20833333,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 2,
+        "uniqueLeadsContacted": 158
+      },
+      "rule_flags": {
+        "link": 4,
+        "filler": 8,
+        "placeholder": 3
+      },
+      "file": "campaigns/503603-uk-pe-event-mansi.md"
+    },
+    {
+      "id": 529379,
+      "name": "UK PE Event - Jayson retarget",
+      "status": "FINISHED",
+      "created": "2026-07-30",
+      "idea": "UK PE Event",
+      "persona": [],
+      "regions": [
+        "UK"
+      ],
+      "sender": "",
+      "kind": [],
+      "leads": 567,
+      "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 557,
+        "connectionsAccepted": 20,
+        "connectionAcceptanceRate": 0.035906643,
+        "messagesSent": 16,
+        "totalMessageStarted": 19,
+        "totalMessageReplies": 6,
+        "messageReplyRate": 0.31578946,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 2,
+        "uniqueLeadsContacted": 557
+      },
+      "rule_flags": {
+        "link": 2,
+        "placeholder": 2,
+        "filler": 4
+      },
+      "file": "campaigns/529379-uk-pe-event-jayson-retarget.md"
+    },
+    {
+      "id": 518511,
+      "name": "UK PE Event v2 - Prajwal",
+      "status": "PAUSED",
+      "created": "2026-07-22",
+      "idea": "UK PE Event v2",
+      "persona": [],
+      "regions": [
+        "UK"
+      ],
+      "sender": "Prajwal",
+      "kind": [],
+      "leads": 506,
+      "structure": "CHECK(connected: MSG x2 | new: INVITE(blank)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 393,
+        "connectionsAccepted": 43,
+        "connectionAcceptanceRate": 0.10941476,
+        "messagesSent": 15,
+        "totalMessageStarted": 33,
+        "totalMessageReplies": 3,
+        "messageReplyRate": 0.09090909,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 2,
+        "uniqueLeadsContacted": 393
+      },
+      "rule_flags": {
+        "link": 2,
+        "placeholder": 4,
+        "filler": 8
+      },
+      "file": "campaigns/518511-uk-pe-event-v2-prajwal.md"
+    },
+    {
+      "id": 518510,
+      "name": "UK PE Event v2 - Vinamr",
+      "status": "PAUSED",
+      "created": "2026-07-22",
+      "idea": "UK PE Event v2",
+      "persona": [],
+      "regions": [
+        "UK"
+      ],
+      "sender": "Vinamr",
+      "kind": [],
+      "leads": 505,
+      "structure": "CHECK(connected: MSG x2 | new: INVITE(blank)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 368,
+        "connectionsAccepted": 30,
+        "connectionAcceptanceRate": 0.08152174,
+        "messagesSent": 13,
+        "totalMessageStarted": 24,
+        "totalMessageReplies": 6,
+        "messageReplyRate": 0.25,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 3,
+        "uniqueLeadsContacted": 368
+      },
+      "rule_flags": {
+        "link": 2,
+        "placeholder": 4,
+        "filler": 8
+      },
+      "file": "campaigns/518510-uk-pe-event-v2-vinamr.md"
+    },
+    {
+      "id": 518507,
+      "name": "UK PE Event v2 - Mansi",
+      "status": "PAUSED",
+      "created": "2026-07-22",
+      "idea": "UK PE Event v2",
+      "persona": [],
+      "regions": [
+        "UK"
+      ],
+      "sender": "Mansi",
+      "kind": [],
+      "leads": 506,
+      "structure": "CHECK(connected: MSG x2 | new: INVITE(blank)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 367,
+        "connectionsAccepted": 42,
+        "connectionAcceptanceRate": 0.11444142,
+        "messagesSent": 17,
+        "totalMessageStarted": 28,
+        "totalMessageReplies": 2,
+        "messageReplyRate": 0.071428575,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 2,
+        "uniqueLeadsContacted": 367
+      },
+      "rule_flags": {
+        "link": 2,
+        "placeholder": 4,
+        "filler": 8
+      },
+      "file": "campaigns/518507-uk-pe-event-v2-mansi.md"
+    },
+    {
+      "id": 551840,
+      "name": "UK PE Event v2 - Akhil",
+      "status": "FINISHED",
+      "created": "2026-08-14",
+      "idea": "UK PE Event v2",
+      "persona": [],
+      "regions": [
+        "UK"
+      ],
+      "sender": "Akhil",
+      "kind": [],
+      "leads": 98,
+      "structure": "CHECK(connected: MSG x2 | new: INVITE(blank)(accepted: MSG x2 | not: end))",
+      "stats": {
+        "connectionsSent": 98,
+        "connectionsAccepted": 20,
+        "connectionAcceptanceRate": 0.20408164,
+        "messagesSent": 18,
+        "totalMessageStarted": 20,
+        "totalMessageReplies": 4,
+        "messageReplyRate": 0.2,
+        "inmailMessagesSent": 0,
+        "totalInmailReplies": 0,
+        "inMailReplyRate": 0.0,
+        "autoTaggedInterested": 4,
+        "uniqueLeadsContacted": 98
+      },
+      "rule_flags": {
+        "link": 2,
+        "spam_promo": 4,
+        "placeholder": 4,
+        "filler": 8
+      },
+      "file": "campaigns/551840-uk-pe-event-v2-akhil.md"
+    }
+  ],
+  "skipped": [
+    {
+      "id": 545798,
+      "name": "UK PE Event - Jayson InMail retarget",
+      "why": "draft, never launched"
+    },
+    {
+      "id": 501241,
+      "name": "test",
+      "why": "draft, never launched"
+    }
+  ]
+}

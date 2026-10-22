@@ -1,0 +1,85 @@
+{
+  "id": 484652,
+  "name": "PE Speaker - AI Tranformation Summit",
+  "status": "FINISHED",
+  "created": "2026-06-25",
+  "list": "PE Speaker Leads - AI Summit Sep 23",
+  "leads": 20,
+  "idea": "PE Speaker",
+  "persona": [],
+  "regions": [],
+  "sender": "",
+  "kind": [],
+  "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x1 | not: end))",
+  "stats": {
+    "connectionsSent": 19,
+    "connectionsAccepted": 0,
+    "connectionAcceptanceRate": 0.0,
+    "messagesSent": 0,
+    "totalMessageStarted": 0,
+    "totalMessageReplies": 0,
+    "messageReplyRate": 0.0,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 0,
+    "uniqueLeadsContacted": 19
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "Connection note",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, I work with Jay Radia, founder of Yieldify (acq. Publicis) & Reachdesk (100m+ rev). We're lining up a keynote speaker for our AI Transformation Summit, London 23 Sep - a room of 100+ CEOs, CFOs & PE value creation leads. Think you'd be a great fit, open to hearing more?",
+          "words": 52,
+          "errors": [
+            "em_dash",
+            "spam_phrase"
+          ]
+        }
+      ],
+      "fallback": "Hi, I work with Jay Radia, founder of Yieldify (acq. Publicis) & Reachdesk (100m+ rev). We're lining up a keynote speaker for our AI Transformation Summit, London 23 Sep - a room of 100+ CEOs, CFOs & PE value creation leads. Think you'd be a great fit, open to hearing more?",
+      "blank": false,
+      "withdraw_after_days": 25
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "accepted",
+      "delay": "1 DAY",
+      "what": "opener",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Great to connect, {FIRST_NAME}. Quick one: we'd love you as a keynote speaker at our AI Transformation Summit (London, 23 Sep).\n\nYour take on ROI-driven AI deployment would land really well with the room, which is CEOs, CFOs and PE value creation folks. Strong for lead gen and good visibility for your fund. Jay, my MD, is keen to tell you more. Ok if I connect you via email?",
+          "words": 69,
+          "errors": []
+        }
+      ],
+      "fallback": "Great to connect. Quick one: we'd love you as a keynote speaker at our AI Transformation Summit (London, 23 Sep).\n\nYour take on ROI-driven AI deployment would land really well with the room, which is CEOs, CFOs and PE value creation folks. Strong for lead gen and good visibility for your fund. Jay, my MD, is keen to tell you more. Ok if I connect you via email?",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "em_dash": 2,
+    "spam_phrase": 2
+  }
+}

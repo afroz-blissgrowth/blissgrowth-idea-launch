@@ -1,0 +1,273 @@
+{
+  "id": 650447,
+  "name": "BlissSLM (v2) Advisory (USA) enterprise CFOs USA Akhil [Punith]",
+  "status": "PAUSED",
+  "created": "2026-10-12",
+  "list": "BlissSLM v2 enterprise CFOs USA Akhil [Punith]",
+  "leads": 36,
+  "idea": "BlissSLM",
+  "persona": [],
+  "regions": [
+    "USA"
+  ],
+  "sender": "Akhil",
+  "kind": [],
+  "structure": "CHECK(connected: VIEW > MSG x4 | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+  "stats": {
+    "connectionsSent": 36,
+    "connectionsAccepted": 0,
+    "connectionAcceptanceRate": 0.0,
+    "messagesSent": 0,
+    "totalMessageStarted": 0,
+    "totalMessageReplies": 0,
+    "messageReplyRate": 0.0,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 0,
+    "uniqueLeadsContacted": 36
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "VIEW_PROFILE",
+      "branch": "already_connected",
+      "delay": "0 HOUR",
+      "what": "View profile (warm-up)",
+      "variants": []
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "3 HOUR",
+      "what": "opener, advisor ask, credibility, asks for a call",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, we are building {IDEA_PLAIN}. I’d love for you to potentially be an advisor.\n\nI believe it'll be bigger than our other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?",
+          "words": 51,
+          "errors": [
+            "filler",
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi there! we are building {IDEA_PLAIN}. I’d love for you to potentially be an advisor.\n\nI believe it'll be bigger than our other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?\n\nThanks!",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 4,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "opinion question",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "I know everyone is under more pressure than ever on AI costs, with AI agents now running around the clock.\n\nI believe choosing AI models should be more than guesswork: proven on your own work, always up to date, and cheaper without losing quality.\n\nDo you agree? {FIRST_NAME}",
+          "words": 48,
+          "errors": []
+        }
+      ],
+      "fallback": "I know everyone is under more pressure than ever on AI costs, with AI agents now running around the clock.\n\nI believe choosing AI models should be more than guesswork: proven on your own work, always up to date, and cheaper without losing quality.\n\nDo you agree?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 5,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "advisor ask, asks for a call",
+      "channel": "li_followup",
+      "step": 3,
+      "variants": [
+        {
+          "subject": "",
+          "body": "{FIRST_NAME}, if you've been following Stripe's move to buy OpenRouter, you'll have seen how tokens are becoming the currency of the AI era. Managing them takes a combination of financial rigour and proof of what each model can really do.\n\nWe're putting together a small group of AI and finance leaders to advise us as we build. I'd love to bring you on as a potential advisor.\n\nCould we do a brief call this week or next? ",
+          "words": 77,
+          "errors": [
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi, if you've been following Stripe's move to buy OpenRouter, you'll have seen how tokens are becoming the currency of the AI era. Managing them takes a combination of financial rigour and proof of what each model can really do.\n\nWe're putting together a small group of AI and finance leaders to advise us as we build. I'd love to bring you on as a potential advisor.\n\nCould we do a brief call this week or next? ",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 6,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "opinion question, social proof",
+      "channel": "li_followup",
+      "step": 4,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, we've been getting strong early feedback from finance and AI leaders.\n\nGiven your background, I'd value your read.\n\nDoes this company match your area of expertise, or is it an exception?",
+          "words": 33,
+          "errors": []
+        }
+      ],
+      "fallback": "Hi there! we've been getting strong early feedback from finance and AI leaders.\n\nGiven your background, I'd value your read.\n\nDoes this company match your area of expertise, or is it an exception?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 7,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "Blank invite: no note, the profile does the work",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "",
+          "words": 0,
+          "errors": []
+        }
+      ],
+      "fallback": "",
+      "blank": true,
+      "withdraw_after_days": 14
+    },
+    {
+      "n": 8,
+      "type": "LIKE_POST",
+      "branch": "accepted",
+      "delay": "3 HOUR",
+      "what": "Like a recent post (warm-up)",
+      "variants": []
+    },
+    {
+      "n": 9,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "3 HOUR",
+      "what": "advisor ask, credibility, asks for a call",
+      "channel": "li_followup",
+      "step": 5,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, we are building {IDEA_PLAIN}. I’d love for you to potentially be an advisor.\n\nI believe it'll be bigger than our other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?",
+          "words": 57,
+          "errors": [
+            "filler",
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi there! we are building {IDEA_PLAIN}. I’d love for you to potentially be an advisor.\n\nI believe it'll be bigger than our other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?\n\nThanks!",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 10,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "opinion question",
+      "channel": "li_followup",
+      "step": 6,
+      "variants": [
+        {
+          "subject": "",
+          "body": "I know everyone is under more pressure than ever on AI costs, with AI agents now running around the clock.\n\nI believe choosing AI models should be more than guesswork: proven on your own work, always up to date, and cheaper without losing quality.\n\nDo you agree, {FIRST_NAME}?",
+          "words": 48,
+          "errors": []
+        }
+      ],
+      "fallback": "I know everyone is under more pressure than ever on AI costs, with AI agents now running around the clock.\n\nI believe choosing AI models should be more than guesswork: proven on your own work, always up to date, and cheaper without losing quality.\n\nDo you agree?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 11,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "advisor ask, asks for a call",
+      "channel": "li_followup",
+      "step": 7,
+      "variants": [
+        {
+          "subject": "",
+          "body": "{FIRST_NAME}, if you've been following Stripe's move to buy OpenRouter, you'll have seen how tokens are becoming the currency of the AI era. Managing them takes a combination of financial rigour and proof of what each model can really do.\n\nWe're putting together a small group of AI and finance leaders to advise us as we build. I'd love to bring you on as a potential advisor.\n\nCould we do a brief call this week or next? ",
+          "words": 77,
+          "errors": [
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi, if you've been following Stripe's move to buy OpenRouter, you'll have seen how tokens are becoming the currency of the AI era. Managing them takes a combination of financial rigour and proof of what each model can really do.\n\nWe're putting together a small group of AI and finance leaders to advise us as we build. I'd love to bring you on as a potential advisor.\n\nCould we do a brief call this week or next? ",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 12,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "opinion question, social proof",
+      "channel": "li_followup",
+      "step": 8,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, we've been getting strong early feedback from finance and AI leaders.\n\nGiven your background, I'd value your read.\n\nDoes this company match your area of expertise, or is it an exception?",
+          "words": 33,
+          "errors": []
+        }
+      ],
+      "fallback": "Hi there! we've been getting strong early feedback from finance and AI leaders.\n\nGiven your background, I'd value your read.\n\nDoes this company match your area of expertise, or is it an exception?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 13,
+      "type": "INMAIL",
+      "branch": "not_accepted",
+      "delay": "7 DAY",
+      "what": "InMail: opener, advisor ask, credibility, asks for a call",
+      "channel": "inmail",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "Yieldify / Reachdesk founder’s new AI infrastructure project",
+          "body": "Hi {FIRST_NAME}, I'm building {IDEA_PLAIN}. I’d love for you to potentially be an advisor.\n\nI believe it'll be bigger than our other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?\n\nThanks, {MY_FIRST_NAME}",
+          "words": 58,
+          "errors": [
+            "filler",
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi there! we are building {IDEA_PLAIN}. I’d love for you to potentially be an advisor.\n\nI believe it'll be bigger than our other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?\n\nThanks!",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "filler": 6,
+    "time_commitment": 10
+  }
+}

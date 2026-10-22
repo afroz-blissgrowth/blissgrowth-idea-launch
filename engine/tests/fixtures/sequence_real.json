@@ -1,0 +1,136 @@
+{
+ "nodeType": "CHECK_IS_CONNECTION",
+ "actionDelay": 0,
+ "actionDelayUnit": "HOUR",
+ "conditionalNode": {
+  "nodeType": "END",
+  "actionDelay": 1,
+  "actionDelayUnit": "DAY"
+ },
+ "unconditionalNode": {
+  "nodeType": "CONNECTION_REQUEST",
+  "actionDelay": 0,
+  "actionDelayUnit": "HOUR",
+  "payload": {
+   "messages": [
+    ""
+   ],
+   "fallbackMessage": "",
+   "toBeWithdrawnAfterDays": 14
+  },
+  "conditionalNode": {
+   "nodeType": "LIKE_POST",
+   "actionDelay": 3,
+   "actionDelayUnit": "HOUR",
+   "payload": {
+    "reactionType": "LIKE",
+    "randomReaction": false,
+    "reactBefore": "WEEK1",
+    "skipDelayIfCannotLike": true
+   },
+   "unconditionalNode": {
+    "nodeType": "MESSAGE",
+    "actionDelay": 3,
+    "actionDelayUnit": "HOUR",
+    "payload": {
+     "messages": [
+      "Hi {FIRST_NAME}, we are building an AI company that automates the compliance process so you launch products 10x faster. I'd love for you to potentially be an advisor.\n\nI believe it'll be bigger than our other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?",
+      "Hi {FIRST_NAME}, We are building an AI company that automates the compliance process so you can launch products fast. I'd love for you to potentially be an advisor.\n\nI believe it'll be bigger than our other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?"
+     ],
+     "fallbackMessage": "Hi there! we are building an AI company that automates the compliance process so you launch products 10x faster. I'd love for you to potentially be an advisor.\n\nI believe it'll be bigger than our other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?"
+    },
+    "conditionalNode": {
+     "nodeType": "END",
+     "actionDelay": 1,
+     "actionDelayUnit": "DAY"
+    },
+    "unconditionalNode": {
+     "nodeType": "MESSAGE",
+     "actionDelay": 2,
+     "actionDelayUnit": "DAY",
+     "payload": {
+      "messages": [
+       "We have successfully launched 10 companies and know how much manual processes slow down teams that want to move fast.\n\nWe strongly believe compliance should run in the background: continuous, automatic, and done before the product is ready to launch.\n\nDo you agree, {FIRST_NAME}?"
+      ],
+      "fallbackMessage": "We have successfully launched 10 companies and know how much manual processes slow down teams that want to move fast.\n\nWe strongly believe compliance should run in the background: continuous, automatic, and done before the product is ready to launch.\n\nDo you agree?"
+     },
+     "conditionalNode": {
+      "nodeType": "END",
+      "actionDelay": 1,
+      "actionDelayUnit": "DAY"
+     },
+     "unconditionalNode": {
+      "nodeType": "MESSAGE",
+      "actionDelay": 2,
+      "actionDelayUnit": "DAY",
+      "payload": {
+       "messages": [
+        "Quick update, {FIRST_NAME}. We're moving ahead with the MVP, and we have funding as well.\n\nI'd love to bring you on as a potential advisor. Could we do a 30 min call this week."
+       ],
+       "fallbackMessage": "Quick update! We're moving ahead with the MVP, and we have funding as well.\n\nI'd love to bring you on as a potential advisor. Could we do a 30 min call this week"
+      },
+      "conditionalNode": {
+       "nodeType": "END",
+       "actionDelay": 1,
+       "actionDelayUnit": "DAY"
+      },
+      "unconditionalNode": {
+       "nodeType": "MESSAGE",
+       "actionDelay": 2,
+       "actionDelayUnit": "DAY",
+       "payload": {
+        "messages": [
+         "Hi {FIRST_NAME}, we've been getting strong early feedback from operations leaders.\n\nGiven your background, I'd value your read.\n\nDoes this company match your area of expertise, or is it an exception?"
+        ],
+        "fallbackMessage": "We've been getting strong early feedback from operations leaders.\n\nGiven your background, I'd value your read.\n\nDoes this company match your area of expertise, or is it an exception?"
+       },
+       "conditionalNode": {
+        "nodeType": "END",
+        "actionDelay": 1,
+        "actionDelayUnit": "DAY"
+       },
+       "unconditionalNode": {
+        "nodeType": "END",
+        "actionDelay": 1,
+        "actionDelayUnit": "DAY"
+       },
+       "externalReference": ""
+      },
+      "externalReference": ""
+     },
+     "externalReference": ""
+    },
+    "externalReference": ""
+   },
+   "externalReference": ""
+  },
+  "unconditionalNode": {
+   "nodeType": "INMAIL",
+   "actionDelay": 3,
+   "actionDelayUnit": "DAY",
+   "payload": {
+    "messages": [
+     {
+      "subject": "Open to advising? Building an AI company",
+      "message": "Hi {FIRST_NAME}, we are building an AI company that automates the compliance process so you launch products 10x faster. I'd love for you to potentially be an advisor.\n\nI believe it'll be bigger than our other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?"
+     }
+    ],
+    "fallbackMessage": {
+     "subject": "Open to advising?",
+     "message": "Hi there! we are building an AI company that automates the compliance process so you launch products 10x faster. I'd love for you to potentially be an advisor.\n\nI believe it'll be bigger than our other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?"
+    }
+   },
+   "conditionalNode": {
+    "nodeType": "END",
+    "actionDelay": 5,
+    "actionDelayUnit": "DAY"
+   },
+   "unconditionalNode": {
+    "nodeType": "END",
+    "actionDelay": 3,
+    "actionDelayUnit": "DAY"
+   },
+   "externalReference": ""
+  }
+ }
+}

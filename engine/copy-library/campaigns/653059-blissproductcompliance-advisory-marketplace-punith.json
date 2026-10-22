@@ -1,0 +1,189 @@
+{
+  "id": 653059,
+  "name": "BlissProductCompliance - Advisory [Marketplace] [Punith]",
+  "status": "IN_PROGRESS",
+  "created": "2026-10-13",
+  "list": "BlissProductCompliance [Marketplace] Akhil [Punith]",
+  "leads": 22,
+  "idea": "BlissProductCompliance",
+  "persona": [
+    "Marketplace"
+  ],
+  "regions": [],
+  "sender": "Punith",
+  "kind": [],
+  "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: LIKE > MSG x4 | not: INMAIL))",
+  "stats": {
+    "connectionsSent": 22,
+    "connectionsAccepted": 6,
+    "connectionAcceptanceRate": 0.27272728,
+    "messagesSent": 10,
+    "totalMessageStarted": 6,
+    "totalMessageReplies": 2,
+    "messageReplyRate": 0.33333334,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 2,
+    "uniqueLeadsContacted": 22
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "Blank invite: no note, the profile does the work",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "",
+          "words": 0,
+          "errors": []
+        }
+      ],
+      "fallback": "",
+      "blank": true,
+      "withdraw_after_days": 14
+    },
+    {
+      "n": 3,
+      "type": "LIKE_POST",
+      "branch": "accepted",
+      "delay": "3 HOUR",
+      "what": "Like a recent post (warm-up)",
+      "variants": []
+    },
+    {
+      "n": 4,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "3 HOUR",
+      "what": "opener, advisor ask, credibility, asks for a call",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, we are building {IDEA_PLAIN}. I'd love for you to potentially be an advisor.\n\nI believe it'll be bigger than our other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?",
+          "words": 61,
+          "errors": [
+            "filler",
+            "time_commitment"
+          ]
+        },
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, We are building {IDEA_PLAIN}. I'd love for you to potentially be an advisor.\n\nI believe it'll be bigger than our other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?",
+          "words": 61,
+          "errors": [
+            "filler",
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi there! we are building {IDEA_PLAIN}. I'd love for you to potentially be an advisor.\n\nI believe it'll be bigger than our other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 5,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "credibility, opinion question",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "We have successfully launched 10 companies and know how much manual processes slow down teams that want to move fast.\n\nWe strongly believe compliance should run in the background: continuous, automatic, and done before the product is ready to launch.\n\nDo you agree, {FIRST_NAME}?",
+          "words": 44,
+          "errors": []
+        }
+      ],
+      "fallback": "We have successfully launched 10 companies and know how much manual processes slow down teams that want to move fast.\n\nWe strongly believe compliance should run in the background: continuous, automatic, and done before the product is ready to launch.\n\nDo you agree?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 6,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "advisor ask, asks for a call, progress update",
+      "channel": "li_followup",
+      "step": 3,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Quick update, {FIRST_NAME}. We're moving ahead with the MVP, and we have funding as well.\n\nI'd love to bring you on as a potential advisor. Could we do a 30 min call this week.",
+          "words": 34,
+          "errors": [
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Quick update! We're moving ahead with the MVP, and we have funding as well.\n\nI'd love to bring you on as a potential advisor. Could we do a 30 min call this week",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 7,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "opinion question, social proof",
+      "channel": "li_followup",
+      "step": 4,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, we've been getting strong early feedback from operations leaders.\n\nGiven your background, I'd value your read.\n\nDoes this company match your area of expertise, or is it an exception?",
+          "words": 31,
+          "errors": []
+        }
+      ],
+      "fallback": "We've been getting strong early feedback from operations leaders.\n\nGiven your background, I'd value your read.\n\nDoes this company match your area of expertise, or is it an exception?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 8,
+      "type": "INMAIL",
+      "branch": "not_accepted",
+      "delay": "3 DAY",
+      "what": "InMail: opener, advisor ask, credibility, asks for a call",
+      "channel": "inmail",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "Open to advising? Building {IDEA_PLAIN}",
+          "body": "Hi {FIRST_NAME}, we are building {IDEA_PLAIN}. I'd love for you to potentially be an advisor.\n\nI believe it'll be bigger than our other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?",
+          "words": 61,
+          "errors": [
+            "filler",
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi there! we are building {IDEA_PLAIN}. I'd love for you to potentially be an advisor.\n\nI believe it'll be bigger than our other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "filler": 6,
+    "time_commitment": 8
+  }
+}

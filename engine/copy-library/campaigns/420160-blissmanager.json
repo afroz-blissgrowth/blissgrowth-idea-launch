@@ -1,0 +1,136 @@
+{
+  "id": 420160,
+  "name": "BlissManager",
+  "status": "FINISHED",
+  "created": "2026-05-06",
+  "list": "BlissManager Leads",
+  "leads": 302,
+  "idea": "BlissManager",
+  "persona": [],
+  "regions": [],
+  "sender": "",
+  "kind": [],
+  "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: VIEW > INMAIL))",
+  "stats": {
+    "connectionsSent": 277,
+    "connectionsAccepted": 53,
+    "connectionAcceptanceRate": 0.19133574,
+    "messagesSent": 66,
+    "totalMessageStarted": 53,
+    "totalMessageReplies": 12,
+    "messageReplyRate": 0.2264151,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 3,
+    "inMailReplyRate": 0.013392857,
+    "autoTaggedInterested": 11,
+    "uniqueLeadsContacted": 277
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "Connection note",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME} - your team is at 100%+ capacity & top people are overworked answering colleagues all day. New company: each team member gets an AI twin that executes tasks & lets others query their knowledge directly. Prev: Reachdesk ($225M Series B), Yieldify (acq Publicis). Open to advisor chat?",
+          "words": 49,
+          "errors": [
+            "funding_amount"
+          ]
+        }
+      ],
+      "fallback": "Hi - your team is at 100%+ capacity & top people are overworked answering colleagues all day. New company: each team member gets an AI twin that executes tasks & lets others query their knowledge directly. Prev: Reachdesk ($225M Series B), Yieldify (acq Publicis). Open to advisor chat?",
+      "blank": false,
+      "withdraw_after_days": 25
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "accepted",
+      "delay": "1 DAY",
+      "what": "opener, advisor ask, credibility, asks for a call",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hey {FIRST_NAME} - Great to be connected! \n\nAs mentioned, I’d love to catch up and share more about the new AI digital twin startup I’ve co-founded and explore whether it could be a fit for you to join as a strategic advisor. I believe it has the potential to be bigger than any company I’ve worked on before! \n\nAre you open to a chat to discuss in more detail?",
+          "words": 69,
+          "errors": [
+            "em_dash"
+          ]
+        }
+      ],
+      "fallback": "Hey - Great to be connected! \n\nAs mentioned, I’d love to catch up and share more about the new AI digital twin startup I’ve co-founded and explore whether it could be a fit for you to join as a strategic advisor. I believe it has the potential to be bigger than any company I’ve worked on before! \n\nAre you open to a chat to discuss in more detail?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 4,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "asks for a call, close-out",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME},\n\nThought I'd try one last time as I'm very keen to chat with you about my new startup. Do you have some time you can spare to see if there's an opportunity for you to be involved?\n\nBest,\n{MY_FIRST_NAME}",
+          "words": 41,
+          "errors": []
+        }
+      ],
+      "fallback": "Hi,\n\nThought I'd try one last time as I'm very keen to chat with you about my new startup. Do you have some time you can spare to see if there's an opportunity for you to be involved?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 5,
+      "type": "VIEW_PROFILE",
+      "branch": "not_accepted",
+      "delay": "1 DAY",
+      "what": "View profile (warm-up)",
+      "variants": []
+    },
+    {
+      "n": 6,
+      "type": "INMAIL",
+      "branch": "next",
+      "delay": "1 DAY",
+      "what": "InMail: opener, advisor ask, credibility, asks for a call",
+      "channel": "inmail",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "Advisory for my AI digital twin startup",
+          "body": "Hi {FIRST_NAME} - your team is at 100%+ capacity and top people are overworked answering colleagues all day. New company: each team member gets an AI digital twin that executes tasks and lets others query their knowledge directly. Prev: Reachdesk ($225M Series B), Yieldify (acq Publicis). Open to an advisor chat?",
+          "words": 51,
+          "errors": [
+            "funding_amount"
+          ]
+        }
+      ],
+      "fallback": "Hi - your team is at 100%+ capacity and top people are overworked answering colleagues all day. New company: each team member gets an AI digital twin that executes tasks and lets others query their knowledge directly. Prev: Reachdesk ($225M Series B), Yieldify (acq Publicis). Open to an advisor chat?",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "funding_amount": 4,
+    "em_dash": 2
+  }
+}

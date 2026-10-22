@@ -1,0 +1,125 @@
+{
+  "id": 634138,
+  "name": "BlissWorldModel - Advisory (UK) - (1B/1C) - CC + M",
+  "status": "FINISHED",
+  "created": "2026-10-02",
+  "list": "BlissWorldModel - Advisory (UK) - (1B/1C) - CC + M",
+  "leads": 61,
+  "idea": "BlissWorldModel",
+  "persona": [],
+  "regions": [
+    "UK"
+  ],
+  "sender": "",
+  "kind": [],
+  "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x3 | not: end))",
+  "stats": {
+    "connectionsSent": 23,
+    "connectionsAccepted": 0,
+    "connectionAcceptanceRate": 0.0,
+    "messagesSent": 0,
+    "totalMessageStarted": 0,
+    "totalMessageReplies": 0,
+    "messageReplyRate": 0.0,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 0,
+    "uniqueLeadsContacted": 23
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "Connection note",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hey {FIRST_NAME}, I'm Akhil from Blissgrowth, a UK venture studio. Our founders built Yieldify (sold to Publicis) and Reachdesk ($225M valuation). We're working on our next company in property and given your experience, we'd love for you to come on as an advisor. Would you be interested?",
+          "words": 47,
+          "errors": []
+        }
+      ],
+      "fallback": "Hey, I'm Akhil from Blissgrowth, a UK venture studio. Our founders built Yieldify (sold to Publicis) and Reachdesk ($225M valuation). We're working on our next company in property and given your experience, we'd love for you to come on as an advisor. Would you be interested?",
+      "blank": false,
+      "withdraw_after_days": 21
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "accepted",
+      "delay": "1 DAY",
+      "what": "opener, advisor ask, credibility, asks for a call",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Thanks for connecting, {FIRST_NAME}.\n\nHaving built Yieldify and Reachdesk, our founders know how much a business depends on having the right data to hand. In property, everything you need on a piece of land sits scattered across public records, planning portals, flood maps and geospatial sources, and it's a nightmare to get hold of.\n\nWe're building {IDEA_PLAIN}.\n\nWe'd love to show you what we're thinking. And as mentioned, we're looking for advisors to help us on this journey. Open to a short call?",
+          "words": 90,
+          "errors": [
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Thanks for connecting.\n\nHaving built Yieldify and Reachdesk, our founders know how much a business depends on having the right data to hand. In property, everything you need on a piece of land sits scattered across public records, planning portals, flood maps and geospatial sources, and it's a nightmare to get hold of.\n\nWe're building {IDEA_PLAIN}.\n\nWe'd love to show you what we're thinking. And as mentioned, we're looking for advisors to help us on this journey. Open to a short call?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 4,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "opinion question",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Our founders believe this could be bigger than both their previous companies. Proptech has grown fast, but most of it has gone into property management & sales.\n\nEvaluating the land itself is still far less served. Teams still stitch data together manually from a dozen sources.\n\nFrom where you sit, would you agree?",
+          "words": 53,
+          "errors": []
+        }
+      ],
+      "fallback": "Our founders believe this could be bigger than both their previous companies. Proptech has grown fast, but most of it has gone into property management & sales.\n\nEvaluating the land itself is still far less served. Teams still stitch data together manually from a dozen sources.\n\nFrom where you sit, would you agree?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 5,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "advisor ask",
+      "channel": "li_followup",
+      "step": 3,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Seems it's a bad time, {FIRST_NAME}? We're picking our first advisors soon, and given your experience in property, we're still keen to get you on board. Let me know if you're open to it.",
+          "words": 34,
+          "errors": []
+        }
+      ],
+      "fallback": "Seems it's a bad time? We're picking our first advisors soon, and given your experience in property, we're still keen to get you on board. Let me know if you're open to it.",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "time_commitment": 2
+  }
+}

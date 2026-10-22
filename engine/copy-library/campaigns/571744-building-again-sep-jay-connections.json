@@ -1,0 +1,90 @@
+{
+  "id": 571744,
+  "name": "Building Again Sep - Jay connections",
+  "status": "FINISHED",
+  "created": "2026-08-27",
+  "list": "Building Again Sep - Jay connections (68)",
+  "leads": 68,
+  "idea": "Building Again Sep",
+  "persona": [],
+  "regions": [],
+  "sender": "Jay",
+  "kind": [],
+  "structure": "CHECK(connected: MSG x2 | new: end)",
+  "stats": {
+    "connectionsSent": 0,
+    "connectionsAccepted": 0,
+    "connectionAcceptanceRate": 0.0,
+    "messagesSent": 62,
+    "totalMessageStarted": 68,
+    "totalMessageReplies": 16,
+    "messageReplyRate": 0.23529412,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 8,
+    "uniqueLeadsContacted": 68
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "MESSAGE",
+      "branch": "already_connected",
+      "delay": "0 HOUR",
+      "what": "opener",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, hope you've been well.\n\nI wanted to personally invite you to a private event I'm hosting on 10th September at Stripe's London HQ, an invite-only evening for 100+ Second-Time/exited founders who are Building Again.\n\nWe've got 2 incredible speakers lined up:\n\nLuke Harries, Head of Growth at ElevenLabs, on what it takes to build one of the world's fastest-growing AI companies, and the early bets that paid off on their journey from $0 to $11bn.\n\nDan Lifshits, Co-Founder of Dwelly (just raised $170m from EQT and General Catalyst), on building {IDEA_PLAIN}.\n\nWould love for you to join us. You can register here: {LINK}\n\nKind Regards,\nJay",
+          "words": 120,
+          "errors": [
+            "funding_amount",
+            "link",
+            "pay_number"
+          ]
+        }
+      ],
+      "fallback": "Hi, hope you've been well.\n\nI wanted to personally invite you to a private event I'm hosting on 10th September at Stripe's London HQ, an invite-only evening for 100+ Second-Time/exited founders who are Building Again.\n\nWe've got 2 incredible speakers lined up:\n\nLuke Harries, Head of Growth at ElevenLabs, on what it takes to build one of the world's fastest-growing AI companies, and the early bets that paid off on their journey from $0 to $11bn.\n\nDan Lifshits, Co-Founder of Dwelly (just raised $170m from EQT and General Catalyst), on building {IDEA_PLAIN}.\n\nWould love for you to join us. You can register here: {LINK}\n\nKind Regards,\nJay",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "7 DAY",
+      "what": "close-out",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hey {FIRST_NAME}, following up in case you missed my last message.\n\nJust checking in to see if you're able to make the Building Again event on 10th September?\n\nWe're on our final few spots, please RSVP if you can make it: {LINK}\n\nKind Regards,\nJay",
+          "words": 45,
+          "errors": [
+            "filler"
+          ]
+        }
+      ],
+      "fallback": "Hey, following up in case you missed my last message.\n\nJust checking in to see if you're able to make the Building Again event on 10th September?\n\nWe're on our final few spots, please RSVP if you can make it: {LINK}\n\nKind Regards,\nJay",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "link": 2,
+    "pay_number": 2,
+    "funding_amount": 2,
+    "filler": 6
+  }
+}

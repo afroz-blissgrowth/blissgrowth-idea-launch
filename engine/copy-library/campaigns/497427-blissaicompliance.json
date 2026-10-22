@@ -1,0 +1,107 @@
+{
+  "id": 497427,
+  "name": "BlissAICompliance",
+  "status": "FINISHED",
+  "created": "2026-07-07",
+  "list": "AI Compliance Advisors",
+  "leads": 426,
+  "idea": "BlissAICompliance",
+  "persona": [],
+  "regions": [],
+  "sender": "",
+  "kind": [],
+  "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: MSG x2 | not: end))",
+  "stats": {
+    "connectionsSent": 422,
+    "connectionsAccepted": 28,
+    "connectionAcceptanceRate": 0.06635071,
+    "messagesSent": 20,
+    "totalMessageStarted": 21,
+    "totalMessageReplies": 3,
+    "messageReplyRate": 0.14285715,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 1,
+    "uniqueLeadsContacted": 422
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "Blank invite: no note, the profile does the work",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "",
+          "words": 0,
+          "errors": []
+        }
+      ],
+      "fallback": "",
+      "blank": true,
+      "withdraw_after_days": 25
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "accepted",
+      "delay": "3 HOUR",
+      "what": "opener, advisor ask, credibility, asks for a call",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, great to connect.\n\nGiven your experience operating in regulated markets, I'd love to speak with you about being an advisor to my new AI compliance startup that protects businesses from millions in lost brand reputation and regulatory fines.\n\nI'm confident it'll be bigger than my previous companies - Reachdesk (valued at $225M) & Yieldify (sold to Publicis). \n\nOpen to a quick chat?",
+          "words": 64,
+          "errors": [
+            "filler",
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi there, great to connect.\n\nGiven your experience operating in regulated markets, I'd love to speak with you about being an advisor to my new AI compliance startup that protects businesses from millions in lost brand reputation and regulatory fines.\n\nI'm confident it'll be bigger than my previous companies - Reachdesk (valued at $225M) & Yieldify (sold to Publicis). \n\nOpen to a quick chat?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 4,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "3 DAY",
+      "what": "advisor ask, asks for a call",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}\n\nAs mentioned, given your tenure in regulated markets, I think you'd bring a lot of value to my new AI compliance startup as a strategic advisor.\n\nAs AI is used in more external communications, compliance teams must review a growing volume of both human and AI-generated content. They cannot manually review every email, message or marketing asset, despite each one carrying potential regulatory and reputational risk.\n\nWe are building {IDEA_PLAIN}.\n\nWould you be open to a quick conversation this week or next?",
+          "words": 106,
+          "errors": [
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi there,\n\nAs mentioned, given your tenure in regulated markets, I think you'd bring a lot of value to my new AI compliance startup as a strategic advisor.\n\nAs AI is used in more external communications, compliance teams must review a growing volume of both human and AI-generated content. They cannot manually review every email, message or marketing asset, despite each one carrying potential regulatory and reputational risk.\nWe are building {IDEA_PLAIN}.\n\nWould you be open to a quick conversation this week or next?",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "filler": 2,
+    "time_commitment": 4
+  }
+}

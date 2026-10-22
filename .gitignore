@@ -1,0 +1,10 @@
+.env
+config.local.json
+runs/*
+!runs/README.md
+__pycache__/
+*.pyc
+.DS_Store
+scratch/
+scratch*
+engine/workflows/backups/

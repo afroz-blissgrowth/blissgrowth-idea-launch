@@ -1,0 +1,59 @@
+{
+  "id": 507150,
+  "name": "Meelan Just Connects",
+  "status": "FINISHED",
+  "created": "2026-07-14",
+  "list": "Meelan just connects",
+  "leads": 364,
+  "idea": "Meelan Just Connects",
+  "persona": [],
+  "regions": [],
+  "sender": "Meelan",
+  "kind": [],
+  "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: end | not: end))",
+  "stats": {
+    "connectionsSent": 286,
+    "connectionsAccepted": 177,
+    "connectionAcceptanceRate": 0.6188811,
+    "messagesSent": 0,
+    "totalMessageStarted": 0,
+    "totalMessageReplies": 5,
+    "messageReplyRate": 0.0,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 5,
+    "uniqueLeadsContacted": 286
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "Blank invite: no note, the profile does the work",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "",
+          "words": 0,
+          "errors": []
+        }
+      ],
+      "fallback": "",
+      "blank": true,
+      "withdraw_after_days": 25
+    }
+  ],
+  "rule_flags": {}
+}

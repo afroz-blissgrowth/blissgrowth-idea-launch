@@ -1,0 +1,79 @@
+{
+  "id": 634139,
+  "name": "BlissWorldModel - Advisory (UK) - (1A) - IN",
+  "status": "FINISHED",
+  "created": "2026-10-02",
+  "list": "BlissWorldModel - Advisory (UK) - (1A) - IN",
+  "leads": 58,
+  "idea": "BlissWorldModel",
+  "persona": [],
+  "regions": [
+    "UK"
+  ],
+  "sender": "",
+  "kind": [],
+  "structure": "CHECK(connected: end | new: VIEW > INMAIL)",
+  "stats": {
+    "connectionsSent": 0,
+    "connectionsAccepted": 0,
+    "connectionAcceptanceRate": 0.0,
+    "messagesSent": 0,
+    "totalMessageStarted": 0,
+    "totalMessageReplies": 0,
+    "messageReplyRate": 0.0,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 2,
+    "inMailReplyRate": 0.03448276,
+    "autoTaggedInterested": 1,
+    "uniqueLeadsContacted": 58
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "VIEW_PROFILE",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "View profile (warm-up)",
+      "variants": []
+    },
+    {
+      "n": 3,
+      "type": "INMAIL",
+      "branch": "next",
+      "delay": "3 HOUR",
+      "what": "InMail: opener, advisor ask, credibility",
+      "channel": "inmail",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "property data platform",
+          "body": "Hi {FIRST_NAME}, I built Yieldify (sold to Publicis) and Reachdesk ($225M valuation), and I'm working on my next company in the property space.\n\nWe're building {IDEA_PLAIN}. Today that data sits scattered across platforms and teams stitch it all together by hand.\n\nI believe this could be bigger than both my previous companies.\n\nGiven your property expertise, I'd love for you to potentially come on as an advisor.\n\nInterested?",
+          "words": 83,
+          "errors": []
+        },
+        {
+          "subject": "property data platform",
+          "body": "Hi {FIRST_NAME}, I built Yieldify (sold to Publicis) and Reachdesk ($225M valuation).\n\nWe're building {IDEA_PLAIN}.\n\nGiven your experience {personal_experience}, I'd love for you to potentially come on as an advisor. \n\nInterested?",
+          "words": 54,
+          "errors": [
+            "placeholder"
+          ]
+        }
+      ],
+      "fallback": "Hey! I built Yieldify (sold to Publicis) and Reachdesk ($225M valuation), and I'm working on my next company in the property space.\n\nWe're building {IDEA_PLAIN}. Today that data sits scattered across platforms and teams stitch it all together by hand.\n\nI believe this could be bigger than both my previous companies.\n\nGiven your property expertise, I'd love for you to potentially come on as an advisor.\n\nInterested?",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "placeholder": 1
+  }
+}

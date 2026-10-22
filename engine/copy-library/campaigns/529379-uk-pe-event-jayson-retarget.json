@@ -1,0 +1,111 @@
+{
+  "id": 529379,
+  "name": "UK PE Event - Jayson retarget",
+  "status": "FINISHED",
+  "created": "2026-07-30",
+  "list": "UK PE Event - Jayson retarget",
+  "leads": 567,
+  "idea": "UK PE Event",
+  "persona": [],
+  "regions": [
+    "UK"
+  ],
+  "sender": "",
+  "kind": [],
+  "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: MSG x2 | not: end))",
+  "stats": {
+    "connectionsSent": 557,
+    "connectionsAccepted": 20,
+    "connectionAcceptanceRate": 0.035906643,
+    "messagesSent": 16,
+    "totalMessageStarted": 19,
+    "totalMessageReplies": 6,
+    "messageReplyRate": 0.31578946,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 2,
+    "uniqueLeadsContacted": 557
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "Blank invite: no note, the profile does the work",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "",
+          "words": 0,
+          "errors": []
+        }
+      ],
+      "fallback": "",
+      "blank": true,
+      "withdraw_after_days": 25
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "accepted",
+      "delay": "3 HOUR",
+      "what": "opener",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FNAME}, in September we’re bringing together 100+ C-suite leaders from European scale-ups and Senior PE partners to discuss where AI is delivering strong ROI and where they are focusing next.\n\nWe’d love to offer a free pass (normally £300) and host you as our guest: {LINK}",
+          "words": 47,
+          "errors": [
+            "link",
+            "placeholder"
+          ]
+        }
+      ],
+      "fallback": "Hi, in September we’re bringing together 100+ C-suite leaders from European scale-ups and Senior PE partners to discuss where AI is delivering strong ROI and where they are focusing next.\n\nWe’d love to offer a free pass (normally £300) and host you as our guest: {LINK}",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 4,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "7 DAY",
+      "what": "message",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hey {FNAME}, hope you’re well.\n\nJust checking in to see if you’re planning to join us at the AI Transformation Forum at Google’s HQ in London on 28th September?\n\nThe room is shaping up nicely, with leadership from some of Europe's fastest-growing scaleups and Private Equity funds attending. It’s a highly curated audience of senior operators and investors actively deploying AI across their companies and portfolios. \n\nWe’d love for you to join us! Please RSVP through the event page: {LINK} and select the “Blissgrowth Invited Guest” for your complimentary pass. \n\nHope to see you there!",
+          "words": 95,
+          "errors": [
+            "filler",
+            "placeholder"
+          ]
+        }
+      ],
+      "fallback": "Hey, hope you’re well.\n\nJust checking in to see if you’re planning to join us at the AI Transformation Forum at Google’s HQ in London on 28th September?\n\nThe room is shaping up nicely, with leadership from some of Europe's fastest-growing scaleups and Private Equity funds attending. It’s a highly curated audience of senior operators and investors actively deploying AI across their companies and portfolios. \n\nWe’d love for you to join us! Please RSVP through the event page: {LINK} and select the “Blissgrowth Invited Guest” for your complimentary pass. \n\nHope to see you there!",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "link": 2,
+    "placeholder": 2,
+    "filler": 4
+  }
+}

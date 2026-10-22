@@ -1,0 +1,159 @@
+{
+  "id": 551840,
+  "name": "UK PE Event v2 - Akhil",
+  "status": "FINISHED",
+  "created": "2026-08-14",
+  "list": "UK PE Event v2 - Akhil",
+  "leads": 98,
+  "idea": "UK PE Event v2",
+  "persona": [],
+  "regions": [
+    "UK"
+  ],
+  "sender": "Akhil",
+  "kind": [],
+  "structure": "CHECK(connected: MSG x2 | new: INVITE(blank)(accepted: MSG x2 | not: end))",
+  "stats": {
+    "connectionsSent": 98,
+    "connectionsAccepted": 20,
+    "connectionAcceptanceRate": 0.20408164,
+    "messagesSent": 18,
+    "totalMessageStarted": 20,
+    "totalMessageReplies": 4,
+    "messageReplyRate": 0.2,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 4,
+    "uniqueLeadsContacted": 98
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "MESSAGE",
+      "branch": "already_connected",
+      "delay": "3 HOUR",
+      "what": "opener, credibility",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FNAME}, on 28th September we're hosting a private session at Google's London HQ, bringing together Private Equity investors and CXO’s from their growth-stage portcos. \n\nWe’ll be showcasing real use cases of where AI is delivering ROI today, and discussing where the best funds are allocating capital next. \n\nAttendees so far include investors and operators from businesses backed by KKR, Apax Partners, Goldman Sachs, General Atlantic, and LDC.\n\nWould love for you to join us! Link to sign up: {LINK}",
+          "words": 80,
+          "errors": [
+            "link",
+            "placeholder",
+            "spam_promo"
+          ]
+        }
+      ],
+      "fallback": "Hey, on 28th September we're hosting a private session at Google's London HQ, bringing together Private Equity investors and CXO’s from their growth-stage portcos. \n\nWe’ll be showcasing real use cases of where AI is delivering ROI today, and discussing where the best funds are allocating capital next. \n\nAttendees so far include investors and operators from businesses backed by KKR, Apax Partners, Goldman Sachs, General Atlantic, and LDC.\n\nWould love for you to join us! Link to sign up: {LINK}",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "7 DAY",
+      "what": "message",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hey {FNAME}, hope you’re well.\n\nJust checking in to see if you’re planning to join us at the AI Transformation Forum on 28th September?\n\nThe room is shaping up nicely, with leadership from some of Europe's fastest-growing scaleups and Private Equity funds attending. It’s a highly curated audience of senior operators and investors actively deploying AI across their companies and portfolios. \n\nPlease RSVP, if you can make it: {LINK} \nHope to see you there!",
+          "words": 74,
+          "errors": [
+            "filler",
+            "placeholder"
+          ]
+        }
+      ],
+      "fallback": "Hey, hope you’re well.\n\nJust checking in to see if you’re planning to join us at the AI Transformation Forum on 28th September?\n\nThe room is shaping up nicely, with leadership from some of Europe's fastest-growing scaleups and Private Equity funds attending. It’s a highly curated audience of senior operators and investors actively deploying AI across their companies and portfolios. \n\nPlease RSVP, if you can make it: {LINK} \nHope to see you there!",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 4,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "3 HOUR",
+      "what": "Blank invite: no note, the profile does the work",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "",
+          "words": 0,
+          "errors": []
+        }
+      ],
+      "fallback": "",
+      "blank": true,
+      "withdraw_after_days": 25
+    },
+    {
+      "n": 5,
+      "type": "MESSAGE",
+      "branch": "accepted",
+      "delay": "1 DAY",
+      "what": "credibility",
+      "channel": "li_followup",
+      "step": 3,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FNAME}, on 28th September we're hosting a private session at Google's London HQ, bringing together Private Equity investors and CXO’s from their growth-stage portcos. \n\nWe’ll be showcasing real use cases of where AI is delivering ROI today, and discussing where the best funds are allocating capital next. \n\nAttendees so far include investors and operators from businesses backed by KKR, Apax Partners, Goldman Sachs, General Atlantic, and LDC.\n\nWould love for you to join us! Link to sign up: {LINK}",
+          "words": 80,
+          "errors": [
+            "placeholder",
+            "spam_promo"
+          ]
+        }
+      ],
+      "fallback": "Hi, on 28th September we're hosting a private session at Google's London HQ, bringing together Private Equity investors and CXO’s from their growth-stage portcos. \n\nWe’ll be showcasing real use cases of where AI is delivering ROI today, and discussing where the best funds are allocating capital next. \n\nAttendees so far include investors and operators from businesses backed by KKR, Apax Partners, Goldman Sachs, General Atlantic, and LDC.\n\nWould love for you to join us! Link to sign up: {LINK}\n",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 6,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "7 DAY",
+      "what": "message",
+      "channel": "li_followup",
+      "step": 4,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hey {FNAME}, hope you’re well.\n\nJust checking in to see if you’re planning to join us at the AI Transformation Forum on 28th September?\n\nThe room is shaping up nicely, with leadership from some of Europe's fastest-growing scaleups and Private Equity funds attending. It’s a highly curated audience of senior operators and investors actively deploying AI across their companies and portfolios. \n\nPlease RSVP, if you can make it: {LINK} \nHope to see you there!",
+          "words": 74,
+          "errors": [
+            "filler",
+            "placeholder"
+          ]
+        }
+      ],
+      "fallback": "Hey, hope you’re well.\n\nJust checking in to see if you’re planning to join us at the AI Transformation Forum on 28th September?\n\nThe room is shaping up nicely, with leadership from some of Europe's fastest-growing scaleups and Private Equity funds attending. It’s a highly curated audience of senior operators and investors actively deploying AI across their companies and portfolios. \n\nPlease RSVP, if you can make it: {LINK} \nHope to see you there!",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "link": 2,
+    "spam_promo": 4,
+    "placeholder": 4,
+    "filler": 8
+  }
+}

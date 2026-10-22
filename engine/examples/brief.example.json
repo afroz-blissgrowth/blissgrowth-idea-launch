@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "idea": {
+    "name": "BlissProductCompliance",
+    "slug": "blissproductcompliance-test",
+    "one_liner": "AI-native product compliance system of action for consumer-goods wholesalers, importers and marketplaces selling across 2+ jurisdictions (EU27, UK, US).",
+    "memo_source": "Notion",
+    "memo_url": "https://app.notion.com/p/3f07b03862a78007b840d8d844a3841b",
+    "test": true
+  },
+  "icp": {
+    "summary": "Consumer Discretionary wholesalers and importers (25 to 1,000 employees) selling food, personal care, pharma, toys, electronics or household appliances into 2+ jurisdictions in the EU, UK or US, with no Chief Compliance Officer. Second segment: eCommerce marketplaces and general retailers (25 to 1,000) with high product onboarding velocity.",
+    "hard": [
+      {
+        "criterion": "Headcount 25 to 1,000",
+        "reason": "Memo SAM definition; below 25 no budget, above 1,000 they have a CCO"
+      },
+      {
+        "criterion": "HQ in the US, UK or EU",
+        "reason": "Regulatory scope of the product (GPSR, UK PRaM Act, US states)"
+      },
+      {
+        "criterion": "Sells physical consumer goods (wholesale, import, marketplace or retail)",
+        "reason": "Product compliance only applies to physical products"
+      }
+    ],
+    "soft": [
+      {
+        "criterion": "Sells into 2+ jurisdictions",
+        "reason": "Strong signal but hard to filter on; judged by the qualify step"
+      },
+      {
+        "criterion": "No dedicated compliance team",
+        "reason": "Cannot be filtered in Apollo; use as a tiering signal later"
+      },
+      {
+        "criterion": "Recent product launches or catalogue growth",
+        "reason": "Trigger, never a filter"
+      }
+    ],
+    "notes": "TEST brief drafted from the memo by the build agent, NOT agreed with the user. Do not launch from it."
+  },
+  "apollo": {
+    "base": {
+      "organization_locations": [
+        "United Kingdom",
+        "Germany",
+        "France",
+        "Netherlands",
+        "Ireland",
+        "United States"
+      ],
+      "organization_num_employees_ranges": [
+        "25,1000"
+      ],
+      "q_not_organization_keyword_tags": [
+        "software",
+        "saas"
+      ]
+    },
+    "filter_sets": [
+      {
+        "label": "wholesalers-importers",
+        "q_organization_keyword_tags": [
+          "wholesale",
+          "wholesaler",
+          "importer",
+          "distributor",
+          "import export"
+        ]
+      },
+      {
+        "label": "marketplaces-retailers",
+        "q_organization_keyword_tags": [
+          "ecommerce marketplace",
+          "online marketplace",
+          "online retailer"
+        ]
+      }
+    ]
+  },
+  "people": {
+    "T1": {
+      "titles": [
+        "Chief Operating Officer",
+        "COO",
+        "Chief Executive Officer",
+        "CEO",
+        "Owner",
+        "Founder",
+        "Managing Director",
+        "Director of Operations",
+        "Head of Operations"
+      ],
+      "seniorities": [
+        "owner",
+        "founder",
+        "c_suite",
+        "director",
+        "head"
+      ]
+    },
+    "T2": {
+      "titles": [
+        "Head of Compliance",
+        "Compliance Manager",
+        "Head of Quality",
+        "Quality Manager",
+        "Regulatory Affairs Manager",
+        "Product Compliance Manager",
+        "Head of Product",
+        "Head of Procurement"
+      ],
+      "seniorities": [
+        "head",
+        "director",
+        "manager"
+      ]
+    },
+    "include_similar_titles": true,
+    "caps": {
+      "T1": 5,
+      "T2": 3
+    }
+  },
+  "tier_rules": {
+    "T1": "Budget holder: owner, CEO, COO or operations director at a 25 to 1,000 employee wholesaler or importer. LinkedIn + email + call.",
+    "T2": "Compliance, quality, regulatory or procurement owner, or any T1-title person at a weaker-fit company. LinkedIn + email."
+  },
+  "exclusions": {
+    "domains": [],
+    "company_keywords": [
+      "software",
+      "saas"
+    ],
+    "notes": "No customer or competitor list supplied for the test."
+  },
+  "qualify": {
+    "icp_one_liner": "A consumer-goods wholesaler, importer, distributor, marketplace or general retailer (food, personal care, pharma, toys, electronics, household appliances) that buys and resells physical products across more than one country.",
+    "qualifies": [
+      "Wholesalers, importers, exporters and distributors of consumer products (food, non-perishable food, personal care, pharmaceuticals, toys, electronics, household appliances)",
+      "eCommerce marketplaces and general retailers with a broad product range",
+      "Brands or sellers that import product from overseas suppliers for resale"
+    ],
+    "disqualifies": [
+      "Software, SaaS, consulting, agencies, banks or other service businesses",
+      "Pure manufacturers that only sell their own single product line with no resale",
+      "Industrial, B2B-only raw material or commodity traders (chemicals, metals, fuel, agriculture inputs)",
+      "Single-location restaurants, cafes or local shops",
+      "Non-profits, government bodies, universities"
+    ],
+    "countries": [
+      "United States",
+      "United Kingdom",
+      "Germany",
+      "France",
+      "Netherlands",
+      "Ireland"
+    ],
+    "lean_direction": "lean inclusive: keep borderline resellers with lower confidence",
+    "thin_evidence_lean": "toward qualifying"
+  },
+  "decisions": [
+    {
+      "topic": "Countries",
+      "decision": "US, UK, DE, FR, NL, IE for the test (memo says US, UK, EU27)",
+      "type": "hard"
+    },
+    {
+      "topic": "Industry",
+      "decision": "Not filtered in Apollo (self-reported labels are unreliable); keywords wide, AI qualify decides fit",
+      "type": "soft"
+    },
+    {
+      "topic": "Triggers",
+      "decision": "None used as filters",
+      "type": "soft"
+    }
+  ],
+  "_comment": "Example brief (the TEST brief used to validate the engine). Copy it, change idea.*, and edit the rest with the user in /iv-brief. Apollo filter keys use Apollo's own names; lib/brief.py lists the allowed ones.",
+  "signals": [
+    {
+      "name": "engineers",
+      "source_field": "engineering",
+      "op": "lte",
+      "value": 200,
+      "strength": "hard",
+      "note": "Many engineers means they build their own tooling, no ERP problem (Zalando, about 2,000 engineers, is out)"
+    },
+    {
+      "name": "sales_share",
+      "source_field": "sales_pct",
+      "op": "gte",
+      "value": 30,
+      "strength": "soft",
+      "note": "Mostly sales and operations staff fits (Rubix DACH)"
+    },
+    {
+      "name": "uses_sap",
+      "kind": "text",
+      "description": "Runs SAP or another ERP (website, technologies list)",
+      "strength": "soft"
+    }
+  ],
+  "pilot": {
+    "accounts_size": 15,
+    "people_size": 15
+  }
+}

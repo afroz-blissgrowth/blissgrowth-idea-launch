@@ -1,0 +1,584 @@
+{
+  "_comment": "Defaults for the Idea Launch engine. Edit here, not in code. Personal secrets go in config.local.json (gitignored).",
+  "people_caps": {
+    "T1": 5,
+    "T2": 3
+  },
+  "targets": {
+    "verified_emails_min": 2000,
+    "verified_emails_max": 3000,
+    "linkedin_active_min": 800
+  },
+  "volume_assumptions": {
+    "_comment": "Used to size how many accounts to pull. Replace with real rates once a run has measured them.",
+    "qualify_pass_rate": 0.45,
+    "people_found_rate": 0.8,
+    "avg_people_per_account": 3.5,
+    "email_valid_rate": 0.6,
+    "linkedin_active_rate": 0.55
+  },
+  "apollo": {
+    "base_url": "https://api.apollo.io/api/v1",
+    "per_page": 100,
+    "max_pages": 500,
+    "display_cap": 50000,
+    "min_interval_s": 0.35,
+    "minute_floor": 5,
+    "max_retries": 6,
+    "timeout_s": 60,
+    "credits_per_org_search_page": 1,
+    "credits_per_people_search_page": 0,
+    "hour_floor": 40,
+    "credits_per_bulk_match_person": 1,
+    "bulk_match_batch": 10
+  },
+  "sheet": {
+    "append_chunk": 500,
+    "upsert_chunk": 500,
+    "bridge_path": "webhook/idea-launch-sheets",
+    "timeout_s": 120,
+    "share": {
+      "_comment": "Who can open a new idea sheet. domain: anyone in that Google Workspace domain gets the role. Add people in config.local.json (sheet.share.emails) or leave empty. Needs the n8n Google credential to have Drive permission for the file (drive.file covers files it created).",
+      "auto_on_create": true,
+      "domain": "blissgrowth.com",
+      "emails": [],
+      "role": "writer"
+    }
+  },
+  "qualify": {
+    "batch_size": 25,
+    "sample_size": 10,
+    "clean_rounds_needed": 2,
+    "min_confidence": 0.6,
+    "row_deadline_s": 120,
+    "fetch_concurrency": 12,
+    "fetch_timeout_s": 15,
+    "evidence_chars": 3000,
+    "batch_stale_minutes": 45
+  },
+  "run": {
+    "lists_dir": "runs",
+    "max_error_rate_for_ready": 0.05,
+    "people_stage_max_error_rate": 0.05,
+    "estimates": {
+      "_comment": "Rough cost guesses shown by iv-run (never a limit, never a gate). Replace with measured numbers.",
+      "apify_usd_per_profile": 0.003,
+      "millionverifier_usd_per_email": 0.0005,
+      "people_search_seconds_per_company": 0.4
+    },
+    "drive_max_steps": 30
+  },
+  "people": {
+    "_comment": "Phase 2 people search. Caps (people_caps above, brief.people.caps overrides) are applied after tiering.",
+    "per_page": 100,
+    "max_pages_per_org": 3,
+    "tier_pool_per_company": 10,
+    "seniority_filter": "union",
+    "workers_note": "search is sequential on purpose: 200 requests per minute and 6,000 per hour are shared by the whole key"
+  },
+  "tier": {
+    "batch_size": 30,
+    "sample_size": 10,
+    "clean_rounds_needed": 2,
+    "batch_stale_minutes": 45
+  },
+  "enrich": {
+    "batch_size": 10,
+    "reveal_personal_emails": false,
+    "placeholder_email_patterns": [
+      "email_not_unlocked@",
+      "@domain.com"
+    ]
+  },
+  "verify": {
+    "mv_base_url": "https://api.millionverifier.com/api/v3",
+    "mv_timeout_s": 30,
+    "mv_api_timeout_param_s": 20,
+    "concurrency": 5,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+    "max_retries": 3,
+    "pass_results": [
+      "ok"
+    ],
+    "exclude_role_addresses": true,
+    "catch_all_results": [
+      "catch_all"
+    ],
+    "role_local_parts": [
+      "info",
+      "contact",
+      "hello",
+      "hi",
+      "sales",
+      "team",
+      "support",
+      "admin",
+      "noreply",
+      "no-reply",
+      "office",
+      "marketing",
+      "enquiries",
+      "enquiry",
+      "mail",
+      "service",
+      "hr",
+      "jobs",
+      "accounts",
+      "billing",
+      "press"
+    ],
+    "spot_check_n": 20
+  },
+  "activity": {
+    "_comment": "Contract with the n8n LinkedIn Activity Checker. Tabs live in the checker's own spreadsheet unless sheet_id is overridden.",
+    "workflow_id": "NrweLKOV7gMu54bD",
+    "webhook_path": "afroz-activity-v21-8d4f2b61c7",
+    "sheet_id": "1fuMaeXV-g-dy5nQ5iG1BPmI5eLYjfeuCNujc0xYjdJ4",
+    "poll_interval_s": 30,
+    "timeout_min": 120,
+    "upsert_chunk": 200,
+    "unknown_policy": "exclude",
+    "active_values": [
+      "Active"
+    ],
+    "inactive_values": [
+      "Inactive",
+      "Shell"
+    ]
+  },
+  "phones": {
+    "_comment": "Apollo delivers phones asynchronously to an n8n webhook. T1 only.",
+    "webhook_workflow_name": "Idea Launch | Apollo Phone Webhook",
+    "data_table_name": "IL Phone Results",
+    "poll_interval_s": 20,
+    "timeout_min": 15,
+    "batch_size": 10,
+    "credits_per_mobile": 8,
+    "skip_if_apollo_says_no": true,
+    "_secret_note": "webhook_path, data_table_id and workflow_id are written to config.local.json by workflows/deploy_phone_webhook.py",
+    "phones_in_enrich": false,
+    "_phones_in_enrich_todo": "TODO (awaits Afroz's decision on REVIEW-PHASE2 issue A): when true, T1 chunks would be sent in the enrich call with reveal_phone_number + webhook_url so the enrichment credit is not paid twice. NOT implemented yet, the flag is read by nothing except the iv-run notice. Leave false."
+  },
+  "quality": {
+    "max_per_domain_note": "domain concentration limit = T1 cap + T2 cap (we want several people per company by design)",
+    "bad_title_patterns": [
+      "intern",
+      "internship",
+      "assistant",
+      "coordinator",
+      "student",
+      "part.time",
+      "retired",
+      "trainee"
+    ],
+    "fake_names": [
+      "admin",
+      "info",
+      "contact",
+      "test",
+      "user",
+      "n/a",
+      "na"
+    ],
+    "grade_bands": [
+      [
+        93,
+        "A+"
+      ],
+      [
+        90,
+        "A"
+      ],
+      [
+        80,
+        "B"
+      ],
+      [
+        70,
+        "C"
+      ],
+      [
+        60,
+        "D"
+      ],
+      [
+        0,
+        "F"
+      ]
+    ],
+    "dim_weights": {
+      "email_verification": 2,
+      "duplicate_emails": 1,
+      "domain_concentration": 1,
+      "title_relevance": 1.5,
+      "bad_titles": 1,
+      "catch_all_density": 1,
+      "icp_fit": 2,
+      "name_quality": 1
+    }
+  },
+  "copy": {
+    "_comment": "Phase 3 copy rules and drafting settings. Lists of banned words live in lib/copyrules.py (port of the coldoutboundskills spam-word-checker); extend the Blissgrowth lists here.",
+    "followup_steps": 3,
+    "variants_min": 3,
+    "variants_max": 4,
+    "inmail_subject_target": 60,
+    "word_targets": {
+      "li_invite": [
+        0,
+        60
+      ],
+      "li_followup": [
+        25,
+        95
+      ],
+      "inmail": [
+        45,
+        150
+      ]
+    },
+    "caps_allowed": [
+      "AI",
+      "SOC",
+      "ISO",
+      "GPSR",
+      "HS",
+      "US",
+      "UK",
+      "EU",
+      "ERP",
+      "SKU",
+      "SKUS",
+      "FDA",
+      "CEO",
+      "COO",
+      "CTO",
+      "CFO",
+      "CIO",
+      "CISO",
+      "MVP",
+      "SLM",
+      "API",
+      "MSSP"
+    ],
+    "ignore_single_word_flags": false,
+    "internal_idea_names": [
+      "BlissSLM",
+      "BlissProductCompliance",
+      "BlissWholesaler",
+      "BlissPentesting",
+      "BlissWorldModel",
+      "BlissCarrier",
+      "BlissTwin",
+      "BlissManager",
+      "BlissRisk",
+      "BlissBPO",
+      "BlissAISecurity",
+      "BlissAICompliance"
+    ],
+    "voices": {
+      "founder": "LinkedIn invite and follow-ups are written as Jay or Meelan (the founders), first person, plain and human. The same text works for either, use {MY_FIRST_NAME} only to sign off. They know the space, they are asking an expert for advice, not selling. Track record allowed: Yieldify (Google backed, sold to Publicis) and Reachdesk (valued at $225M), only if the idea page allows it.",
+      "associate": "InMail is written as an associate in the founders' office (an employee, not a founder): 'I work with Jay and Meelan, the founders of Yieldify and Reachdesk, on a new project'. Third person about the founders, first person about the ask. Subject is short and plain."
+    },
+    "frameworks": {
+      "ask_before_pitch": "Ask permission or advice before any description of the idea. The first message asks one question the reader can answer in a few words.",
+      "advisor_ask": "We are exploring this space and you know it. Two questions, your view, no product pitch, no demo, no price.",
+      "permission_opener": "Open with a line that makes a reply easy: 'Would it be ok to ask you something about X?' (ColdIQ idea, own words).",
+      "confirmation_cta": "End with a yes/no or short-answer question: 'Is this still how it works at your company?' (coldoutboundskills campaign-copywriting).",
+      "length": "50 to 90 words for follow-ups, standalone (each follow-up works without the previous one), rotate the angle per follow-up: problem, expertise check, opinion question.",
+      "never": "no links in a first message, no 'quick chat', no 'just checking in', no internal idea names (describe the idea in plain words), no time commitment, no pay numbers, always spell Blissgrowth, no em dashes."
+    }
+  },
+  "idea_page": {
+    "_comment": "Reply-agent idea page in the Blissgrowth Notion workspace. Created with the Notion MCP tools of the person running Claude Code (no Notion API key). The n8n workflow 'HeyReach Reply Agent | 4. Idea Sync' copies the pages into the n8n data table HRA Ideas.",
+    "database_id": "e895ef6bf69d41cf9faf11e1cbbdee4f",
+    "data_source": "collection://3d6bd3e8-f4a2-4ea6-a266-4ce299131652",
+    "properties": [
+      "Idea",
+      "Campaign prefix",
+      "Calendly (Jay)",
+      "Calendly (Meelan)",
+      "Pitch",
+      "Who we're targeting",
+      "Idea specifics"
+    ],
+    "max_property_chars": 2000,
+    "n8n_ideas_table_id": "oLuSmp3dlcVzRFsQ",
+    "n8n_sync_workflow_id": "TwQx8DHxkrSW98g6",
+    "n8n_sync_webhook_path": "hra-idea-sync-run"
+  },
+  "launch": {
+    "_comment": "Phase 3 /iv-launch (HeyReach only, v1). NOTHING is ever started. Names: <Idea> - <Tier> - <Region> - <YYYY-MM-DD> (the Idea part is the Campaign prefix, which the reply agent uses to match a campaign to its idea page, so it must come first).",
+    "name_template": "{prefix} - {tier} - {region} - {date}",
+    "inmail_name_template": "{prefix} - {tier} - {region} - {date} - InMail",
+    "group_by": [
+      "tier",
+      "region"
+    ],
+    "regions": {
+      "USA": [
+        "United States",
+        "USA",
+        "US"
+      ],
+      "UK": [
+        "United Kingdom",
+        "UK",
+        "England",
+        "Scotland",
+        "Wales",
+        "Northern Ireland"
+      ],
+      "EU": "*"
+    },
+    "inmail_tiers": [
+      "T1"
+    ],
+    "senders": {
+      "_comment": "HeyReach LinkedIn account ids (python3 -I bin/launch_run.py accounts lists them read only). Put the real ids in config.local.json. null = not set, the launch plan says so and execution is refused until set.",
+      "founders": {
+        "jay": null,
+        "meelan": null
+      },
+      "associate": null
+    },
+    "campaign_flags": {
+      "excludeContactedFromOtherCampaigns": true,
+      "excludeHasOtherAccConversations": true,
+      "excludeContactedFromSenderInOtherCampaign": true,
+      "excludeFromLeadBlacklist": true,
+      "excludeFromCompanyBlacklist": true
+    },
+    "schedule": null,
+    "withdraw_invite_after_days": 14,
+    "warmup_before_messages": "LIKE_POST",
+    "message_delays": [
+      [
+        3,
+        "HOUR"
+      ],
+      [
+        2,
+        "DAY"
+      ],
+      [
+        3,
+        "DAY"
+      ],
+      [
+        4,
+        "DAY"
+      ],
+      [
+        5,
+        "DAY"
+      ]
+    ],
+    "lead_batch": 100,
+    "mansi_email": "",
+    "_mansi_note": "Set launch.mansi_email in config.local.json (Mansi's Google account). Unknown now, so /iv-launch asks the user. Her call sheet is a SEPARATE Google Sheet with only her T1 call list, so she does not need the whole idea sheet.",
+    "callsheet": {
+      "tab": "Calls",
+      "title_template": "{idea} - Call sheet (Mansi) - {date}",
+      "share_role": "writer",
+      "share_domain": false,
+      "extra_columns": [
+        "call_status",
+        "call_outcome",
+        "called_at",
+        "next_step",
+        "call_notes_mansi"
+      ]
+    },
+    "max_name_len": 120,
+    "_max_name_len_note": "The HeyReach create_campaign tool docs say a campaign name is 1 to 50 characters, but 28 of the 79 existing campaigns have longer names (made in the app). If campaign/Create rejects a long name on the first real launch, set this to 50 and shorten name_template (for example the date as YYMMDD).",
+    "prefix_must_start_with": "bliss",
+    "_prefix_note": "The reply agent (n8n 'HeyReach Reply Agent | 1. Intake & Draft', node Match Idea) ignores every campaign whose name does not start with 'bliss' (case-insensitive), then picks the HRA Ideas row with the longest matching campaign_prefix. The plan and the idea page refuse a prefix that breaks this."
+  },
+  "signals": {
+    "_comment": "Company signals (headcounts) from Apollo organization enrichment, by domain. Costs 1 credit per matched company (POST organizations/bulk_enrich, 10 domains per call). The brief's signals list says which signals matter and the thresholds; this block is only plumbing.",
+    "batch": 10,
+    "cache_days": 90,
+    "shared_cache": true,
+    "missing_department_is_zero": true,
+    "credits_per_matched_org": 1,
+    "fixed_departments": [
+      "engineering",
+      "operations",
+      "sales",
+      "information_technology",
+      "finance",
+      "marketing",
+      "human_resources"
+    ],
+    "known_departments": [
+      "engineering",
+      "operations",
+      "support",
+      "marketing",
+      "human_resources",
+      "sales",
+      "finance",
+      "consulting",
+      "legal",
+      "arts_and_design",
+      "accounting",
+      "business_development",
+      "information_technology",
+      "education",
+      "media_and_commmunication",
+      "product_management",
+      "entrepreneurship",
+      "data_science",
+      "administrative"
+    ],
+    "max_technologies": 60
+  },
+  "pilot": {
+    "_comment": "Pilot gates. A small pilot (10 to 20) is pulled, enriched and qualified, then the engine STOPS for a human review before the full account pull. The same for people before enrichment credits are spent. Approvals are recorded in the run folder (pilot/).",
+    "enabled": true,
+    "accounts_size": 15,
+    "people_size": 15,
+    "min_size": 10,
+    "max_size": 20,
+    "approve_words": [
+      "approve",
+      "approved",
+      "yes",
+      "y",
+      "keep",
+      "good",
+      "fit",
+      "ok"
+    ],
+    "reject_words": [
+      "reject",
+      "rejected",
+      "no",
+      "n",
+      "drop",
+      "bad",
+      "not fit",
+      "nofit"
+    ]
+  },
+  "exclusions": {
+    "_comment": "Employment exclusions: people who are on garden leave, retired, on a career break, whose current role has ended, between roles or Open to Work get channel none and an exclusion_reason (rows are never deleted). Applied after enrichment and activity from Apollo employment data and the LinkedIn checker output. A keyword is a plain phrase (matched on word boundaries, case-insensitive) or 're:<regex>'. Edit the lists here. 'fields' say where a group is checked. Bare words such as seeking, looking for, former, ex- cause false positives on working people (for example 'ex-Google' founders), so the defaults use narrower phrases, and `former` / `ex-` are checked only at the START of the title or the checker's current_title (a headline such as 'Ex-Google | CEO at Acme' is a working person). 'in transition' only at the start of a field or in 'currently / executive / professional in transition' ('helping companies in transition' is not excluded). Put the bare word in the list, or add 'headline' to the fields, if you want it.",
+    "enabled": true,
+    "use_apollo_employment": true,
+    "use_linkedin_checker": true,
+    "groups": {
+      "garden_leave": {
+        "fields": [
+          "headline",
+          "title",
+          "current_title"
+        ],
+        "keywords": [
+          "garden leave",
+          "gardening leave"
+        ]
+      },
+      "retired": {
+        "fields": [
+          "headline",
+          "title",
+          "current_title"
+        ],
+        "keywords": [
+          "retired",
+          "retiree",
+          "in retirement",
+          "enjoying retirement",
+          "semi-retired"
+        ]
+      },
+      "career_break": {
+        "fields": [
+          "headline",
+          "title",
+          "current_title"
+        ],
+        "keywords": [
+          "career break",
+          "sabbatical",
+          "taking time off",
+          "taking a break"
+        ]
+      },
+      "open_to_work": {
+        "fields": [
+          "headline",
+          "title",
+          "current_title"
+        ],
+        "keywords": [
+          "open to work",
+          "#opentowork",
+          "open for work",
+          "open to new opportunities",
+          "open to opportunities"
+        ]
+      },
+      "between_roles": {
+        "fields": [
+          "headline",
+          "title",
+          "current_title"
+        ],
+        "keywords": [
+          "between roles",
+          "between jobs",
+          "between positions",
+          "re:^in transition\\b",
+          "currently in transition",
+          "executive in transition",
+          "professional in transition",
+          "unemployed"
+        ]
+      },
+      "seeking": {
+        "fields": [
+          "headline",
+          "title",
+          "current_title"
+        ],
+        "keywords": [
+          "seeking new",
+          "seeking my next",
+          "seeking a new",
+          "seeking opportunities",
+          "seeking employment",
+          "seeking work",
+          "re:seeking (a |my |new )?(role|position|job|opportunit)"
+        ]
+      },
+      "looking_for": {
+        "fields": [
+          "headline",
+          "title",
+          "current_title"
+        ],
+        "keywords": [
+          "re:looking for (a |my |the |my next |a new |new )?(next |new )?(role|job|position|opportunit|work|challenge|chapter)",
+          "looking for my next",
+          "looking for new opportunities"
+        ]
+      },
+      "former": {
+        "fields": [
+          "title",
+          "current_title"
+        ],
+        "keywords": [
+          "re:^former\\b",
+          "re:^ex-\\w"
+        ]
+      }
+    },
+    "apollo_no_current_position": true,
+    "apollo_target_role_ended": true,
+    "linkedin_no_current_position": true,
+    "employment_history_max_entries": 8
+  }
+}

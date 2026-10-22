@@ -1,0 +1,108 @@
+{
+  "id": 521786,
+  "name": "BlissTwin Advisor Outreach",
+  "status": "FINISHED",
+  "created": "2026-07-24",
+  "list": "BlissTwin Advisor Outreach 326",
+  "leads": 325,
+  "idea": "BlissTwin",
+  "persona": [],
+  "regions": [],
+  "sender": "",
+  "kind": [],
+  "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: MSG x2 | not: end))",
+  "stats": {
+    "connectionsSent": 321,
+    "connectionsAccepted": 74,
+    "connectionAcceptanceRate": 0.23052959,
+    "messagesSent": 59,
+    "totalMessageStarted": 71,
+    "totalMessageReplies": 19,
+    "messageReplyRate": 0.26760563,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 16,
+    "uniqueLeadsContacted": 321
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "Blank invite: no note, the profile does the work",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "",
+          "words": 0,
+          "errors": []
+        }
+      ],
+      "fallback": "",
+      "blank": true,
+      "withdraw_after_days": 25
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "accepted",
+      "delay": "3 HOUR",
+      "what": "opener, advisor ask, credibility, asks for a call",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, great to connect.\n\nGiven your experience leading and scaling B2B sales teams, I'd love to speak to you about advising my new AI sales-enablement startup. It puts an always-on AI expert on your reps' live sales calls, so every rep can sell like your best one.\n\nI'm confident it'll be bigger than my previous companies, Reachdesk (valued at $225M) and Yieldify (sold to Publicis).\n\nOpen to a quick chat?",
+          "words": 71,
+          "errors": [
+            "filler",
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi there, great to connect.\n\nGiven your experience leading and scaling B2B sales teams, I'd love to speak to you about advising my new AI sales-enablement startup. It puts an always-on AI expert on your reps' live sales calls, so every rep can sell like your best one.\n\nI'm confident it'll be bigger than my previous companies, Reachdesk (valued at $225M) and Yieldify (sold to Publicis).\n\nOpen to a quick chat?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 4,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "3 DAY",
+      "what": "advisor ask, asks for a call",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, following up as I think your experience building high-performing sales teams could be particularly valuable here.\n\nEven the strongest reps struggle to recall every product detail, competitor difference, and objection response in the moment. We're building {IDEA_PLAIN}.\n\nWe're speaking with a small group of experienced sales leaders to help shape the product and advise us as we build.\n\nWould you be open to a quick chat this week or next?",
+          "words": 91,
+          "errors": [
+            "filler",
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi there, following up as I think your experience building high-performing sales teams could be particularly valuable here.\n\nEven the strongest reps struggle to recall every product detail, competitor difference, and objection response in the moment. We're building {IDEA_PLAIN}.\n\nWe're speaking with a small group of experienced sales leaders to help shape the product and advise us as we build.\n\nWould you be open to a quick chat this week or next?",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "filler": 6,
+    "time_commitment": 4
+  }
+}

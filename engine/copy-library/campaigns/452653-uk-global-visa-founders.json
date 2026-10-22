@@ -1,0 +1,105 @@
+{
+  "id": 452653,
+  "name": "UK Global Visa Founders",
+  "status": "FINISHED",
+  "created": "2026-06-02",
+  "list": "UK Global Visa Founders",
+  "leads": 35,
+  "idea": "UK Global Visa Founders",
+  "persona": [],
+  "regions": [
+    "UK"
+  ],
+  "sender": "",
+  "kind": [],
+  "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: end))",
+  "stats": {
+    "connectionsSent": 32,
+    "connectionsAccepted": 16,
+    "connectionAcceptanceRate": 0.5,
+    "messagesSent": 9,
+    "totalMessageStarted": 16,
+    "totalMessageReplies": 12,
+    "messageReplyRate": 0.75,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 11,
+    "uniqueLeadsContacted": 32
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "Connection note",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME} - your founder experience and Global Talent status caught our eye. Our Managing Partner would love to chat about a co-founder role at our new (validated and funded) AI B2B startup. We believe it’ll surpass our previous ventures, Reachdesk ($225M val) & Yieldify (acq. by Publicis).",
+          "words": 48,
+          "errors": []
+        }
+      ],
+      "fallback": "Hi - your founder experience and Global Talent status caught our eye. Our Managing Partner would love to chat about a co-founder role at our new (validated and funded) AI B2B startup. We believe it’ll surpass our previous ventures, Reachdesk ($225M val) & Yieldify (acq. by Publicis).\n",
+      "blank": false,
+      "withdraw_after_days": 25
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "accepted",
+      "delay": "1 DAY",
+      "what": "opener, credibility, opinion question, asks for a call",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME} - great to connect. \n\nFor context, we’re co-building {IDEA_PLAIN}. We’ve built 10 companies so far that have been backed by Global Tier 1 investors like Google Ventures, Softbank, a16z, and Sequoia.  \n\nWe’re looking for an exceptional operator with prior founder experience who’s looking to build again. Your profile stood out in our search, so I wanted to connect you to our Managing Partner, Jay for an intro call. \n\nLet me know if you’re interested, and I’ll set it up. \n\nBest,\nAkhil",
+          "words": 93,
+          "errors": []
+        }
+      ],
+      "fallback": "Hi - great to connect. \n\nFor context, we’re co-building {IDEA_PLAIN}. We’ve built 10 companies so far that have been backed by Global Tier 1 investors like Google Ventures, Softbank, a16z, and Sequoia.  \n\nWe’re looking for an exceptional operator with prior founder experience who’s looking to build again. Your profile stood out in our search, so I wanted to connect you to our Managing Partner, Jay for an intro call. \n\nLet me know if you’re interested, and I’ll set it up. \n\nBest,\nAkhil",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 4,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "3 DAY",
+      "what": "close-out",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, hope you’re well. \n\nFollowing up on my last message, in case you missed it. \n\nWe’re speaking to a select few founders to co-build our next venture with, and we’d love to learn more about what’s next for you.\n\nLet me know if you’re interested in hearing more about the idea and would like to speak with Jay. \n\nBest, \nAkhil",
+          "words": 61,
+          "errors": [
+            "filler"
+          ]
+        }
+      ],
+      "fallback": "Hi, hope you’re well. \n\nFollowing up on my last message, in case you missed it. \n\nWe’re speaking to a select few founders to co-build our next venture with, and we’d love to learn more about what’s next for you.\n\nLet me know if you’re interested in hearing more about the idea and would like to speak with Jay. \n\nBest, \nAkhil ",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "filler": 2
+  }
+}

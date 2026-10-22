@@ -1,0 +1,112 @@
+{
+  "id": 571858,
+  "name": "Building Again Sep - Akhil non-acceptors",
+  "status": "PAUSED",
+  "created": "2026-08-27",
+  "list": "Building Again Sep - Akhil non-acceptors",
+  "leads": 380,
+  "idea": "Building Again Sep",
+  "persona": [],
+  "regions": [],
+  "sender": "Akhil",
+  "kind": [],
+  "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: end))",
+  "stats": {
+    "connectionsSent": 350,
+    "connectionsAccepted": 75,
+    "connectionAcceptanceRate": 0.21428572,
+    "messagesSent": 29,
+    "totalMessageStarted": 75,
+    "totalMessageReplies": 22,
+    "messageReplyRate": 0.29333332,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 17,
+    "uniqueLeadsContacted": 350
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "Connection note",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {fname} - we're hosting an invite-only event for 100+ second-time founders this Thursday with Luke Harries, Head of Growth at ElevenLabs.\n\nHe'll walk through the experiments that took them from 0 to their $11bn valuation today - & what worked early on. Link to join: {LINK}",
+          "words": 47,
+          "errors": [
+            "link",
+            "placeholder"
+          ]
+        }
+      ],
+      "fallback": "Hi - we're hosting an invite-only event this Thursday for 100+ second-time founders with Luke Harries, Head of Growth at ElevenLabs.\n\nHe'll walk through the experiments that took them from 0 to their $11bn valuation today - and what worked early on. Link to join: {LINK}",
+      "blank": false,
+      "withdraw_after_days": 25
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "accepted",
+      "delay": "3 DAY",
+      "what": "opener, close-out",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {fname} - great to connect.\n\nWanted to see if you're planning to join us at Building Again on 10th September?\n\nThe last edition in May at Google's HQ was nearly 2x oversubscribed. This one is shaping up just as strongly, with Luke Harries, Head of Growth at ElevenLabs, speaking to a highly curated room of exited and second-time founders now building again.\n\nWould be great to have you join us: {LINK}",
+          "words": 72,
+          "errors": [
+            "link",
+            "placeholder"
+          ]
+        }
+      ],
+      "fallback": "Hi - great to connect.\n\nWanted to see if you're planning to join us at Building Again on 10th September?\n\nThe last edition in May at Google's HQ was nearly 2x oversubscribed. This one is shaping up just as strongly, with Luke Harries, Head of Growth at ElevenLabs, speaking to a highly curated room of exited and second-time founders now building again.\n\nWould be great to have you join us: {LINK}",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 4,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "3 DAY",
+      "what": "credibility",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {fname}, hope you're well.\n\nThought I'd check if you've had a chance to sign up for Building Again?\n\nAs you know, 65% of Europe's unicorns have been built by second-time founders. This is that room.\n\nPrevious edition speakers and attendees have included unicorn founders from Paddle, MuleSoft and Starling Bank, and the guest list is on track to be oversubscribed again.\n\nResharing the link to sign up: {LINK}\n\nHope to see you there!",
+          "words": 74,
+          "errors": [
+            "filler",
+            "placeholder"
+          ]
+        }
+      ],
+      "fallback": "Hi, hope you're well.\n\nThought I'd check if you've had a chance to sign up for Building Again?\n\nAs you know, 65% of Europe's unicorns have been built by second-time founders. This is that room.\n\nPrevious edition speakers and attendees have included unicorn founders from Paddle, MuleSoft and Starling Bank, and the guest list is on track to be oversubscribed again.\n\nResharing the link to sign up: {LINK}\n\nHope to see you there!",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "link": 4,
+    "placeholder": 3,
+    "filler": 2
+  }
+}

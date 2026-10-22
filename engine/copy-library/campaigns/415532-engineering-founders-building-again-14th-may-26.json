@@ -1,0 +1,145 @@
+{
+  "id": 415532,
+  "name": "Engineering Founders [Building Again - 14th May 26]",
+  "status": "PAUSED",
+  "created": "2026-05-01",
+  "list": "Engineering Founders [Building Again - 14th May 26]",
+  "leads": 363,
+  "idea": "Engineering Founders [Building Again",
+  "persona": [
+    "Building Again - 14th May 26"
+  ],
+  "regions": [],
+  "sender": "",
+  "kind": [],
+  "structure": "CHECK(connected: MSG x1 | new: VIEW > INVITE(note x1)(accepted: MSG x1 | not: LIKE > INMAIL))",
+  "stats": {
+    "connectionsSent": 301,
+    "connectionsAccepted": 105,
+    "connectionAcceptanceRate": 0.3488372,
+    "messagesSent": 37,
+    "totalMessageStarted": 112,
+    "totalMessageReplies": 45,
+    "messageReplyRate": 0.4017857,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 6,
+    "inMailReplyRate": 0.039473683,
+    "autoTaggedInterested": 28,
+    "uniqueLeadsContacted": 309
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "MESSAGE",
+      "branch": "already_connected",
+      "delay": "0 HOUR",
+      "what": "opener, progress update, close-out",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME} - I'm hosting an event for 100+ second-time founders at Google's London HQ on 14th May with Gus Martins from DeepMind. Discussing the question on every founder's mind: how do you build a moat when the underlying models keep evolving faster than you? \n\nFor context, our last event featured the founders of MuleSoft ($6bn exit to Salesforce), Paddle ($2bn exit), and attendees included the founders of Wayve, Carwow, Funding Circle, ComplyAdvantage, and Bloom & Wild.\n\nWould be great to see you there, if you can make it. {LINK}\n\nBest, \n{MY_FIRST_NAME}",
+          "words": 92,
+          "errors": [
+            "link"
+          ]
+        }
+      ],
+      "fallback": "Hi - I'm hosting an event for 100+ second-time founders at Google's London HQ on 14th May with Gus Martins from DeepMind. Discussing the question on every founder's mind: how do you build a moat when the underlying models keep evolving faster than you? \n\nFor context, our last event featured the founders of MuleSoft ($6bn exit to Salesforce), Paddle ($2bn exit), and attendees included the founders of Wayve, Carwow, Funding Circle, ComplyAdvantage, and Bloom & Wild.\n\nWould be great to see you there, if you can make it. {LINK}",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 3,
+      "type": "VIEW_PROFILE",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "View profile (warm-up)",
+      "variants": []
+    },
+    {
+      "n": 4,
+      "type": "CONNECTION_REQUEST",
+      "branch": "next",
+      "delay": "3 HOUR",
+      "what": "Connection note",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME} - I'm hosting an event for 100+ second-time founders at Google's London HQ on 14th May with Gus Martins from DeepMind. Discussing the question on every founder's mind: how do you build a moat when the underlying models keep evolving faster than you? {LINK}",
+          "words": 46,
+          "errors": [
+            "link"
+          ]
+        }
+      ],
+      "fallback": "Hi- I'm hosting an event for 100+ second-time founders at Google's London HQ on 14th May with Gus Martins from DeepMind. Discussing the question on every founder's mind: how do you build a moat when the underlying models keep evolving faster than you? {LINK}",
+      "blank": false,
+      "withdraw_after_days": 25
+    },
+    {
+      "n": 5,
+      "type": "MESSAGE",
+      "branch": "accepted",
+      "delay": "1 DAY",
+      "what": "progress update, close-out",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, good to connect. \n\nDropping a quick note as the event is on track to oversubscribe, and we will be closing registrations shortly. \n\nFor context, our last event featured the founders of MuleSoft ($6bn exit to Salesforce), Paddle ($2bn exit), and attendees included the founders of Wayve, Carwow, Funding Circle, ComplyAdvantage, and Bloom & Wild.\n\nWould be great to see you there, if you can make it. {LINK}\n\nBest, \n{MY_FIRST_NAME}",
+          "words": 71,
+          "errors": []
+        }
+      ],
+      "fallback": "Hi, good to connect. \n\nDropping a quick note as the event is on track to oversubscribe, and we will be closing registrations shortly. \n\nFor context, our last event featured the founders of MuleSoft ($6bn exit to Salesforce), Paddle ($2bn exit), and attendees included the founders of Wayve, Carwow, Funding Circle, ComplyAdvantage, and Bloom & Wild.\n\nWould be great to see you there, if you can make it. {LINK}",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 6,
+      "type": "LIKE_POST",
+      "branch": "not_accepted",
+      "delay": "1 DAY",
+      "what": "Like a recent post (warm-up)",
+      "variants": []
+    },
+    {
+      "n": 7,
+      "type": "INMAIL",
+      "branch": "next",
+      "delay": "1 DAY",
+      "what": "InMail: opener, progress update, close-out",
+      "channel": "inmail",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "Invitation for 'Building Again' - An Event For Second Time Founders",
+          "body": "Hi {FIRST_NAME} - I'm hosting an event for 100+ second-time founders at Google's London HQ on 14th May with Gus Martins from DeepMind. Discussing the question on every founder's mind: how do you build a moat when the underlying models keep evolving faster than you? \n\nFor context, our last event featured the founders of MuleSoft ($6bn exit to Salesforce), Paddle ($2bn exit), and attendees included the founders of Wayve, Carwow, Funding Circle, ComplyAdvantage, and Bloom & Wild.\n\nWould be great to see you there, if you can make it. {LINK}\n\nBest, \n{MY_FIRST_NAME}",
+          "words": 92,
+          "errors": [
+            "link"
+          ]
+        }
+      ],
+      "fallback": "Hi, \n\nI'm hosting an event for 100+ second-time founders at Google's London HQ on 14th May with Gus Martins from DeepMind. Discussing the question on every founder's mind: how do you build a moat when the underlying models keep evolving faster than you? \n\nFor context, our last event featured the founders of MuleSoft ($6bn exit to Salesforce), Paddle ($2bn exit), and attendees included the founders of Wayve, Carwow, Funding Circle, ComplyAdvantage, and Bloom & Wild.\n\nWould be great to see you there, if you can make it. {LINK}",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "link": 6
+  }
+}

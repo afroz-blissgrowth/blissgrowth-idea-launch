@@ -1,0 +1,111 @@
+{
+  "id": 439198,
+  "name": "BlissManager Advisor v2 - US/UK",
+  "status": "PAUSED",
+  "created": "2026-05-21",
+  "list": "BlissManager v2 Leads",
+  "leads": 712,
+  "idea": "BlissManager",
+  "persona": [],
+  "regions": [
+    "USA",
+    "UK"
+  ],
+  "sender": "",
+  "kind": [],
+  "structure": "CHECK(connected: end | new: INVITE(note x1)(accepted: MSG x2 | not: end))",
+  "stats": {
+    "connectionsSent": 680,
+    "connectionsAccepted": 93,
+    "connectionAcceptanceRate": 0.1367647,
+    "messagesSent": 94,
+    "totalMessageStarted": 93,
+    "totalMessageReplies": 39,
+    "messageReplyRate": 0.41935483,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 35,
+    "uniqueLeadsContacted": 680
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "Connection note",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME} - Given your operational experience, I’d love to speak with you about being an advisor to my new AI Digital Twin startup. I’m confident it'll be bigger than my previous companies - Reachdesk (valued at $225M) & Yieldify (sold to Publicis). Open to a quick chat?",
+          "words": 48,
+          "errors": [
+            "filler",
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi - Given your operational experience, I’d love to speak with you about being an advisor to my new AI Digital Twin startup. I’m confident it'll be bigger than my previous companies - Reachdesk (valued at $225M) & Yieldify (sold to Publicis). Open to a quick chat?",
+      "blank": false,
+      "withdraw_after_days": 25
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "accepted",
+      "delay": "1 DAY",
+      "what": "opener, advisor ask, credibility",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hey {FIRST_NAME} - Great to be connected! As mentioned, I’d love to catch up and share more about the company I’ve founded and discuss whether it might be something you want to get involved with as an advisor. I believe it has the potential to be bigger than any company I’ve worked on before! Are you open to speaking and seeing if it’s exciting enough for you?",
+          "words": 67,
+          "errors": [
+            "em_dash"
+          ]
+        }
+      ],
+      "fallback": "Hey - Great to be connected! As mentioned, I’d love to catch up and share more about the company I’ve founded and discuss whether it might be something you want to get involved with as an advisor. I believe it has the potential to be bigger than any company I’ve worked on before! Are you open to speaking and seeing if it’s exciting enough for you?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 4,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "5 DAY",
+      "what": "asks for a call, close-out",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, Thought I'd try one last time as I'm very keen to chat with you about my new startup. Do you have some time you can spare to see if there's an opportunity for you to be involved? \n\nBest, \n{MY_FIRST_NAME}",
+          "words": 41,
+          "errors": []
+        }
+      ],
+      "fallback": "Hi, Thought I'd try one last time as I'm very keen to chat with you about my new startup. Do you have some time you can spare to see if there's an opportunity for you to be involved?",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "filler": 2,
+    "time_commitment": 2,
+    "em_dash": 2
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "id": 641291,
+  "name": "BlissSLM - Advisory - Akhil's network [Punith]",
+  "status": "FINISHED",
+  "created": "2026-10-06",
+  "list": "BlissSLM - Warm - Akhil's Network",
+  "leads": 34,
+  "idea": "BlissSLM",
+  "persona": [],
+  "regions": [],
+  "sender": "Akhil",
+  "kind": [],
+  "structure": "CHECK(connected: VIEW > MSG x4 | new: end)",
+  "stats": {
+    "connectionsSent": 0,
+    "connectionsAccepted": 0,
+    "connectionAcceptanceRate": 0.0,
+    "messagesSent": 73,
+    "totalMessageStarted": 28,
+    "totalMessageReplies": 3,
+    "messageReplyRate": 0.10714286,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 2,
+    "uniqueLeadsContacted": 28
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "VIEW_PROFILE",
+      "branch": "already_connected",
+      "delay": "0 HOUR",
+      "what": "View profile (warm-up)",
+      "variants": []
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "3 HOUR",
+      "what": "opener, advisor ask, credibility, opinion question, asks for a call",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, we are building {IDEA_PLAIN}. I’d love for you to potentially be an advisor.\n\nI believe it'll be bigger than our previous startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, I'd value your view on it.\n\nOpen to chat?",
+          "words": 60,
+          "errors": []
+        }
+      ],
+      "fallback": "Hi there! we are building {IDEA_PLAIN}. I’d love for you to potentially be an advisor.\n\nI believe it'll be bigger than our previous startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, I'd value your view on it.\n\nOpen to chat?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 4,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "opinion question",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "I know everyone is under more pressure than ever on AI costs, with AI agents now running around the clock.\n\nI believe choosing AI models should be more than guesswork: proven on your own work, always up to date, and cheaper without losing quality.\n\nDo you agree?",
+          "words": 47,
+          "errors": []
+        }
+      ],
+      "fallback": "I know everyone is under more pressure than ever on AI costs, with AI agents now running around the clock.\n\nI believe choosing AI models should be more than guesswork: proven on your own work, always up to date, and cheaper without losing quality.\n\nDo you agree?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 5,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "advisor ask, asks for a call",
+      "channel": "li_followup",
+      "step": 3,
+      "variants": [
+        {
+          "subject": "",
+          "body": "{FIRST_NAME}, if you've been following Stripe's move to buy OpenRouter, you'll have seen how tokens are becoming the currency of the AI era. Managing them takes a combination of financial rigour and proof of what each model can really do.\n\nWe're putting together a small group of AI and finance leaders to advise us as we build. I'd love to bring you on as a potential advisor.\n\nCould we do a 30 min call this week?",
+          "words": 76,
+          "errors": [
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi, if you've been following Stripe's move to buy OpenRouter, you'll have seen how tokens are becoming the currency of the AI era. Managing them takes a combination of financial rigour and proof of what each model can really do.\n\nWe're putting together a small group of AI and finance leaders to advise us as we build. I'd love to bring you on as a potential advisor.\n\nCould we do a 30 min call this week? ",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 6,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "opinion question, social proof",
+      "channel": "li_followup",
+      "step": 4,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, we've been getting strong early feedback from finance and AI leaders.\n\nBefore we move ahead, I'd value your read.\n\nDoes this match your area of expertise, or is it an exception?",
+          "words": 33,
+          "errors": []
+        }
+      ],
+      "fallback": "Hi there! we've been getting strong early feedback from finance and AI leaders.\n\nBefore we move ahead, I'd value your read.\n\nDoes this match your area of expertise, or is it an exception?",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "time_commitment": 2
+  }
+}

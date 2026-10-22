@@ -1,0 +1,132 @@
+{
+  "id": 543012,
+  "name": "Founder Retarget Campaign - Meelan",
+  "status": "FINISHED",
+  "created": "2026-08-09",
+  "list": "Founder Campaign - Meelan 26 shortlist (Aug 2026)",
+  "leads": 64,
+  "idea": "Founder Retarget Campaign",
+  "persona": [],
+  "regions": [],
+  "sender": "Meelan",
+  "kind": [],
+  "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: MSG x3 | not: end))",
+  "stats": {
+    "connectionsSent": 60,
+    "connectionsAccepted": 12,
+    "connectionAcceptanceRate": 0.2,
+    "messagesSent": 15,
+    "totalMessageStarted": 11,
+    "totalMessageReplies": 4,
+    "messageReplyRate": 0.36363637,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 1,
+    "uniqueLeadsContacted": 60
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "Blank invite: no note, the profile does the work",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "",
+          "words": 0,
+          "errors": []
+        }
+      ],
+      "fallback": "",
+      "blank": true,
+      "withdraw_after_days": 25
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "accepted",
+      "delay": "3 HOUR",
+      "what": "opener, credibility, asks for a call, progress update",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FNAME_CLEAN} - your founding experience really stood out to us. I’d love to chat about a co-founder role at my new (validated and funded) AI B2B startup. We believe it’ll surpass our previous ventures, Reachdesk ($225M val) & Yieldify (acq. by Publicis).",
+          "words": 43,
+          "errors": [
+            "placeholder"
+          ]
+        }
+      ],
+      "fallback": "Hi - your founding experience really stood out to us. I’d love to chat about a co-founder role at my new (validated and funded) AI B2B startup. We believe it’ll surpass our previous ventures, Reachdesk ($225M val) & Yieldify (acq. by Publicis).",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 4,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "3 DAY",
+      "what": "credibility, opinion question, asks for a call",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FNAME_CLEAN}, hope you’re well.\n\nFor context, we’re co-building {IDEA_PLAIN}. We’ve built 10 companies so far that have been backed by Global Tier-1 investors like Google Ventures, Softbank, a16z, and Sequoia.\n\nWe’re looking for an exceptional operator with prior founder experience who’s looking to build again. Your profile stood out in our search, so I wanted to see if you’d be open to an intro chat?\n\nSharing my calendar here to find a convenient time directly: {LINK}\n\nSpeak soon,\n\nMeelan",
+          "words": 90,
+          "errors": [
+            "placeholder",
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi, hope you’re well.\n\nFor context, we’re co-building {IDEA_PLAIN}. We’ve built 10 companies so far that have been backed by Global Tier 1 investors like Google Ventures, Softbank, a16z, and Sequoia.\n\nWe’re looking for an exceptional operator with prior founder experience who’s looking to build again. Your profile stood out in our search, so I wanted to see if you’d be open to an intro chat?\n\nSharing my calendar here to find a convenient time directly: {LINK}\n\nSpeak soon,\n\nMeelan",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 5,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "3 DAY",
+      "what": "asks for a call, close-out",
+      "channel": "li_followup",
+      "step": 3,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FNAME_CLEAN} - hope you’re well.\n\nFollowing up on my last message, in case you missed it.\n\nWe’re speaking to a select few founders to co-build our next venture with, and we’d love to learn more about what’s next for you.\n\nLet me know if you’re interested in hearing more about the idea and Blissgrowth.\n\nSharing my calendar here to find a convenient time directly: {LINK}\n\nBest,\nMeelan",
+          "words": 68,
+          "errors": [
+            "filler",
+            "placeholder",
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi - hope you’re well.\n\nFollowing up on my last message, in case you missed it.\n\nWe’re speaking to a select few founders to co-build our next venture with, and we’d love to learn more about what’s next for you.\n\nLet me know if you’re interested in hearing more about the idea and Blissgrowth.\n\nSharing my calendar here to find a convenient time directly: {LINK}\n\nBest,\nMeelan",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "placeholder": 3,
+    "time_commitment": 4,
+    "filler": 2
+  }
+}

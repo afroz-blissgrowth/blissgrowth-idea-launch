@@ -1,0 +1,89 @@
+{
+  "id": 550616,
+  "name": "AITF Invite - Jay CXOs London (79)",
+  "status": "FINISHED",
+  "created": "2026-08-13",
+  "list": "AITF Invite - Jay CXOs 200+ Emp London (79)",
+  "leads": 79,
+  "idea": "AITF Invite",
+  "persona": [],
+  "regions": [],
+  "sender": "Jay",
+  "kind": [],
+  "structure": "CHECK(connected: MSG x2 | new: end)",
+  "stats": {
+    "connectionsSent": 0,
+    "connectionsAccepted": 0,
+    "connectionAcceptanceRate": 0.0,
+    "messagesSent": 68,
+    "totalMessageStarted": 79,
+    "totalMessageReplies": 18,
+    "messageReplyRate": 0.2278481,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 15,
+    "uniqueLeadsContacted": 79
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "MESSAGE",
+      "branch": "already_connected",
+      "delay": "0 HOUR",
+      "what": "opener, credibility",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {firstNameClean},\n\nI wanted to personally invite you to a private event that I'm hosting at Google's HQ in King's Cross on 28th September for 50 C-level operators and senior PE investors. Attendees are coming from businesses backed by KKR, Apax, LDC, Goldman Sachs, JPMorgan and General Atlantic.\n\nOne key theme all evening: the gap between AI pilots and AI that actually delivers real ROI. Specifically:\n\n1. Which workflows to automate first, and how to actually choose them\n2. Who inside the business should be building {IDEA_PLAIN}\n3. How to build agents that compound and get smarter rather than ones that break as processes change\n4. How to measure ROI of agents for the business and board\n\nIt's capped at 50 to keep the discussion candid rather than a panel talking in a room. Food and drinks will be provided.\n\nIf it's useful for you or someone on your leadership team, you can register here: {LINK}\n\nKind Regards,\nJay",
+          "words": 166,
+          "errors": [
+            "link",
+            "placeholder"
+          ]
+        }
+      ],
+      "fallback": "Hi there,\n\nI wanted to personally invite you to a private event that I'm hosting at Google's HQ in King's Cross on 28th September for 50 C-level operators and senior PE investors. Attendees are coming from businesses backed by KKR, Apax, LDC, Goldman Sachs, JPMorgan and General Atlantic.\n\nOne key theme all evening: the gap between AI pilots and AI that actually delivers real ROI. Specifically:\n\n1. Which workflows to automate first, and how to actually choose them\n2. Who inside the business should be building {IDEA_PLAIN}\n3. How to build agents that compound and get smarter rather than ones that break as processes change\n4. How to measure ROI of agents for the business and board\n\nIt's capped at 50 to keep the discussion candid rather than a panel talking at a room. Food and drinks will be provided.\n\nIf it's useful for you or someone on your leadership team, you can register here: {LINK}\n\nKind Regards,\nJay",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "7 DAY",
+      "what": "close-out",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hey {firstNameClean}, following up in case you missed my last message.\n\nJust checking in to see if you or someone from your team is planning to join us at our AI Transformation Forum on 28th September?\n\nThe room is shaping up nicely, with leadership from some of Europe's fastest-growing scaleups and Private Equity funds attending. It's a highly curated audience that is actively deploying AI across their companies and portfolios.\n\nPlease RSVP through the event page: {LINK}\n\nKind Regards,\nJay",
+          "words": 80,
+          "errors": [
+            "filler",
+            "placeholder"
+          ]
+        }
+      ],
+      "fallback": "Hey there, following up in case you missed my last message.\n\nJust checking in to see if you or someone from your team is planning to join us at our AI Transformation Forum on 28th September?\n\nThe room is shaping up nicely, with leadership from some of Europe's fastest-growing scaleups and Private Equity funds attending. It's a highly curated audience that is actively deploying AI across their companies and portfolios.\n\nPlease RSVP through the event page: {LINK}\n\nKind Regards,\n\nJay",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "link": 2,
+    "placeholder": 2,
+    "filler": 6
+  }
+}

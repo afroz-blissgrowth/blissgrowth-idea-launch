@@ -1,0 +1,144 @@
+{
+  "id": 651581,
+  "name": "BlissProductCompliance - Advisory Meelan's Network [Punith]",
+  "status": "FINISHED",
+  "created": "2026-10-12",
+  "list": "BlissProductCompliance - Meelan's first degree connections",
+  "leads": 7,
+  "idea": "BlissProductCompliance",
+  "persona": [],
+  "regions": [],
+  "sender": "Meelan",
+  "kind": [],
+  "structure": "CHECK(connected: VIEW > MSG x4 | new: end)",
+  "stats": {
+    "connectionsSent": 0,
+    "connectionsAccepted": 0,
+    "connectionAcceptanceRate": 0.0,
+    "messagesSent": 1,
+    "totalMessageStarted": 2,
+    "totalMessageReplies": 2,
+    "messageReplyRate": 1.0,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 2,
+    "uniqueLeadsContacted": 2
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "VIEW_PROFILE",
+      "branch": "already_connected",
+      "delay": "0 HOUR",
+      "what": "View profile (warm-up)",
+      "variants": []
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "3 HOUR",
+      "what": "opener, advisor ask, credibility, asks for a call",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, I'm building {IDEA_PLAIN}. I'd love for you to potentially be an advisor.\n\nI believe it'll be bigger than my other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?",
+          "words": 60,
+          "errors": [
+            "filler",
+            "time_commitment"
+          ]
+        },
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, I'm building {IDEA_PLAIN}. I'd love for you to potentially be an advisor.\n\nI believe it'll be bigger than my other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?",
+          "words": 60,
+          "errors": [
+            "filler",
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi there! I'm building {IDEA_PLAIN}. I'd love for you to potentially be an advisor.\n\nI believe it'll be bigger than my other startups - Yieldify (Google backed and sold to Publicis) & Reachdesk (valued at $225M).\n\nGiven your background, would you be open to a quick chat?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 4,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "credibility, opinion question",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Having built two tech businesses, I know how much a manual process slows down a team that wants to move fast.\n\nI believe compliance should run in the background: continuous, automatic, and done before the product is ready to launch.\n\nDo you agree, {FIRST_NAME}?",
+          "words": 44,
+          "errors": []
+        }
+      ],
+      "fallback": "Having built two tech businesses, I know how much a manual process slows down a team that wants to move fast.\n\nI believe compliance should run in the background: continuous, automatic, and done before the product is ready to launch.\n\nDo you agree?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 5,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "advisor ask, asks for a call, progress update",
+      "channel": "li_followup",
+      "step": 3,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Quick update, {FIRST_NAME}. We're moving ahead with the MVP, and we have funding as well.\n\nI'd love to bring you on as a potential advisor. Could we do a 30 min call this week",
+          "words": 34,
+          "errors": [
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Quick update! We're moving ahead with the MVP, and we have funding as well.\n\nI'd love to bring you on as a potential advisor. Could we do a 30 min call this week",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 6,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "opinion question, social proof",
+      "channel": "li_followup",
+      "step": 4,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, we've been getting strong early feedback from operations leaders.\n\nGiven your background, I'd value your read.\n\nDoes this company match your area of expertise, or is it an exception?",
+          "words": 31,
+          "errors": []
+        }
+      ],
+      "fallback": "We've been getting strong early feedback from operations leaders.\n\nGiven your background, I'd value your read.\n\nDoes this company match your area of expertise, or is it an exception?",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "filler": 4,
+    "time_commitment": 6
+  }
+}

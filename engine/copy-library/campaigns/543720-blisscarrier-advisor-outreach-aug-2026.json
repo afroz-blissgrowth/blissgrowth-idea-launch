@@ -1,0 +1,111 @@
+{
+  "id": 543720,
+  "name": "BlissCarrier - Advisor Outreach (Aug 2026)",
+  "status": "FINISHED",
+  "created": "2026-08-10",
+  "list": "BlissCarrier - verified 390 (Aug 2026)",
+  "leads": 389,
+  "idea": "BlissCarrier",
+  "persona": [],
+  "regions": [],
+  "sender": "",
+  "kind": [],
+  "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: MSG x2 | not: end))",
+  "stats": {
+    "connectionsSent": 387,
+    "connectionsAccepted": 59,
+    "connectionAcceptanceRate": 0.15245478,
+    "messagesSent": 50,
+    "totalMessageStarted": 53,
+    "totalMessageReplies": 10,
+    "messageReplyRate": 0.18867925,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 8,
+    "uniqueLeadsContacted": 387
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "Blank invite: no note, the profile does the work",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "",
+          "words": 0,
+          "errors": []
+        }
+      ],
+      "fallback": "",
+      "blank": true,
+      "withdraw_after_days": 25
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "accepted",
+      "delay": "3 HOUR",
+      "what": "opener, advisor ask, credibility, asks for a call",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {firstNameClean}, great to connect.\n\nGiven your background, I imagine you've seen the significant amount of money carriers overcharge and the unclaimed refunds - 10% of all 3PL spend, based on our findings.\n\nThat's exactly the problem we're trying to solve with this new logistics startup. Our AI agents audit every invoice, find what they're owed, and recover it automatically.\n\nI'd love to get your perspective and potentially bring you on as an advisor if you're interested.\n\nI'm confident it'll be bigger than my previous companies, Reachdesk (valued at $225M) and Yieldify (sold to Publicis).\n\nOpen to a quick chat?",
+          "words": 100,
+          "errors": [
+            "filler",
+            "placeholder",
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi there, great to connect.\n\nGiven your background, I imagine you've seen the significant amount of money carriers overcharge and the unclaimed refunds - 10% of all 3PL spend, based on our findings.\n\nThat's exactly the problem we're trying to solve with this new logistics startup. Our AI agents audit every invoice, find what they're owed, and recover it automatically.\n\nI'd love to get your perspective and potentially bring you on as an advisor if you're interested.\n\nI'm confident it'll be bigger than my previous companies, Reachdesk (valued at $225M) and Yieldify (sold to Publicis).\n\nOpen to a quick chat?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 4,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "3 DAY",
+      "what": "advisor ask, asks for a call",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {firstNameClean}, following up as I think your operational background could be particularly valuable here.\n\nWhat's interesting is how much recoverable cash gets written off simply because supply chain teams don't have the bandwidth to pursue every claim through to recovery.\n\nWe think that's exactly where AI can unlock a lot of value. We're building {IDEA_PLAIN}.\n\nWould you be open to a quick chat this week or next?",
+          "words": 93,
+          "errors": [
+            "filler",
+            "placeholder",
+            "time_commitment"
+          ]
+        }
+      ],
+      "fallback": "Hi there, following up as I think your operational background could be particularly valuable here.\n\nWhat's interesting is how much recoverable cash gets written off simply because supply chain teams don't have the bandwidth to pursue every claim through to recovery.\n\nWe think that's exactly where AI can unlock a lot of value. We're building {IDEA_PLAIN}.\n\nWould you be open to a quick chat this week or next?",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "filler": 6,
+    "time_commitment": 4,
+    "placeholder": 2
+  }
+}

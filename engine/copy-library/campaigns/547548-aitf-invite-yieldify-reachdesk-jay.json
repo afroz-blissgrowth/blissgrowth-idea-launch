@@ -1,0 +1,133 @@
+{
+  "id": 547548,
+  "name": "AITF Invite - Yieldify/Reachdesk (Jay)",
+  "status": "FINISHED",
+  "created": "2026-08-12",
+  "list": "AITF Invite - Yieldify/Reachdesk Alumni (32)",
+  "leads": 32,
+  "idea": "AITF Invite",
+  "persona": [],
+  "regions": [],
+  "sender": "Jay",
+  "kind": [],
+  "structure": "CHECK(connected: MSG x1 | new: INVITE(blank)(accepted: MSG x2 | not: end))",
+  "stats": {
+    "connectionsSent": 2,
+    "connectionsAccepted": 0,
+    "connectionAcceptanceRate": 0.0,
+    "messagesSent": 0,
+    "totalMessageStarted": 28,
+    "totalMessageReplies": 8,
+    "messageReplyRate": 0.2857143,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 6,
+    "uniqueLeadsContacted": 30
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "MESSAGE",
+      "branch": "already_connected",
+      "delay": "0 HOUR",
+      "what": "opener, credibility",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {firstNameClean}, hope you're well.\n\nHow are things? I know it's been a little while.\n\nWanted to invite you to a private event that I'm hosting at Google's London HQ on 28 September.\n\nWe're bringing together a group of senior operators from high-growth companies and PE funds to share what they're seeing with AI right now, what's actually working, and where they think things are heading next.\n\nAttendees so far include investors and operators from businesses backed by KKR, Apax Partners, Goldman Sachs, General Atlantic and LDC.\n\nThere'll be lots of food, drinks, and plenty of time to network.\n\nIt would be great to see you there! You can RSVP here: {LINK}",
+          "words": 112,
+          "errors": [
+            "filler",
+            "link",
+            "placeholder"
+          ]
+        }
+      ],
+      "fallback": "Hi there, hope you're well.\n\nHow are things? I know it's been a little while.\n\nWanted to invite you to a private event that I'm hosting at Google's London HQ on 28 September.\n\nWe're bringing together a group of senior operators from high-growth companies and PE funds to share what they're seeing with AI right now, what's actually working, and where they think things are heading next.\n\nAttendees so far include investors and operators from businesses backed by KKR, Apax Partners, Goldman Sachs, General Atlantic and LDC.\n\nThere'll be lots of food, drinks, and plenty of time to network.\n\nIt would be great to see you there! You can RSVP here: {LINK}",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 3,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "Blank invite: no note, the profile does the work",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "",
+          "words": 0,
+          "errors": []
+        }
+      ],
+      "fallback": "",
+      "blank": true,
+      "withdraw_after_days": 25
+    },
+    {
+      "n": 4,
+      "type": "MESSAGE",
+      "branch": "accepted",
+      "delay": "3 HOUR",
+      "what": "credibility",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {firstNameClean}, hope you're well.\n\nHow are things? I know it's been a little while.\n\nWanted to invite you to a private event that I'm hosting at Google's London HQ on 28 September.\n\nWe're bringing together a group of senior operators from high-growth companies and PE funds to share what they're seeing with AI right now, what's actually working, and where they think things are heading next.\n\nAttendees so far include investors and operators from businesses backed by KKR, Apax Partners, Goldman Sachs, General Atlantic and LDC.\n\nThere'll be lots of food, drinks, and plenty of time to network.\n\nIt would be great to see you there! You can RSVP here: {LINK}",
+          "words": 112,
+          "errors": [
+            "filler",
+            "placeholder"
+          ]
+        }
+      ],
+      "fallback": "Hi there, hope you're well.\n\nHow are things? I know it's been a little while.\n\nWanted to invite you to a private event that I'm hosting at Google's London HQ on 28 September.\n\nWe're bringing together a group of senior operators from high-growth companies and PE funds to share what they're seeing with AI right now, what's actually working, and where they think things are heading next.\n\nAttendees so far include investors and operators from businesses backed by KKR, Apax Partners, Goldman Sachs, General Atlantic and LDC.\n\nThere'll be lots of food, drinks, and plenty of time to network.\n\nIt would be great to see you there! You can RSVP here: {LINK}",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 5,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "5 DAY",
+      "what": "message",
+      "channel": "li_followup",
+      "step": 3,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hey {firstNameClean}, hope you're well.\n\nJust checking if you're able to join the event on 28th September (at Google's HQ)?\n\nThe room is shaping up nicely, with leadership teams from some of the UK's fastest-growing companies and Private Equity funds attending.\n\nWould love to see you there! Please RSVP through the event page: {LINK}",
+          "words": 54,
+          "errors": [
+            "filler",
+            "placeholder"
+          ]
+        }
+      ],
+      "fallback": "Hey there, hope you're well.\n\nJust checking if you're able to join the event on 28th September (at Google's HQ)?\n\nThe room is shaping up nicely, with leadership teams from some of the UK's fastest-growing companies and Private Equity funds attending.\n\nWould love to see you there! Please RSVP through the event page: {LINK}",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {
+    "link": 2,
+    "filler": 6,
+    "placeholder": 3
+  }
+}

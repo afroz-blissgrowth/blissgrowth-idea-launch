@@ -1,0 +1,141 @@
+{
+  "id": 634137,
+  "name": "BlissWorldModel - Advisory (UK) - (1A) - CC + M",
+  "status": "PAUSED",
+  "created": "2026-10-02",
+  "list": "BlissWorldModel - Advisory (UK) - (1A) - CC + M",
+  "leads": 91,
+  "idea": "BlissWorldModel",
+  "persona": [],
+  "regions": [
+    "UK"
+  ],
+  "sender": "",
+  "kind": [],
+  "structure": "CHECK(connected: end | new: INVITE(blank)(accepted: MSG x4 | not: end))",
+  "stats": {
+    "connectionsSent": 43,
+    "connectionsAccepted": 7,
+    "connectionAcceptanceRate": 0.1627907,
+    "messagesSent": 9,
+    "totalMessageStarted": 5,
+    "totalMessageReplies": 1,
+    "messageReplyRate": 0.2,
+    "inmailMessagesSent": 0,
+    "totalInmailReplies": 0,
+    "inMailReplyRate": 0.0,
+    "autoTaggedInterested": 0,
+    "uniqueLeadsContacted": 43
+  },
+  "steps": [
+    {
+      "n": 1,
+      "type": "CHECK_IS_CONNECTION",
+      "branch": "start",
+      "delay": "0 HOUR",
+      "what": "Check if already connected",
+      "variants": []
+    },
+    {
+      "n": 2,
+      "type": "CONNECTION_REQUEST",
+      "branch": "not_connected",
+      "delay": "0 HOUR",
+      "what": "Blank invite: no note, the profile does the work",
+      "channel": "li_invite",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "",
+          "words": 0,
+          "errors": []
+        }
+      ],
+      "fallback": "",
+      "blank": true,
+      "withdraw_after_days": 21
+    },
+    {
+      "n": 3,
+      "type": "MESSAGE",
+      "branch": "accepted",
+      "delay": "3 HOUR",
+      "what": "opener, advisor ask, credibility, asks for a call",
+      "channel": "li_followup",
+      "step": 1,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Hi {FIRST_NAME}, I'm Akhil from Blissgrowth, a UK venture studio. We previously built Yieldify (sold to Publicis) and Reachdesk ($225M valuation), and we're now working on our next company.\n\nWe're building {IDEA_PLAIN}. Given your property expertise, we'd love for you to potentially come on as an advisor.\n\nOpen to chat?",
+          "words": 64,
+          "errors": []
+        }
+      ],
+      "fallback": "Hi, I'm Akhil from Blissgrowth, a UK venture studio. We previously built Yieldify (sold to Publicis) and Reachdesk ($225M valuation), and we're now working on our next company.\n\nWe're building {IDEA_PLAIN}. Given your property expertise, we'd love for you to potentially come on as an advisor.\n\nOpen to chat?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 4,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "credibility, opinion question",
+      "channel": "li_followup",
+      "step": 2,
+      "variants": [
+        {
+          "subject": "",
+          "body": "What we're building could be bigger than both Yieldify and Reachdesk. Proptech has grown fast, but most of it has gone into property management and sales. Evaluating the land itself is still far less served.\n\nTeams still stitch data together manually from a dozen sources.\n\nFrom where you sit, would you agree?",
+          "words": 52,
+          "errors": []
+        }
+      ],
+      "fallback": "What we're building could be bigger than both Yieldify and Reachdesk. Proptech has grown fast, but most of it has gone into property management and sales. Evaluating the land itself is still far less served.\n\nTeams still stitch data together manually from a dozen sources.\n\nFrom where you sit, would you agree?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 5,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "2 DAY",
+      "what": "asks for a call",
+      "channel": "li_followup",
+      "step": 3,
+      "variants": [
+        {
+          "subject": "",
+          "body": "We've been getting really strong feedback on what we're building from others in the space. We'd love to hear your take on it too, would you be open to a chat?",
+          "words": 31,
+          "errors": []
+        }
+      ],
+      "fallback": "We've been getting really strong feedback on what we're building from others in the space. We'd love to hear your take on it too, would you be open to a chat?",
+      "blank": false,
+      "withdraw_after_days": null
+    },
+    {
+      "n": 6,
+      "type": "MESSAGE",
+      "branch": "next",
+      "delay": "3 DAY",
+      "what": "advisor ask",
+      "channel": "li_followup",
+      "step": 4,
+      "variants": [
+        {
+          "subject": "",
+          "body": "Seems it's a bad time, {FIRST_NAME}? We're picking our first advisors soon, and given your experience in property, we're still keen to get you on board. Let me know if you're open to it.",
+          "words": 34,
+          "errors": []
+        }
+      ],
+      "fallback": "Seems it's a bad time? We're picking our first advisors soon, and given your experience in property, we're still keen to get you on board. Let me know if you're open to it.",
+      "blank": false,
+      "withdraw_after_days": null
+    }
+  ],
+  "rule_flags": {}
+}

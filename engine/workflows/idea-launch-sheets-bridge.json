@@ -1,0 +1,1210 @@
+{
+  "name": "Idea Launch | Sheets Bridge",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "idea-launch-sheets",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        300
+      ],
+      "webhookId": "idea-launch-sheets-bridge",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "IIY1lK9iiH18FoWR",
+          "name": "Idea Launch Sheets Bridge Secret"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $input.first().json.body || {};\nconst action = b.action;\nconst fail = (msg) => [{ json: { action: 'error', error: msg } }];\nconst API = 'https://sheets.googleapis.com/v4/spreadsheets';\nconst enc = encodeURIComponent;\nconst quote = (t) => \"'\" + String(t).replace(/'/g, \"''\") + \"'\";\nconst valid = ['create', 'read', 'append', 'upsert', 'format', 'add_columns', 'share'];\nif (!valid.includes(action)) return fail('unknown action: ' + action + ' (expected one of ' + valid.join(', ') + ')');\nif (action !== 'create' && !b.sheet_id) return fail('missing sheet_id');\nconst clean = (v) => (v === null || v === undefined) ? '' : (typeof v === 'object' ? JSON.stringify(v) : v);\n\nif (action === 'create') {\n  if (!b.title) return fail('missing title');\n  if (!Array.isArray(b.tabs) || !b.tabs.length) return fail('missing tabs [{title, headers}]');\n  const sheets = b.tabs.map((t) => ({ properties: { title: t.title, gridProperties: { rowCount: t.rows || 1000, columnCount: Math.max((t.headers || []).length, 10), frozenRowCount: 1 } } }));\n  return [{ json: { action, tabs: b.tabs, bodyStr: JSON.stringify({ properties: { title: b.title }, sheets }) } }];\n}\nif (action === 'read') {\n  if (!b.tab) return fail('missing tab');\n  const range = quote(b.tab) + '!' + (b.range || 'A:ZZ');\n  const render = b.raw ? 'UNFORMATTED_VALUE' : 'FORMATTED_VALUE';\n  return [{ json: { action, sheet_id: b.sheet_id, url: API + '/' + b.sheet_id + '/values/' + enc(range) + '?valueRenderOption=' + render } }];\n}\nif (action === 'append') {\n  if (!b.tab) return fail('missing tab');\n  if (!Array.isArray(b.values)) return fail('missing values (array of rows)');\n  const values = b.values.map((r) => r.map(clean));\n  const range = quote(b.tab) + '!A1';\n  return [{ json: { action, sheet_id: b.sheet_id, count: values.length,\n    url: API + '/' + b.sheet_id + '/values/' + enc(range) + ':append?valueInputOption=RAW&insertDataOption=INSERT_ROWS',\n    bodyStr: JSON.stringify({ majorDimension: 'ROWS', values }) } }];\n}\nif (action === 'upsert') {\n  if (!b.tab) return fail('missing tab');\n  if (!b.key) return fail('missing key (header name of the unique column)');\n  if (!Array.isArray(b.records)) return fail('missing records (array of objects keyed by header)');\n  const range = quote(b.tab) + '!A:ZZ';\n  return [{ json: { action, sheet_id: b.sheet_id, tab: b.tab, key: b.key, records: b.records,\n    url: API + '/' + b.sheet_id + '/values/' + enc(range) + '?valueRenderOption=UNFORMATTED_VALUE' } }];\n}\nif (action === 'add_columns') {\n  if (!b.tab) return fail('missing tab');\n  if (!Array.isArray(b.headers) || !b.headers.length) return fail('missing headers (array of column names)');\n  return [{ json: { action, sheet_id: b.sheet_id, tab: b.tab, headers: b.headers.map(String),\n    propsUrl: API + '/' + b.sheet_id + '?fields=sheets.properties',\n    headerUrl: API + '/' + b.sheet_id + '/values/' + enc(quote(b.tab) + '!1:1') + '?valueRenderOption=UNFORMATTED_VALUE' } }];\n}\nif (action === 'share') {\n  const role = b.role || 'writer';\n  if (!['reader', 'commenter', 'writer'].includes(role)) return fail('role must be reader, commenter or writer');\n  const emails = Array.isArray(b.emails) ? b.emails.map(String).filter((e) => /^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(e)) : [];\n  const domain = b.domain ? String(b.domain).toLowerCase() : '';\n  if (domain && !/^[a-z0-9.-]+\\.[a-z]{2,}$/.test(domain)) return fail('invalid domain');\n  if (!domain && !emails.length) return fail('share needs a domain and/or emails[]');\n  const notify = b.notify === true ? 'true' : 'false';\n  const base = 'https://www.googleapis.com/drive/v3/files/' + b.sheet_id + '/permissions?supportsAllDrives=true&sendNotificationEmail=' + notify;\n  const items = [];\n  if (domain) items.push({ json: { action, sheet_id: b.sheet_id, target: 'domain:' + domain, url: base, bodyStr: JSON.stringify({ type: 'domain', role, domain }) } });\n  emails.forEach((e) => items.push({ json: { action, sheet_id: b.sheet_id, target: e, url: base, bodyStr: JSON.stringify({ type: 'user', role, emailAddress: e }) } }));\n  return items;\n}\n// format\nreturn [{ json: { action, sheet_id: b.sheet_id, tabs: b.tabs || null,\n  url: API + '/' + b.sheet_id + '?fields=sheets.properties' } }];"
+      },
+      "name": "Plan",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "act-create",
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "create",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "create"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "act-read",
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "read",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "read"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "act-append",
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "append",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "append"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "act-upsert",
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "upsert",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "upsert"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "act-format",
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "format",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "format"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "act-add_columns",
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "add_columns",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "add_columns"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "act-share",
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "share",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "share"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "error"
+        }
+      },
+      "name": "Route",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        440,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://sheets.googleapis.com/v4/spreadsheets",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.bodyStr }}"
+      },
+      "name": "Create Spreadsheet",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        0
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gPjk4vAgrRfrNcPV",
+          "name": "Google Sheets (Afroz)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const plan = $('Plan').first().json;\nconst r = $input.first().json;\nif (r.error) return [{ json: { failed: true, error: r.error } }];\nconst API = 'https://sheets.googleapis.com/v4/spreadsheets';\nconst quote = (t) => \"'\" + String(t).replace(/'/g, \"''\") + \"'\";\nconst byTitle = {};\n(r.sheets || []).forEach((s) => { byTitle[s.properties.title] = s.properties.sheetId; });\nconst data = [];\nconst requests = [];\nconst tabs = [];\nfor (const t of plan.tabs) {\n  const sid = byTitle[t.title];\n  tabs.push({ title: t.title, sheetId: sid });\n  const headers = t.headers || [];\n  data.push({ range: quote(t.title) + '!A1', values: [headers] });\n  requests.push({ repeatCell: { range: { sheetId: sid, startRowIndex: 0, endRowIndex: 1 },\n    cell: { userEnteredFormat: { textFormat: { bold: true }, backgroundColor: { red: 0.9, green: 0.9, blue: 0.9 } } },\n    fields: 'userEnteredFormat(textFormat,backgroundColor)' } });\n  requests.push({ updateSheetProperties: { properties: { sheetId: sid, gridProperties: { frozenRowCount: 1 } }, fields: 'gridProperties.frozenRowCount' } });\n  requests.push({ autoResizeDimensions: { dimensions: { sheetId: sid, dimension: 'COLUMNS', startIndex: 0, endIndex: Math.max(headers.length, 1) } } });\n}\nreturn [{ json: {\n  created: { spreadsheetId: r.spreadsheetId, url: r.spreadsheetUrl, tabs },\n  headersUrl: API + '/' + r.spreadsheetId + '/values:batchUpdate',\n  headersBody: JSON.stringify({ valueInputOption: 'RAW', data }),\n  formatUrl: API + '/' + r.spreadsheetId + ':batchUpdate',\n  formatBody: JSON.stringify({ requests }) } }];"
+      },
+      "name": "Post Create",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        920,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json.headersUrl }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.headersBody }}"
+      },
+      "name": "Write Headers",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1140,
+        0
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gPjk4vAgrRfrNcPV",
+          "name": "Google Sheets (Afroz)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Post Create').first().json.formatUrl }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Post Create').first().json.formatBody }}"
+      },
+      "name": "Format New Tabs",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1360,
+        0
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gPjk4vAgrRfrNcPV",
+          "name": "Google Sheets (Afroz)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $json.url }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "name": "Read Values",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        160
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gPjk4vAgrRfrNcPV",
+          "name": "Google Sheets (Afroz)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json.url }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.bodyStr }}"
+      },
+      "name": "Append Rows",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        320
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gPjk4vAgrRfrNcPV",
+          "name": "Google Sheets (Afroz)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $json.url }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "name": "Read Tab",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        480
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gPjk4vAgrRfrNcPV",
+          "name": "Google Sheets (Afroz)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const plan = $('Plan').first().json;\nconst API = 'https://sheets.googleapis.com/v4/spreadsheets';\nconst enc = encodeURIComponent;\nconst quote = (t) => \"'\" + String(t).replace(/'/g, \"''\") + \"'\";\nconst resp = $input.first().json;\nconst bad = (msg) => [{ json: { failed: true, error: msg, hasUpdates: false, hasAppends: false } }];\nif (resp.error) return bad('read failed: ' + (resp.error.message || JSON.stringify(resp.error)));\nconst vals = resp.values || [];\nconst headers = (vals[0] || []).map(String);\nif (!headers.length) return bad('tab \"' + plan.tab + '\" has no header row');\nconst keyIdx = headers.indexOf(plan.key);\nif (keyIdx < 0) return bad('key column \"' + plan.key + '\" not in headers of \"' + plan.tab + '\"');\nconst colLetter = (i) => { let s = ''; i += 1; while (i > 0) { const m = (i - 1) % 26; s = String.fromCharCode(65 + m) + s; i = Math.floor((i - 1) / 26); } return s; };\nconst lastCol = colLetter(headers.length - 1);\nconst clean = (v) => (v === null || v === undefined) ? '' : (typeof v === 'object' ? JSON.stringify(v) : v);\nconst rowIndex = {};\nfor (let r = 1; r < vals.length; r++) {\n  const k = String((vals[r] || [])[keyIdx] === undefined ? '' : vals[r][keyIdx]);\n  if (k !== '' && !(k in rowIndex)) rowIndex[k] = r + 1;   // 1-based sheet row number\n}\nconst unknown = new Set();\nlet skipped = 0;\nconst updRows = {};   // sheet row -> full row array\nconst newRows = [];   // arrays\nconst newIdx = {};    // key -> index in newRows\nfor (const rec of plan.records) {\n  const k = String(rec[plan.key] === undefined || rec[plan.key] === null ? '' : rec[plan.key]);\n  if (k === '') { skipped++; continue; }\n  const cols = Object.keys(rec).filter((c) => { if (headers.indexOf(c) < 0) { unknown.add(c); return false; } return true; });\n  if (k in rowIndex) {\n    const rn = rowIndex[k];\n    if (!updRows[rn]) { const base = (vals[rn - 1] || []).slice(); while (base.length < headers.length) base.push(''); updRows[rn] = base; }\n    cols.forEach((c) => { updRows[rn][headers.indexOf(c)] = clean(rec[c]); });\n  } else if (k in newIdx) {\n    cols.forEach((c) => { newRows[newIdx[k]][headers.indexOf(c)] = clean(rec[c]); });\n  } else {\n    const row = headers.map(() => '');\n    cols.forEach((c) => { row[headers.indexOf(c)] = clean(rec[c]); });\n    newIdx[k] = newRows.length; newRows.push(row);\n  }\n}\nconst data = Object.keys(updRows).map((rn) => ({ range: quote(plan.tab) + '!A' + rn + ':' + lastCol + rn, values: [updRows[rn]] }));\nreturn [{ json: {\n  hasUpdates: data.length > 0, hasAppends: newRows.length > 0,\n  updated: data.length, appended: newRows.length, skipped, unknown_columns: Array.from(unknown),\n  updateUrl: API + '/' + plan.sheet_id + '/values:batchUpdate',\n  updateBody: JSON.stringify({ valueInputOption: 'RAW', data }),\n  appendUrl: API + '/' + plan.sheet_id + '/values/' + enc(quote(plan.tab) + '!A1') + ':append?valueInputOption=RAW&insertDataOption=INSERT_ROWS',\n  appendBody: JSON.stringify({ majorDimension: 'ROWS', values: newRows }) } }];"
+      },
+      "name": "Plan Upsert",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        920,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "has-updates?",
+              "leftValue": "={{ $json.hasUpdates }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "name": "Has Updates?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1140,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Plan Upsert').first().json.updateUrl }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Plan Upsert').first().json.updateBody }}"
+      },
+      "name": "Write Updates",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1360,
+        420
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gPjk4vAgrRfrNcPV",
+          "name": "Google Sheets (Afroz)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "has-appends?",
+              "leftValue": "={{ $('Plan Upsert').first().json.hasAppends }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "name": "Has Appends?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1580,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Plan Upsert').first().json.appendUrl }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Plan Upsert').first().json.appendBody }}"
+      },
+      "name": "Append New",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1800,
+        420
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gPjk4vAgrRfrNcPV",
+          "name": "Google Sheets (Afroz)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $json.url }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "name": "Get Props",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        700
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gPjk4vAgrRfrNcPV",
+          "name": "Google Sheets (Afroz)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const plan = $('Plan').first().json;\nconst API = 'https://sheets.googleapis.com/v4/spreadsheets';\nconst r = $input.first().json;\nif (r.error) return [{ json: { failed: true, error: r.error } }];\nconst want = plan.tabs ? plan.tabs.map((t) => (typeof t === 'string' ? { title: t } : t)) : null;\nconst requests = [];\nconst done = [];\nfor (const s of (r.sheets || [])) {\n  const p = s.properties;\n  const spec = want ? want.find((t) => t.title === p.title) : { title: p.title };\n  if (!spec) continue;\n  const cols = p.gridProperties.columnCount;\n  requests.push({ repeatCell: { range: { sheetId: p.sheetId, startRowIndex: 0, endRowIndex: 1 },\n    cell: { userEnteredFormat: { textFormat: { bold: true }, backgroundColor: { red: 0.9, green: 0.9, blue: 0.9 } } },\n    fields: 'userEnteredFormat(textFormat,backgroundColor)' } });\n  requests.push({ updateSheetProperties: { properties: { sheetId: p.sheetId, gridProperties: { frozenRowCount: 1 } }, fields: 'gridProperties.frozenRowCount' } });\n  if (spec.widths) {\n    for (const idx of Object.keys(spec.widths)) {\n      requests.push({ updateDimensionProperties: { range: { sheetId: p.sheetId, dimension: 'COLUMNS', startIndex: Number(idx), endIndex: Number(idx) + 1 },\n        properties: { pixelSize: spec.widths[idx] }, fields: 'pixelSize' } });\n    }\n  }\n  done.push(p.title);\n}\nif (!requests.length) return [{ json: { failed: true, error: 'no matching tabs to format' } }];\nreturn [{ json: { formatted: done, formatUrl: API + '/' + plan.sheet_id + ':batchUpdate', formatBody: JSON.stringify({ requests }) } }];"
+      },
+      "name": "Build Format",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        920,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json.formatUrl }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.formatBody }}"
+      },
+      "name": "Apply Format",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1140,
+        700
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gPjk4vAgrRfrNcPV",
+          "name": "Google Sheets (Afroz)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $json.propsUrl }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "name": "Cols Get Props",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        860
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gPjk4vAgrRfrNcPV",
+          "name": "Google Sheets (Afroz)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $('Plan').first().json.headerUrl }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "name": "Cols Get Header",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        920,
+        860
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gPjk4vAgrRfrNcPV",
+          "name": "Google Sheets (Afroz)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const plan = $('Plan').first().json;\nconst API = 'https://sheets.googleapis.com/v4/spreadsheets';\nconst enc = encodeURIComponent;\nconst quote = (t) => \"'\" + String(t).replace(/'/g, \"''\") + \"'\";\nconst bad = (msg) => [{ json: { failed: true, error: msg, hasWork: false } }];\nconst props = $('Cols Get Props').first().json;\nif (props.error) return bad('props: ' + (props.error.message || JSON.stringify(props.error)));\nconst sh = (props.sheets || []).find((s) => s.properties.title === plan.tab);\nif (!sh) return bad('tab \"' + plan.tab + '\" not found');\nconst hr = $input.first().json;\nif (hr.error) return bad('header read: ' + (hr.error.message || JSON.stringify(hr.error)));\nconst header = ((hr.values || [])[0] || []).map((h) => String(h).trim());\nconst have = new Set(header);\nconst missing = [];\nplan.headers.forEach((h) => { if (!have.has(h) && !missing.includes(h)) missing.push(h); });\nif (!missing.length) return [{ json: { hasWork: false, added: [], existing: header.length } }];\nconst colLetter = (i) => { let s = ''; i += 1; while (i > 0) { const m = (i - 1) % 26; s = String.fromCharCode(65 + m) + s; i = Math.floor((i - 1) / 26); } return s; };\nconst sid = sh.properties.sheetId;\nconst width = (sh.properties.gridProperties && sh.properties.gridProperties.columnCount) || 26;\nconst need = header.length + missing.length;\nconst requests = [];\nif (need > width) requests.push({ appendDimension: { sheetId: sid, dimension: 'COLUMNS', length: need - width } });\nrequests.push({ repeatCell: { range: { sheetId: sid, startRowIndex: 0, endRowIndex: 1, startColumnIndex: header.length, endColumnIndex: need },\n  cell: { userEnteredFormat: { textFormat: { bold: true }, backgroundColor: { red: 0.9, green: 0.9, blue: 0.9 } } },\n  fields: 'userEnteredFormat(textFormat,backgroundColor)' } });\nreturn [{ json: { hasWork: true, added: missing, existing: header.length,\n  structUrl: API + '/' + plan.sheet_id + ':batchUpdate', structBody: JSON.stringify({ requests }),\n  writeUrl: API + '/' + plan.sheet_id + '/values/' + enc(quote(plan.tab) + '!' + colLetter(header.length) + '1') + '?valueInputOption=RAW',\n  writeBody: JSON.stringify({ majorDimension: 'ROWS', values: [missing] }) } }];"
+      },
+      "name": "Cols Plan",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1140,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cols-has-work?",
+              "leftValue": "={{ $json.hasWork }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "name": "Cols Has Work?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1360,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Cols Plan').first().json.structUrl }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Cols Plan').first().json.structBody }}"
+      },
+      "name": "Cols Structure",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1580,
+        800
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gPjk4vAgrRfrNcPV",
+          "name": "Google Sheets (Afroz)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Cols Plan').first().json.writeUrl }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Cols Plan').first().json.writeBody }}"
+      },
+      "name": "Cols Write Header",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1800,
+        800
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gPjk4vAgrRfrNcPV",
+          "name": "Google Sheets (Afroz)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json.url }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.bodyStr }}"
+      },
+      "name": "Share Permission",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        1020
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "gPjk4vAgrRfrNcPV",
+          "name": "Google Sheets (Afroz)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const plan = $('Plan').first().json;\nif ($('Plan').first().json.action === 'share') {\n  const items = $input.all().map((i) => i.json);\n  const plans = $('Plan').all().map((i) => i.json);\n  const shared = items.map((r, idx) => ({ target: (plans[idx] || {}).target, ok: !r.error && !!r.id,\n    id: r.id || null, error: r.error ? (r.error.message || JSON.stringify(r.error)) : null }));\n  return [{ json: { ok: shared.every((x) => x.ok), action: 'share', shared,\n    error: shared.every((x) => x.ok) ? undefined : shared.filter((x) => !x.ok).map((x) => x.target + ': ' + x.error).join(' | ') } }];\n}\nconst j = $input.first().json;\nconst errText = (e) => (e && (e.message || (typeof e === 'string' ? e : JSON.stringify(e)))) || 'unknown error';\nif (plan.action === 'error') return [{ json: { ok: false, error: plan.error } }];\nif (j.failed) return [{ json: { ok: false, action: plan.action, error: errText(j.error) } }];\nif (j.error) return [{ json: { ok: false, action: plan.action, error: errText(j.error) } }];\nconst tryNode = (name) => { try { return $(name).first().json; } catch (e) { return null; } };\nif (plan.action === 'create') {\n  const pc = tryNode('Post Create');\n  const wh = tryNode('Write Headers');\n  if (wh && wh.error) return [{ json: { ok: false, action: 'create', error: 'headers: ' + errText(wh.error), spreadsheetId: pc.created.spreadsheetId } }];\n  return [{ json: { ok: true, action: 'create', spreadsheetId: pc.created.spreadsheetId, url: pc.created.url, tabs: pc.created.tabs } }];\n}\nif (plan.action === 'read') {\n  const v = j.values || [];\n  return [{ json: { ok: true, action: 'read', range: j.range, rows: v.length, values: v } }];\n}\nif (plan.action === 'append') {\n  const u = j.updates || {};\n  return [{ json: { ok: true, action: 'append', appended: u.updatedRows || plan.count, range: u.updatedRange } }];\n}\nif (plan.action === 'upsert') {\n  const pu = tryNode('Plan Upsert');\n  const wu = tryNode('Write Updates');\n  if (wu && wu.error) return [{ json: { ok: false, action: 'upsert', error: 'update: ' + errText(wu.error) } }];\n  return [{ json: { ok: true, action: 'upsert', updated: pu.updated, appended: pu.appended, skipped: pu.skipped, unknown_columns: pu.unknown_columns } }];\n}\nif (plan.action === 'format') {\n  const bf = tryNode('Build Format');\n  return [{ json: { ok: true, action: 'format', formatted: bf.formatted } }];\n}\nif (plan.action === 'add_columns') {\n  const cp = tryNode('Cols Plan');\n  const wr = tryNode('Cols Write Header');\n  const st = tryNode('Cols Structure');\n  if (cp && cp.hasWork) {\n    if (st && st.error) return [{ json: { ok: false, action: 'add_columns', error: 'grid: ' + errText(st.error) } }];\n    if (wr && (wr.error || !wr.updatedCells)) return [{ json: { ok: false, action: 'add_columns', error: 'header write: ' + errText(wr && wr.error ? wr.error : 'unexpected response') } }];\n  }\n  return [{ json: { ok: true, action: 'add_columns', added: (cp && cp.added) || [], existing: cp ? cp.existing : 0 } }];\n}\nreturn [{ json: { ok: false, error: 'unhandled action' } }];"
+      },
+      "name": "Build Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2040,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "firstIncomingItem",
+        "options": {}
+      },
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2260,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Plan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Plan": {
+      "main": [
+        [
+          {
+            "node": "Route",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route": {
+      "main": [
+        [
+          {
+            "node": "Create Spreadsheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Read Values",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append Rows",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Read Tab",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Props",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cols Get Props",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Share Permission",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Build Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Spreadsheet": {
+      "main": [
+        [
+          {
+            "node": "Post Create",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post Create": {
+      "main": [
+        [
+          {
+            "node": "Write Headers",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Headers": {
+      "main": [
+        [
+          {
+            "node": "Format New Tabs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format New Tabs": {
+      "main": [
+        [
+          {
+            "node": "Build Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Values": {
+      "main": [
+        [
+          {
+            "node": "Build Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append Rows": {
+      "main": [
+        [
+          {
+            "node": "Build Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Tab": {
+      "main": [
+        [
+          {
+            "node": "Plan Upsert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Plan Upsert": {
+      "main": [
+        [
+          {
+            "node": "Has Updates?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Has Updates?": {
+      "main": [
+        [
+          {
+            "node": "Write Updates",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Has Appends?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Updates": {
+      "main": [
+        [
+          {
+            "node": "Has Appends?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Has Appends?": {
+      "main": [
+        [
+          {
+            "node": "Append New",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Build Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append New": {
+      "main": [
+        [
+          {
+            "node": "Build Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Props": {
+      "main": [
+        [
+          {
+            "node": "Build Format",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Format": {
+      "main": [
+        [
+          {
+            "node": "Apply Format",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Apply Format": {
+      "main": [
+        [
+          {
+            "node": "Build Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cols Get Props": {
+      "main": [
+        [
+          {
+            "node": "Cols Get Header",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cols Get Header": {
+      "main": [
+        [
+          {
+            "node": "Cols Plan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cols Plan": {
+      "main": [
+        [
+          {
+            "node": "Cols Has Work?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cols Has Work?": {
+      "main": [
+        [
+          {
+            "node": "Cols Structure",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Build Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cols Structure": {
+      "main": [
+        [
+          {
+            "node": "Cols Write Header",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cols Write Header": {
+      "main": [
+        [
+          {
+            "node": "Build Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Share Permission": {
+      "main": [
+        [
+          {
+            "node": "Build Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Response": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
